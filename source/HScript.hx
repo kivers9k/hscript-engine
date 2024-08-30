@@ -50,7 +50,7 @@ class HScript {
 		try {
 			execute(lines);
 		} catch(error:Dynamic) {
-			SUtil.ert('Error on Hscript!', error);
+			SUtil.alert('Error on Hscript!', error);
 		}
 		
 		call('onCreate', []);
@@ -107,8 +107,8 @@ class HScript {
 
 	public function execute(codeToRun:String):Dynamic {
 		@:privateAccess
-		HScript.parser.line = 1;
-		HScript.parser.allowTypes = true;
-		return interp.execute(HScript.parser.parseString(codeToRun));
+		parser.line = 1;
+		parser.allowTypes = true;
+		return interp.execute(parser.parseString(codeToRun));
 	}
 }
