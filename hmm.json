@@ -28,12 +28,17 @@
         {
             "name": "flixel-tools",
             "type": "haxelib",
-            "version": "1.5.1"
+            "version": null
         },
         {
             "name": "flixel-ui",
             "type": "haxelib",
-            "version": "2.5.0"
+            "version": null
+        },
+        {
+            "name":"hscript",
+            "type":"haxelib",
+            "version":null
         },
         {
             "name":"extension-androidtools",
@@ -41,11 +46,6 @@
             "dir":null,
             "ref":"main",
             "url":"https://github.com/MaysLastPlay77/extension-androidtools"
-        },
-        {
-            "name":"hscript",
-            "type":"haxelib",
-            "version":null
         }
     ]
 }
