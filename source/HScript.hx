@@ -13,11 +13,13 @@ class HScript {
 		return interp.variables;
 	}
 
-	public function new(hxPaths:String) {
+    var hxName:String = null;
+	public function new(hxPath:String) {
+		hxName = hxPath;
 		preset();
 		
 		// the
-		var contents:String = File.getContent(hxPaths);
+		var contents:String = File.getContent(hxPath);
 		var lines:String = '';
 		
 		for (splitStr in contents.split('\n')) {
@@ -30,15 +32,15 @@ class HScript {
 				if (Type.resolveClass(lib) != null) {
 					interp.variables.set(libName, Type.resolveClass(lib));
 				} else {
-					SUtil.alert('Library not Found!', lib);
+					SUtil.alert('Library not Found!', '$hxName:$lib');
 				}
 			}
 		}
 		
 		try {
 			execute(lines);
-		} catch(error:Dynamic) {
-			SUtil.alert('Error on Hscript!', error);
+		} catch(e:Dynamic) {
+			SUtil.alert('Error on Hscript!', '$hxName:$e');
 		}
 		
 		call('onCreate', []);
@@ -90,7 +92,7 @@ class HScript {
 				return Reflect.callMethod(this, interp.variables.get(name), args);
 			}
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript!', e);
+			SUtil.alert('Error on Hscript!', '$hxName:$e');
 			return false;
 		}
 		return false;
@@ -100,6 +102,7 @@ class HScript {
 		@:privateAccess
 		parser.line = 1;
 		parser.allowTypes = true;
+		parser.allowJSON = true;
 		return interp.execute(parser.parseString(codeToRun));
 	}
 }
