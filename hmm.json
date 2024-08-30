@@ -1,0 +1,51 @@
+{
+    "dependencies":[
+        {
+            "name": "hxcpp",
+            "type": "haxelib",
+            "version": "4.2.1"
+        },
+        {
+            "name": "lime",
+            "type": "haxelib",
+            "version": "7.9.0"
+        },
+        {
+            "name": "openfl",
+            "type": "haxelib",
+            "version": "9.1.0"
+        },
+        {
+            "name": "flixel",
+            "type": "haxelib",
+            "version": "4.11.0"
+        },
+        {
+            "name": "flixel-addons",
+            "type": "haxelib",
+            "version": "2.11.0"
+        },
+        {
+            "name": "flixel-tools",
+            "type": "haxelib",
+            "version": "1.5.1"
+        },
+        {
+            "name": "flixel-ui",
+            "type": "haxelib",
+            "version": "2.5.0"
+        },
+        {
+            "name":"extension-androidtools",
+            "type":"git",
+            "dir":null,
+            "ref":"main",
+            "url":"https://github.com/MaysLastPlay77/extension-androidtools"
+        },
+        {
+            "name":"hscript",
+            "type":"haxelib",
+            "version":null
+        }
+    ]
+}
