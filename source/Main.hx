@@ -1,8 +1,6 @@
 package;
 
-import AndroidExtension as SUtil;
 import flixel.FlxGame;
-import flixel.FlxState;
 import openfl.Assets;
 import openfl.Lib;
 import openfl.display.FPS;

@@ -1,13 +1,5 @@
 package;
 
-import AndroidExtension as SUtil;
-import HScript;
-
-import sys.FileSystem;
-import flixel.FlxState;
-
-using StringTools;
-
 class PlayState extends FlxState {
 	public var hxArray:Array<HScript> = [];
 	public var scriptPaths:String = SUtil.getPath() + 'assets/scripts/';
