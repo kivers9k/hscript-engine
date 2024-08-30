@@ -5,6 +5,7 @@ import android.Tools;
 import android.Permissions;
 import android.PermissionsList;
 #end
+
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
 import openfl.utils.Assets as OpenFlAssets;
@@ -18,7 +19,7 @@ import flash.system.System;
 
 using StringTools;
 
-class AndroidExtensoin
+class AndroidExtension
 {
 	#if android
 	private static var aDir:String = null; // android dir
