@@ -45,8 +45,10 @@
 	<define name="hscriptPos" />
 	<!-- _________________________________ Android Stuff _______________________________ -->
 
-	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" if="android"/>
-	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" if="android"/>
+    <section if="android"/>
+	    <config:android permission="android.permission.READ_EXTERNAL_STORAGE"/>
+	    <config:android permission="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<section/>
 
 	<!-- _________________________________ Custom _______________________________ -->
 
