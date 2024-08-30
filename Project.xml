@@ -20,10 +20,10 @@
 	<window if="html5" resizable="false" />
 
 	<!--Desktop-specific-->
-	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
+	<window if="desktop" orientation="landscape" fullscreen="false" width="1280" height="720" resizable="false" />
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="false" width="1280" height="720" />
+	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
