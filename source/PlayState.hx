@@ -9,9 +9,9 @@ import flixel.FlxState;
 using StringTools;
 
 class PlayState extends FlxState {
-	var hxArray:Array<HScript> = [];
-	var scriptPaths:String = SUtil.getPath() + 'assets/scripts/';
-	var instance:PlayState;
+	public var hxArray:Array<HScript> = [];
+	public var scriptPaths:String = SUtil.getPath() + 'assets/scripts/';
+	public static var instance:PlayState;
 
 	override function create() {
 		instance = this;
