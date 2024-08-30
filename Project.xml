@@ -29,9 +29,12 @@
 
 	<set name="BUILD_DIR" value="export" />
 	
-	<source path="source" />
 	<assets path="assets" />
+	<source path="source" />
+
+	<assets path="assets/images" />
 	<assets path="assets/scripts" />
+	<assets path="assets/sounds" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -45,10 +48,10 @@
 	<define name="hscriptPos" />
 	<!-- _________________________________ Android Stuff _______________________________ -->
 
-    <section if="android"/>
-	    <config:android permission="android.permission.READ_EXTERNAL_STORAGE"/>
-	    <config:android permission="android.permission.WRITE_EXTERNAL_STORAGE"/>
-	<section/>
+    <section if="android" />
+	    <config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
+	    <config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<section />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
