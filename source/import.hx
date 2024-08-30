@@ -14,7 +14,6 @@ import sys.io.*;
 import js.html.*;
 #end
 
-import flixel.sound.FlxSound;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
