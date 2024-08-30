@@ -1,5 +1,6 @@
 package;
 
+import AndroidExtension as SUtil;
 import flixel.FlxGame;
 import flixel.FlxState;
 import openfl.Assets;
@@ -25,7 +26,7 @@ class Main extends Sprite {
 
 	public function new() {
 		super();
-		AndroidExtensoin.gameCrashCheck();
+	    SUtil.gameCrashCheck();
 		if (stage != null) {
 			init();
 		} else {
@@ -42,7 +43,7 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
-		AndroidExtensoin.doTheCheck();
+		SUtil.doTheCheck();
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;

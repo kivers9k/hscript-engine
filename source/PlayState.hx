@@ -1,6 +1,6 @@
 package;
 
-import AndroidExtensoin as SUtil;
+import AndroidExtension as SUtil;
 import HScript;
 
 import sys.FileSystem;

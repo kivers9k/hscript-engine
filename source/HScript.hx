@@ -107,8 +107,8 @@ class HScript {
 
 	public function execute(codeToRun:String):Dynamic {
 		@:privateAccess
-		FunkinHx.parser.line = 1;
-		FunkinHx.parser.allowTypes = true;
-		return interp.execute(FunkinHx.parser.parseString(codeToRun));
+		parser.line = 1;
+		parser.allowTypes = true;
+		return interp.execute(parser.parseString(codeToRun));
 	}
 }
