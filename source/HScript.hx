@@ -67,6 +67,7 @@ class HScript {
 		interp.variables.set('add', FlxG.state.add);
 		interp.variables.set('remove', FlxG.state.remove);
 		interp.variables.set('insert', FlxG.state.insert);
+		interp.variables.set('game', PlayState.instance);
 
 		interp.variables.set('setVar', function(name:String, args:Dynamic) {
 			this.variables.set(name, args);

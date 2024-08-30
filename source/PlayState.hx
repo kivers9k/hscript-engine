@@ -11,8 +11,11 @@ using StringTools;
 class PlayState extends FlxState {
 	var hxArray:Array<HScript> = [];
 	var scriptPaths:String = SUtil.getPath() + 'assets/scripts/';
-	
+	var instance:PlayState;
+
 	override function create() {
+		instance = this;
+
 		for (file in FileSystem.readDirectory(scriptPaths)) {
 			if (file.endsWith('.hx')) {
 				hxArray.push(new HScript(scriptPaths + file));
