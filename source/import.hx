@@ -5,6 +5,7 @@ import android.PermissionsList;
 import AndroidExtension as SUtil;
 #end
 
+import AssetPaths as Paths;
 import HScript;
 
 #if sys
