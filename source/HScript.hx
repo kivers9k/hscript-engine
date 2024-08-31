@@ -32,7 +32,7 @@ class HScript {
 				if (Type.resolveClass(lib) != null) {
 					interp.variables.set(libName, Type.resolveClass(lib));
 				} else {
-					SUtil.alert('Library not Found!', '$hxName:$lib');
+					SUtil.alert('Library not Found!', lib);
 				}
 			}
 		}
