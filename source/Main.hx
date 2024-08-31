@@ -14,7 +14,7 @@ class Main extends Sprite {
 		initialState: PlayState, // The FlxState the game starts with.
 		zoom: -1, // If -1, zoom is automatically calculated to fit the window dimensions.
 		framerate: 60, // How many frames per second the game should run at.
-		skipSplash: true, // Whether to skip the flixel splash screen that appears in release mode.
+		skipSplash: false, // Whether to skip the flixel splash screen that appears in release mode.
 		startFullscreen: true // Whether to start the game in fullscreen on desktop targets
 	}
 	
@@ -44,10 +44,6 @@ class Main extends Sprite {
 
 	private function setupGame():Void {
 		SUtil.doTheCheck();
-		
-		#if android
-		FlxG.android.preventDefaultKeys = [BACK];
-		#end
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
@@ -70,5 +66,9 @@ class Main extends Sprite {
 			game.skipSplash,
 			game.startFullscreen
 		));
+
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 	}
 }
