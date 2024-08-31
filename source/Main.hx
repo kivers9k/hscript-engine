@@ -51,9 +51,9 @@ class Main extends Sprite {
 		if (game.zoom == -1) {
 			var ratioX:Float = stageWidth / game.width;
 			var ratioY:Float = stageHeight / game.height;
-			zoom = Math.min(ratioX, ratioY);
-			game.width = Math.ceil(stageWidth / zoom);
-			game.height = Math.ceil(stageHeight / zoom);
+			game.zoom = Math.min(ratioX, ratioY);
+			game.width = Math.ceil(stageWidth / game.zoom);
+			game.height = Math.ceil(stageHeight / game.zoom);
 		}
 
 		addChild(new FlxGame(
