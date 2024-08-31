@@ -63,18 +63,18 @@ class HScript {
 		interp.variables.set('SUtil', SUtil);
 
 		interp.variables.set('setVar', function(name:String, args:Dynamic) {
-			this.variables.set(name, args);
+			PlayState.instance.variables.set(name, args);
 		});
 		interp.variables.set('getVar', function(name:String) {
 			var result:Dynamic = null;
-			if (this.variables.exists(name)) {
-				result = this.variables.get(name);
+			if (PlayState.instance.variables.exists(name)) {
+				result = PlayState.instance.variables.get(name);
 			}
 			return result;
 		});
 		interp.variables.set('removeVar', function(name:String) {
-			if (this.variables.exists(name)) {
-				this.variables.remove(name);
+			if (PlayState.instance.variables.exists(name)) {
+				PlayState.instance.variables.remove(name);
 				return true;
 			}
 			return false;
