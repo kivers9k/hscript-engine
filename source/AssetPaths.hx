@@ -2,8 +2,6 @@ package;
 
 import flixel.graphics.FlxGraphic;
 import openfl.display.BitmapData;
-import sys.io.File;
-import sys.FileSystem;
 import flash.media.Sound;
 
 class AssetPaths {
