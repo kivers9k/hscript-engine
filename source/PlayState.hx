@@ -11,9 +11,14 @@ class PlayState extends FlxState {
 	public var hxArray:Array<HScript> = [];
 
 	public static var instance:PlayState;
+	public var camHUD:FlxCamera;
 
 	override function create() {
 		instance = this;
+
+		camHUD = new FlxCamera();
+		camHUD.bgColor.alpha = 0;
+		FlxG.cameras.add(camHUD, false);
 
 		for (file in FileSystem.readDirectory(scriptPaths)) {
 			if (file.endsWith('.hx')) {
