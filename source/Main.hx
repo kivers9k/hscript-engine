@@ -42,6 +42,9 @@ class Main extends Sprite {
 
 	private function setupGame():Void {
 		SUtil.doTheCheck();
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
