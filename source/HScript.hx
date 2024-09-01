@@ -33,12 +33,11 @@ class HScript {
 				//enum support yay!
 				var isEnum:Bool = Type.resolveEnum(lib) != null;
 				if (isEnum || Type.resolveClass(lib) != null) {
-					interp.variables.set(libName, lib);
-				} else {
-					SUtil.alert(
-						(isEnum ? 'Enum' : 'Class') + 'not Found',
-						lib
+					interp.variables.set(libName,
+						isEnum ? Type.resolveEnum(lib) : Type.resolveClass(lib)
 					);
+				} else {
+					SUtil.alert((isEnum ? 'Enum' : 'Class') + ' not Found', lib);
 				}
 				
 				linePos.push(splitStr);
@@ -48,7 +47,7 @@ class HScript {
 		try {
 			execute(lines);
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript!', '$scriptName:$e');
+			SUtil.alert('Error on Hscript!', 'scriptName:$e');
 		}
 		
 		call('onCreate', []);
@@ -101,7 +100,7 @@ class HScript {
 				return Reflect.callMethod(this, interp.variables.get(name), args);
 			}
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript!', '$scriptName:$e');
+			SUtil.alert('Error on Hscript!', 'scriptName:$e');
 			return false;
 		}
 		return false;
