@@ -31,6 +31,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
+import flixel.ui.FlxAnalog;
 import flixel.text.FlxText;
 
 using StringTools;

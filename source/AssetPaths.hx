@@ -30,7 +30,7 @@ class AssetPaths {
 		return null;
 	}
 	
-	public static function getTxtFromFile(key:String):String {
+	public static function getTextFromFile(key:String):String {
 		var path:String = getPath(key);
 		
 		if (FileSystem.exists(path)) {

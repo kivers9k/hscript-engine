@@ -13,9 +13,10 @@ class HScript {
 		return interp.variables;
 	}
 
-    var hxName:String = null;
+	public var scriptName:String = null;
+	private var linePos:Array<String> = [];
 	public function new(hxPath:String) {
-		hxName = hxPath;
+		scriptName = hxPath;
 		preset();
 		
 		// the
@@ -29,18 +30,25 @@ class HScript {
 				var lib:String = splitStr.split(' ')[1].replace(';', '');
 				var libName:String = lib.split('.')[lib.split('.').length - 1];
 				
-				if (Type.resolveClass(lib) != null) {
-					interp.variables.set(libName, Type.resolveClass(lib));
+				//enum support yay!
+				var isEnum:Bool = Type.resolveEnum(lib) != null;
+				if (isEnum || Type.resolveClass(lib) != null) {
+					interp.variables.set(libName, lib);
 				} else {
-					SUtil.alert('Library not Found!', lib);
+					SUtil.alert(
+						(isEnum ? 'Enum' : 'Class') + 'not Found',
+						lib
+					);
 				}
+				
+				linePos.push(splitStr);
 			}
 		}
 		
 		try {
 			execute(lines);
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript!', '$hxName:$e');
+			SUtil.alert('Error on Hscript!', '$scriptName:$e');
 		}
 		
 		call('onCreate', []);
@@ -93,17 +101,16 @@ class HScript {
 				return Reflect.callMethod(this, interp.variables.get(name), args);
 			}
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript!', '$hxName:$e');
+			SUtil.alert('Error on Hscript!', '$scriptName:$e');
 			return false;
 		}
 		return false;
 	}
 
-	public function execute(codeToRun:String):Dynamic {
-		@:privateAccess
-		parser.line = 1;
+	public function execute(code:String):Dynamic {
+		parser.line = 1 + linePos.length;
 		parser.allowTypes = true;
 		parser.allowJSON = true;
-		return interp.execute(parser.parseString(codeToRun));
+		return interp.execute(parser.parseString(code));
 	}
 }
