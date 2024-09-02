@@ -43,7 +43,7 @@
         {
             "name":"extension-androidtools",
             "type":"haxelib",
-            "version": "2.1.1"
+            "version": null
         }
     ]
 }
