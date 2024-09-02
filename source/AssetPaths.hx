@@ -29,7 +29,16 @@ class AssetPaths {
 		}
 		return null;
 	}
-	
+    
+	public static function font(key:String):String {
+		var path:String = getPath('fonts/$key');
+
+		if (FileSystem.exist(path) && (path.endsWith('.ttf') || path.endsWith('.otf'))) {
+			return path;
+		}
+        return null;
+    }
+    
 	public static function getTextFromFile(key:String):String {
 		var path:String = getPath(key);
 		
@@ -37,5 +46,5 @@ class AssetPaths {
 			return File.getContent(path);
 		}
 		return null;
-	}
+    }
 }
