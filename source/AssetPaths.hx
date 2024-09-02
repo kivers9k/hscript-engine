@@ -33,7 +33,7 @@ class AssetPaths {
 	public static function font(key:String):String {
 		var path:String = getPath('fonts/$key');
 
-		if (FileSystem.exist(path) && (path.endsWith('.ttf') || path.endsWith('.otf'))) {
+		if (FileSystem.exists(path) && (path.endsWith('.ttf') || path.endsWith('.otf'))) {
 			return path;
 		}
         return null;
