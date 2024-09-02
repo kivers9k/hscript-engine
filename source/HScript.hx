@@ -47,7 +47,7 @@ class HScript {
 		try {
 			execute(lines);
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript!', 'scriptName:$e');
+			SUtil.alert('Error on Hscript!', '$scriptName:$e');
 		}
 		
 		call('onCreate', []);
@@ -66,6 +66,7 @@ class HScript {
 		interp.variables.set('insert', FlxG.state.insert);
 
 		interp.variables.set('game', PlayState.instance);
+		interp.variables.set('print', PlayState.instance.print);
 		interp.variables.set('Paths', Paths);
 		interp.variables.set('SUtil', SUtil);
 

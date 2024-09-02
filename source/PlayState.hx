@@ -12,6 +12,7 @@ class PlayState extends FlxState {
 
 	public static var instance:PlayState;
 	public var camHUD:FlxCamera;
+	private var printTextGrp:FlxTypedGroup<PrintText>;
 
 	override function create() {
 		instance = this;
@@ -20,11 +21,16 @@ class PlayState extends FlxState {
 		camHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(camHUD, false);
 
+		printTextGrp = new FlxTypedGroup<PrintText>();
+        printTextGrp.cameras = [camHUD];
+		insert(1000, printTextGrp);
+
 		for (file in FileSystem.readDirectory(scriptPaths)) {
 			if (file.endsWith('.hx')) {
 				hxArray.push(new HScript(scriptPaths + file));
 			}
 		}
+
 		super.create();
 		callOnHx('onCreatePost', []);
 	}
@@ -41,5 +47,34 @@ class PlayState extends FlxState {
 			result = hscript.call(name, args);
 		}
 		return result;
+	}
+
+	public function print(text:String) {
+		printTextGrp.forEachAlive(function(txt:PrintText) {
+			txt.y += 24;
+		});
+
+		if (printTextGrp.length > 28) {
+			var guh = printTextGrp.members[28];
+			guh.destroy();
+			printTextGrp.remove(guh);
+		}
+		printTextGrp.insert(0, new PrintText(text));
+	}
+}
+
+class PrintText extends FlxText {
+    private var disableTime:Float = 6;
+	public function new(text:String) {
+		super(0, 0, 0, text, 24);
+		scrollFactor.set();
+        borderSize = 2;
+	}
+
+	override function update(elapsed:Float) {
+		super.update(elapsed);
+		disableTime -= elapsed;
+		if (disableTime < 0) disableTime = 0;
+		if (disableTime < 1) alpha = disableTime;
 	}
 }
