@@ -1,8 +1,12 @@
 #if android
+import android.content.Context;
+import android.os.Environment;
+import android.os.BatteryManager;
+import android.widget.Toast;
 import android.Tools;
 import android.Permissions;
 import android.Settings;
-import android.content.Context;
+
 import AndroidExtension as SUtil;
 #end
 

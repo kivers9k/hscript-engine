@@ -11,27 +11,23 @@ import flash.system.System;
 
 using StringTools;
 
-class AndroidExtension
-{
+class AndroidExtension {
+	#if android
 	private static var aDir:String = null; // android dir
-	public static function getPath():String
-	{
-		#if android
-		    if (aDir != null && aDir.length > 0)
-			    return aDir;
-		    else
-			    return aDir = Context.getExternalFilesDir() + '/' + '.' + Application.current.meta.get('file') + '/';
-		#end
-		return null; // return to null if it not android device
+	public static function getPath():String {
+		if (aDir != null && aDir.length > 0) {
+    	    return aDir;
+		} else {
+		    return aDir = Context.getExternalFilesDir() + '/' + '.' + Application.current.meta.get('file') + '/';
+		}
 	}
+    #end
 
-	public static function gameCrashCheck()
-	{
+	public static function gameCrashCheck() {
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 	}
 
-	public static function onCrash(e:UncaughtErrorEvent):Void
-	{
+	public static function onCrash(e:UncaughtErrorEvent):Void {
 		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
 		var dateNow:String = Date.now().toString();
 		dateNow = StringTools.replace(dateNow, " ", "_");
@@ -66,8 +62,7 @@ class AndroidExtension
 		System.exit(0);
 	}
 
-	public static function alert(title:String, msg:String)
-	{
+	public static function alert(title:String, msg:String) {
 		Application.current.window.alert(msg, title);
 	}
 } 
