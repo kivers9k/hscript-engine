@@ -13,6 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
+      - name: Setup Android NDK
+        id: setup-ndk
+        uses: nttld/setup-ndk@main
+        with:
+          ndk-version: r21e
+          
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
