@@ -21,6 +21,10 @@ class PlayState extends FlxState {
 		camHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(camHUD, false);
 
+        printTextGrp = new FlxTypedGroup<PrintText>();
+        printTextGrp.cameras = [camHUD];
+		add(printTextGrp);
+        
 		for (file in FileSystem.readDirectory(scriptPaths)) {
 			if (file.endsWith('.hx')) {
 				hxArray.push(new HScript(scriptPaths + file));
@@ -29,10 +33,6 @@ class PlayState extends FlxState {
 
 		super.create();
 		callOnHx('onCreatePost', []);
-
-		printTextGrp = new FlxTypedGroup<PrintText>();
-        printTextGrp.cameras = [camHUD];
-		add(printTextGrp);
 	}
 
 	override function update(elapsed:Float) {
