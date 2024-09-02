@@ -20,7 +20,7 @@ class AndroidExtension
 		    if (aDir != null && aDir.length > 0)
 			    return aDir;
 		    else
-			    return aDir = Context.getExternalFileDir() + '/' + '.' + Application.current.meta.get('file') + '/';
+			    return aDir = Context.getExternalFilesDir() + '/' + '.' + Application.current.meta.get('file') + '/';
 		#end
 		return null; // return to null if it not android device
 	}
