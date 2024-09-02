@@ -32,6 +32,7 @@
 	<assets path="assets" />
 	<source path="source" />
 
+    <assets path="assets/fonts" />
 	<assets path="assets/images" />
 	<assets path="assets/scripts" />
 	<assets path="assets/sounds" />
