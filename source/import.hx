@@ -1,7 +1,8 @@
 #if android
 import android.Tools;
 import android.Permissions;
-import android.PermissionsList;
+import android.Settings;
+import android.content.Context;
 import AndroidExtension as SUtil;
 #end
 

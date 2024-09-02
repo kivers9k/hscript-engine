@@ -15,41 +15,16 @@ class AndroidExtension
 {
 	#if android
 	private static var aDir:String = null; // android dir
-	#end
 
 	public static function getPath():String
 	{
 		#if android
-		if (aDir != null && aDir.length > 0)
-			return aDir;
-		else
-			return aDir = Tools.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file') + '/';
-		#else
-		return '';
+		    if (aDir != null && aDir.length > 0)
+			    return aDir;
+		    else
+			    return aDir = Context.getExternalFileDir() + '/' + '.' + Application.current.meta.get('file') + '/';
 		#end
-	}
-
-	public static function doTheCheck()
-	{
-		#if android
-		if (!Permissions.getGrantedPermissions().contains(PermissionsList.READ_EXTERNAL_STORAGE) || !Permissions.getGrantedPermissions().contains(PermissionsList.WRITE_EXTERNAL_STORAGE))
-		{
-			Permissions.requestPermissions([PermissionsList.READ_EXTERNAL_STORAGE, PermissionsList.WRITE_EXTERNAL_STORAGE]);
-			alert('Permissions', "if you acceptd the permissions all good if not expect a crash" + '\n' + 'Press Ok to see what happens');
-		}
-
-		if (Permissions.getGrantedPermissions().contains(PermissionsList.READ_EXTERNAL_STORAGE) || Permissions.getGrantedPermissions().contains(PermissionsList.WRITE_EXTERNAL_STORAGE))
-		{
-			if (!FileSystem.exists(Tools.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file')))
-				FileSystem.createDirectory(Tools.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file'));
-
-			if (!FileSystem.exists(getPath() + 'assets'))
-			{
-				alert('Uncaught Error', "assets folder doesn't exist" + "\n" + " please copy assets folder from apk and paste in " + getPath());
-				System.exit(0);
-			}
-		}
-		#end
+		return null; // return to null if it not android device
 	}
 
 	public static function gameCrashCheck()
