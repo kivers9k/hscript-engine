@@ -13,9 +13,7 @@ using StringTools;
 
 class AndroidExtension
 {
-	#if android
 	private static var aDir:String = null; // android dir
-
 	public static function getPath():String
 	{
 		#if android
