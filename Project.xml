@@ -49,12 +49,12 @@
 
 	<haxelib name="extension-androidtools" if="android"/>
 
-    <!-- ______________________________ Android Stuff ___________________________ -->
+    <!-- ______________________________ Android Stuff ___________________________
 
 	<section if="android" />
         <config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
 		<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<section />
+	<section /> -->
 
 	<!-- _________________________________ Custom _______________________________ -->
 
