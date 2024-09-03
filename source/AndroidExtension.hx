@@ -9,8 +9,6 @@ import haxe.CallStack;
 import haxe.io.Path;
 import flash.system.System;
 
-using StringTools;
-
 class AndroidExtension {
 	public static function getPath():String {
 		#if android
