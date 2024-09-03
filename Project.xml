@@ -76,6 +76,15 @@
 	<!--Disable the Flixel sound management code-->
 	<!--<haxedef name="FLX_NO_SOUND_SYSTEM" />-->
 
+    <!-- _____________________________ Android Stuff _____________________________-->
+
+	<section if="android" />
+	    <android target-sdk-version="31" />
+		<config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
+		<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
+		<config:android settings="android.settings.MANAGE_APP_ALL_FILES_ACCESS_PERMISSION" />
+	<section />
+
 	<!--Disable the Flixel core focus lost screen-->
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
 
