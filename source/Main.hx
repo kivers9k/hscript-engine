@@ -23,7 +23,11 @@ class Main extends Sprite {
 		Lib.current.addChild(new Main());
 	}
 
-	public function new() {
+	public function new() { 
+		#if android
+			SUtil.permissionCheck();
+			SUtil.gameCrashCheck();
+		#end
 		super();
 		if (stage != null) {
 			init();
@@ -41,11 +45,6 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
-		#if android
-		SUtil.permissionCheck();
-		SUtil.gameCrashCheck();
-		#end
-
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
