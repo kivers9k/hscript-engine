@@ -12,16 +12,13 @@ import flash.system.System;
 using StringTools;
 
 class AndroidExtension {
-	#if android
-	private static var aDir:String = null; //android directory
 	public static function getPath():String {
-		if (aDir != null && aDir.length > 0) {
-    	    return aDir;
-		} else {
-		    return aDir = '/storage/emulated/0/.' + Application.current.meta.get('file') + '/';
-		}
-	}
-	#end
+		#if android
+		    return '/storage/emulated/0/.' + Application.current.meta.get('file') + '/';
+		#else
+		    return '';
+		#end
+ 	}
 
 	public static function gameCrashCheck() {
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
