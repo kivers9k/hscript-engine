@@ -13,14 +13,14 @@ using StringTools;
 
 class AndroidExtension {
 	#if android
-	private static var aDir:String = null; // android dir
+	private static var aDir:String = null; // '/storage/emulated/0/; // android dir
 	#end
 	public static function getPath():String {
 		#if android
 		if (aDir != null && aDir.length > 0) {
     	    return aDir;
 		} else {
-		    return '';//aDir = Context.getExternalFilesDir() + '/.' + Application.current.meta.get('file') + '/';
+		    return aDir = Context.getExternalFilesDir() + '.' + Application.current.meta.get('file') + '/';
 		}
 		#else
 		return '';

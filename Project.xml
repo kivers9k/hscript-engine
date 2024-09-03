@@ -49,10 +49,10 @@
 	<define name="hscriptPos" />
 	<!-- _________________________________ Android Stuff _______________________________ -->
 
-    <section if="android" />
+    <!-- <section if="android" />
 	    <config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
 	    <config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<section />
+	<section /> -->
 
 	<!-- _________________________________ Custom _______________________________ -->
 

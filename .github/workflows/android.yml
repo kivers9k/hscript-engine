@@ -54,4 +54,4 @@ jobs:
         with:
           name: androidBuild
           path: export/android/bin/app/build/outputs/apk/debug
-          if-no-files-found: warn
+          if-no-files-found: error
