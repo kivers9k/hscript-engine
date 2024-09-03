@@ -43,7 +43,7 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
-		//SUtil.doTheCheck(); add it back later
+		SUtil.permissionCheck();
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
