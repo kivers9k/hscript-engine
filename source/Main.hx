@@ -25,10 +25,13 @@ class Main extends Sprite {
 
 	public function new() { 
 		#if android
-			SUtil.permissionCheck();
-			SUtil.gameCrashCheck();
+		SUtil.permissionCheck()
 		#end
 		super();
+		#if android
+		SUtil.gameCrashCheck();
+		#end
+		
 		if (stage != null) {
 			init();
 		} else {
