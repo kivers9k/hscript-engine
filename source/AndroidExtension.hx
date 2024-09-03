@@ -13,19 +13,15 @@ using StringTools;
 
 class AndroidExtension {
 	#if android
-	private static var aDir:String = null; // '/storage/emulated/0/; // android dir
-	#end
+	private static var aDir:String = null; //android directory
 	public static function getPath():String {
-		#if android
 		if (aDir != null && aDir.length > 0) {
     	    return aDir;
 		} else {
-		    return aDir = Context.getExternalFilesDir() + '.' + Application.current.meta.get('file') + '/';
+		    return aDir = '/storage/emulated/0/.' + Application.current.meta.get('file') + '/';
 		}
-		#else
-		return '';
-		#end
 	}
+	#end
 
 	public static function gameCrashCheck() {
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
