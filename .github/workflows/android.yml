@@ -25,9 +25,9 @@ jobs:
           java-version: '11'
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1.2.0
+        uses: krdlab/setup-haxe@master
         with:
-          haxe-version: '4.2.0'
+          haxe-version: '4.3.4'
 
       - name: Install Haxelib
         run: |
@@ -53,5 +53,5 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: androidBuild
-          path: export/android/bin/app/build/outputs/apk/debug
+          path: export/android/bin/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error

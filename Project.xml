@@ -32,6 +32,7 @@
 	<assets path="assets" />
 	<source path="source" />
 
+    <assets path="assets/data" />
     <assets path="assets/fonts" />
 	<assets path="assets/images" />
 	<assets path="assets/scripts" />
@@ -47,13 +48,7 @@
 
 	<haxelib name="hscript" />
 	<define name="hscriptPos" />
-	<!-- _________________________________ Android Stuff _______________________________ -->
-
-    <!-- <section if="android" />
-	    <config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
-	    <config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<section /> -->
-
+ 
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<icon path="icons.png" />
