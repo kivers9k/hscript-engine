@@ -9,9 +9,8 @@ class FlxCustomState extends FlxState {
 
     public var instance:FlxCustomState;
 
-    public function new(state:String) {
+    public function new() {
         instance = this;
-        this.stateName = state;
         super();
     }
 
