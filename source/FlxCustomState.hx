@@ -6,8 +6,7 @@ class FlxCustomState extends FlxState {
 
     public static var onUpdate:Void -> Void;
     public static var onUpdatePost:Void -> Void;
-    
-    var stateName:String = '';
+
     public var instance:FlxCustomState;
 
     public function new(state:String) {
