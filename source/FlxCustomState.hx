@@ -1,11 +1,10 @@
 package;
 
 class FlxCustomState extends FlxState {
-    public static var onCreate:() -> Void;
-    public static var onCreatePost:() -> Void;
-
-    public static var onUpdate:(elapsed:Float) -> Void;
-    public static var onUpdatePost:(elapsed:Float) -> Void;
+    public var onCreate:() -> Void;
+    public var onCreatePost:() -> Void;
+    public var onUpdate:(Float) -> Void;
+    public var onUpdatePost:(Float) -> Void;
 
     public static var instance:FlxCustomState;
 
@@ -15,14 +14,14 @@ class FlxCustomState extends FlxState {
     }
 
     override function create() {
-        onCreate();
+        if (onCreate != null) onCreate();
         super.create();
-        onCreatePost();
+        if (onCreatePost != null) onCreatePost();
     }
 
     override function update(elapsed:Float) {
-        onUpdate(elapsed);
+        if (onUpdate != null) onUpdate(elapsed);
         super.update(elapsed);
-        onUpdatePost(elapsed);
+        if (onUpdatePost != null) onUpdatePost(elapsed);
     }
 }
