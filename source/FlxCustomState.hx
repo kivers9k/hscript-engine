@@ -7,6 +7,7 @@ class FlxCustomState extends FlxState {
     public function new(state:String) {
         instance = this;
         this.stateName = state;
+        super();
     }
 
     override function create() {
