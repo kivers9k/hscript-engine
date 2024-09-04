@@ -47,7 +47,7 @@ class HScript {
 		try {
 			execute(lines);
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript!', '$scriptName:$e');
+			SUtil.alert('Error on Hscript!', '$scriptName\n$e');
 		}
 		
 		call('onCreate', []);
@@ -102,7 +102,7 @@ class HScript {
 				return Reflect.callMethod(this, interp.variables.get(name), args);
 			}
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript!', 'scriptName:$e');
+			SUtil.alert('Error on Hscript!', 'scriptName\n$e');
 			return false;
 		}
 		return false;
