@@ -11,6 +11,7 @@ import AndroidExtension as SUtil;
 #end
 
 import AssetPaths as Paths;
+import FlxCustomState;
 import HScript;
 
 #if sys
