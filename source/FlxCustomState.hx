@@ -1,6 +1,12 @@
 package;
 
 class FlxCustomState extends FlxState {
+    public static var onCreate:Void -> Void;
+    public static var onCreatePost:Void -> Void;
+
+    public static var onUpdate:Void -> Void;
+    public static var onUpdatePost:Void -> Void;
+    
     var stateName:String = '';
     public var instance:FlxCustomState;
 
@@ -11,22 +17,14 @@ class FlxCustomState extends FlxState {
     }
 
     override function create() {
-        call('onCreate', [stateName]);
+        onCreate();
         super.create();
-        call('onCreatePost', [stateName]);
+        onCreatePost();
     }
 
     override function update(elapsed:Float) {
-        call('onUpdate', [stateName, elapsed]);
+        onUpdate(elapsed);
         super.update(elapsed);
-        call('onUpdatePost', [stateName, elapsed]);
-    }
-
-    public function call(name:String, args:Array<Dynamic>) {
-        var ret:Dynamic = null;
-        for (hx in PlayState.instance.hxArray) {
-            ret = hx.call(name, args);
-        }
-        return ret;
+        onUpdatePost(elapsed);
     }
 }
