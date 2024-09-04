@@ -72,7 +72,10 @@ class AndroidExtension {
 		System.exit(0);
 	}
 
-	public static function alert(title:String, msg:String) {
-		Application.current.window.alert(msg, title);
+	public static function alert(title:String, msg:String, ?buttonName:String = 'OK', ?func:Void = null) {
+		Tools.showAlertDialog(title, msg,
+		    {name: buttonName, func: func},
+			null
+		);
 	}
 } 
