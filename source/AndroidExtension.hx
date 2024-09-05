@@ -73,7 +73,7 @@ class AndroidExtension {
 		});
 	}
 
-	public static function alert(title:String, msg:String, ?buttonName:String = 'OK', ?func:() -> Void) {
+	public static function alert(title:String, msg:String, ?buttonName:String = 'ok', ?func:() -> Void) {
 		Tools.showAlertDialog(title, msg,
 		    {name: buttonName.toUpperCase(), func: func},
 			null
