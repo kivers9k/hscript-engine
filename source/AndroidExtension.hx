@@ -20,9 +20,9 @@ class AndroidExtension {
 
     public static function permissionCheck():Void {
 	    if (!Permissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE') && !Permissions.getGrantedPermissions().contains('android.permission.WRITE_EXTERNAL_STORAGE')) {
-		    SUtil.alert('Permission Checks!', 'Please accept the permission and\nenable "Allow access to manage all files"');
 			Permissions.requestPermission('READ_EXTERNAL_STORAGE');
 			Permissions.requestPermission('WRITE_EXTERNAL_STORAGE');
+		    SUtil.alert('Permission Checks!', 'Please accept the permission and\nenable "Allow access to manage all files"');
 			if (!Environment.isExternalStorageManager())
 				Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
 	    } else {
