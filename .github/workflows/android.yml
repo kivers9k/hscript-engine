@@ -38,16 +38,9 @@ jobs:
       - name: Compile
         run: haxelib run lime build android
  
-      - name: Upload Artifact Release
+      - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
-          name: outputBuild RELEASE
+          name: outputBuild
           path: export/release/android/bin/app/build/outputs/apk/debug/*.apk
-          if-no-files-found: error
-
-      - name: Upload Artifact 32bits
-        uses: actions/upload-artifact@main
-        with:
-          name: outputBuild 32BITS
-          path: export/32bit/android/bin/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
