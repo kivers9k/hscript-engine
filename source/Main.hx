@@ -14,7 +14,7 @@ class Main extends Sprite {
 		initialState: PlayState, // The FlxState the game starts with.
 		zoom: -1.0, // If -1, zoom is automatically calculated to fit the window dimensions.
 		framerate: 60, // How many frames per second the game should run at.
-		skipSplash: false, // Whether to skip the flixel splash screen that appears in release mode.
+		skipSplash: true, // Whether to skip the flixel splash screen that appears in release mode.
 		startFullscreen: true // Whether to start the game in fullscreen on desktop targets
 	}
 	
