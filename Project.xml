@@ -34,7 +34,7 @@
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
     <set name="BUILD_DIR" value="export/32bit" if="32bits" />
 
-	<classpath name="source" />
+	<source path="source" />
 	
 	<assets path="assets" />
     <assets path="assets/data" />
