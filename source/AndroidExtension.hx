@@ -39,13 +39,16 @@ class AndroidExtension {
 
 		if (!FileSystem.exists(getPath())) {
 			FileSystem.createDirectory(getPath());
-		} else { //blah blah blah
-			if (!FileSystem.exists(getPath() + 'assets'))
+		} else {
+			if (!FileSystem.exists(getPath() + 'assets')) {
 				alert('Assets not found!', 'Please copy assets from apk and paste it to\n' + getPath());
-			if (!FileSystem.exist(getPath() + 'crash')) {
-				createDirectory(getPath() + 'crash');
-			if (!FileSystem.exist(getPath() + 'saves')) {
-				createDirectory(getPath() + 'saves');
+			}
+			var folder:Array<String> = ['crash', 'saves'];
+			for (fold in folder) {
+				if (!FileSystem.exists(getPath() + fold)) {
+					createDirectory(getPath() + fold);
+				}
+			}
 		}
 	}
 
