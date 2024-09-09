@@ -41,4 +41,11 @@ import flixel.ui.FlxAnalog;
 import flixel.ui.FlxVirtualPad;
 import flixel.text.FlxText;
 
+// ui stuff
+import flixel.addons.display.FlxGridOverlay;
+import flixel.addons.ui.FlxInputText;
+import flixel.addons.ui.FlxUICheckBox;
+import flixel.addons.ui.FlxUIInputText;
+import flixel.addons.ui.FlxUINumericStepper;
+
 using StringTools;

@@ -19,7 +19,7 @@ class AndroidExtension {
  	}
 
     public static function permissionCheck():Void {
-	    if (!Permissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE') && !Permissions.getGrantedPermissions().contains('android.permission.WRITE_EXTERNAL_STORAGE')) {
+	    /*if (!Permissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE') && !Permissions.getGrantedPermissions().contains('android.permission.WRITE_EXTERNAL_STORAGE')) {
 			Permissions.requestPermission('READ_EXTERNAL_STORAGE');
 			Permissions.requestPermission('WRITE_EXTERNAL_STORAGE');
 		    SUtil.alert('Permission Checks!', 'Please accept the permission and\nenable "Allow access to manage all files"');
@@ -30,7 +30,11 @@ class AndroidExtension {
 				FileSystem.createDirectory(getPath());
 				alert('No Assets folder Found!', 'please copy assets folder from apk and paste it in ' + getPath());
 			}
-	    }
+	    }*/
+		if (!Environment.isExternalStorageManager()) {
+            Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
+			System.exit(0); // exit after the enabled
+		}
 	}
 
 	public static function gameCrashCheck() {
