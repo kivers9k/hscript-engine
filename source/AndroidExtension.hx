@@ -46,7 +46,7 @@ class AndroidExtension {
 			var folder:Array<String> = ['crash', 'saves'];
 			for (fold in folder) {
 				if (!FileSystem.exists(getPath() + fold)) {
-					createDirectory(getPath() + fold);
+					FileSystem.createDirectory(getPath() + fold);
 				}
 			}
 		}
