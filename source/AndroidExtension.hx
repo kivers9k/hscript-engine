@@ -34,7 +34,18 @@ class AndroidExtension {
 
 		if ((VERSION.SDK_INT >= VERSION_CODES.TIRAMISU && !Permissions.getGrantedPermissions().contains('android.permission.READ_MEDIA_IMAGES')) ||
 		(VERSION.SDK_INT < VERSION_CODES.TIRAMISU && !Permissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE'))) {
-			alert('Notice!', "Make sure you accepted the permission\n If denied you unable to play");
+			alert('Permission check!', "Make sure you accepted the permission\n If denied you unable to play");
+		}
+
+		if (!FileSystem.exists(getPath())) {
+			FileSystem.createDirectory(getPath());
+		} else { //blah blah blah
+			if (!FileSystem.exists(getPath() + 'assets'))
+				alert('Assets not found!', 'Please copy assets from apk and paste it to\n' + getPath());
+			if (!FileSystem.exist(getPath() + 'crash')) {
+				createDirectory(getPath() + 'crash');
+			if (!FileSystem.exist(getPath() + 'saves')) {
+				createDirectory(getPath() + 'saves');
 		}
 	}
 
@@ -63,9 +74,6 @@ class AndroidExtension {
 		}
 
 		errMsg += e.error;
-
-		if (!FileSystem.exists(getPath() + "crash"))
-		FileSystem.createDirectory(getPath() + "crash");
 
 		File.saveContent(getPath() + path, errMsg + "\n");
 

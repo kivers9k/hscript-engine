@@ -1,7 +1,7 @@
 #if android
+import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
-import android.content.Context;
 import android.os.Environment;
 import android.os.BatteryManager;
 import android.widget.Toast;
