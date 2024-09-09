@@ -28,8 +28,8 @@ class AndroidExtension {
 		if (!Environment.isExternalStorageManager()) {
 			if (VERSION.SDK_INT >= VERSION_CODES.S) {
 				Settings.requestSetting('REQUEST_MANAGE_MEDIA');
-				Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
 			}
+			Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
 		}
 
 		if ((VERSION.SDK_INT >= VERSION_CODES.TIRAMISU && !Permissions.getGrantedPermissions().contains('android.permission.READ_MEDIA_IMAGES')) ||
