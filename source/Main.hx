@@ -15,7 +15,7 @@ class Main extends Sprite {
 		zoom: -1.0, // If -1, zoom is automatically calculated to fit the window dimensions.
 		framerate: 60, // How many frames per second the game should run at.
 		skipSplash: true, // Whether to skip the flixel splash screen that appears in release mode.
-		startFullscreen: true // Whether to start the game in fullscreen on desktop targets
+		startFullscreen: false // Whether to start the game in fullscreen on desktop targets
 	}
 	
 	// You can pretty much ignore everything from here on - your code should go in your states.
