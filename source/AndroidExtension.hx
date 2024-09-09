@@ -12,28 +12,29 @@ import flash.system.System;
 class AndroidExtension {
 	public static function getPath():String {
 		#if android
-		    return '/storage/emulated/0/.' + Application.current.meta.get('file') + '/';
+			return '/storage/emulated/0/.' + Application.current.meta.get('file') + '/';
 		#else
-		    return '';
+			return '';
 		#end
  	}
 
-    public static function permissionCheck():Void {
-	    /*if (!Permissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE') && !Permissions.getGrantedPermissions().contains('android.permission.WRITE_EXTERNAL_STORAGE')) {
-			Permissions.requestPermission('READ_EXTERNAL_STORAGE');
-			Permissions.requestPermission('WRITE_EXTERNAL_STORAGE');
-		    SUtil.alert('Permission Checks!', 'Please accept the permission and\nenable "Allow access to manage all files"');
-			if (!Environment.isExternalStorageManager())
-				Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
-	    } else {
-			if (!FileSystem.exists(getPath())) {
-				FileSystem.createDirectory(getPath());
-				alert('No Assets folder Found!', 'please copy assets folder from apk and paste it in ' + getPath());
-			}
-	    }*/
+	public static function permissionCheck():Void {
+		if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU) {
+			Permissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO']);
+		} else {
+			Permissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
+		}
+		
 		if (!Environment.isExternalStorageManager()) {
-            Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
-			System.exit(0); // exit after the enabled
+			if (VERSION.SDK_INT >= VERSION_CODES.S) {
+				Settings.requestSetting('REQUEST_MANAGE_MEDIA');
+				Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
+			}
+		}
+
+		if ((VERSION.SDK_INT >= VERSION_CODES.TIRAMISU && !Permissions.getGrantedPermissions().contains('android.permission.READ_MEDIA_IMAGES')) ||
+		(VERSION.SDK_INT < VERSION_CODES.TIRAMISU && !Permissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE'))) {
+			alert('Notice!', "Make sure you accepted the permission\n If denied you unable to play");
 		}
 	}
 
@@ -79,7 +80,7 @@ class AndroidExtension {
 
 	public static function alert(title:String, msg:String, ?buttonName:String = 'ok', ?func:() -> Void) {
 		Tools.showAlertDialog(title, msg,
-		    {name: buttonName.toUpperCase(), func: func},
+			{name: buttonName.toUpperCase(), func: func},
 			null
 		);
 	}
