@@ -7,6 +7,7 @@ typedef TileJson = {
     map:{width:Int, height:Int},
     tiles:Array<{x:Float, y:Float, image:String}>
 }
+
 class Tile extends FlxSpriteGroup {
     public var tileData:TileJson;
     public function new(x:Float, y:Float, tilePath:String) {
@@ -20,5 +21,3 @@ class Tile extends FlxSpriteGroup {
         }
     }
 }
-
-// i don't know lol
