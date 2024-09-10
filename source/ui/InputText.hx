@@ -6,6 +6,7 @@ class InputText extends FlxSpriteGroup {
     public var textBar:FlxUIInputText;
 
     public var text(default, set):String;
+    public var name(default, set):String;
 
     public function new(x:Float, y:Float, widthField:Int, text:String, name:String = 'no name') {
         super(x, y);
@@ -25,6 +26,11 @@ class InputText extends FlxSpriteGroup {
     }
 
     private function set_text(txt:String) {
+        textBar.text = txt;
+        return txt;
+    }
+
+    private function set_name(txt:String) {
         label.text = txt;
         return txt;
     }
