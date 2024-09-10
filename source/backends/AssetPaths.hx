@@ -1,4 +1,4 @@
-package;
+package backends;
 
 import flixel.graphics.FlxGraphic;
 import openfl.display.BitmapData;

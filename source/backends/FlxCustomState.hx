@@ -1,4 +1,4 @@
-package;
+package backends;
 
 class FlxCustomState extends FlxState {
     public var onCreate:() -> Void;

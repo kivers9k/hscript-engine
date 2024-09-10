@@ -9,12 +9,13 @@ import android.Tools;
 import android.Permissions;
 import android.Settings;
 
-import AndroidExtension as SUtil;
+import backends.AndroidExtension as SUtil;
 #end
 
-import AssetPaths as Paths;
-import FlxCustomState;
-import HScript;
+import backends.AssetPaths as Paths;
+import backends.FlxCustomState;
+import hscript.HScript;
+import objects.Tile;
 
 #if sys
 import sys.*;

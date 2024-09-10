@@ -1,4 +1,4 @@
-package;
+package backends;
 
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
