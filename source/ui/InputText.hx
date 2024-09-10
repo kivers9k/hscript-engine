@@ -17,12 +17,14 @@ class InputText extends FlxSpriteGroup {
         textBar = new FlxUIInputText(x, y + 20, widthField, text);
         textBar.scrollFactor.set();
         add(textBar);
+
+        scrollFactor.set();
     }
 
     override function update(elapsed:Float) {
         super.update(elapsed);
         #if mobile
-        var mouse = (_cameras == null) ? FlxG.mouse : FlxG.mouse.getScreenPosition(getCam());
+        var mouse = (_cameras == null) ? FlxG.mouse : FlxG.mouse.getScreenPosition();
         if (mouse.x >= textBar.x && mouse.x <= textBar.x + textBar.width && mouse.y >= textBar.y && mouse.y <= textBar.y + textBar.height) {
             FlxG.stage.window.textInputEnabled = true;
             textBar.hasFocus = true;
@@ -30,12 +32,6 @@ class InputText extends FlxSpriteGroup {
             textBar.hasFocus = false;
         }
         #end
-    }
-
-    private static function getCam() {
-        for (cam in _cameras) {
-            return cam;
-        }
     }
 
     public function resize(w:Int, h:Int) {
