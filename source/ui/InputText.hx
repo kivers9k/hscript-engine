@@ -1,7 +1,5 @@
 package ui;
 
-import flixel.input.mouse.FlxMouse;
-
 class InputText extends FlxSpriteGroup {
     public var label:FlxText;
     public var textBar:FlxUIInputText;
@@ -24,7 +22,7 @@ class InputText extends FlxSpriteGroup {
     override function update(elapsed:Float) {
         super.update(elapsed);
         #if mobile
-        var mouse:FlxMouse = (_cameras == null) ? FlxG.mouse : FlxG.mouse.getScreenPosition(_cameras);
+        var mouse = (_cameras == null) ? FlxG.mouse : FlxG.mouse.getScreenPosition(cameras);
         if (mouse.x >= textBar.x && mouse.x <= textBar.x + textBar.width && mouse.y >= textBar.y && mouse.y <= textBar.y + textBar.height) {
             FlxG.stage.window.textInputEnabled = true;
             textBar.hasFocus = true;
