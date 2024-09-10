@@ -20,6 +20,16 @@ class InputText extends FlxSpriteGroup {
         add(textBar);
     }
 
+    overrid function update(elapsed:Float) {
+        super.update(elapsed);
+        #if mobile
+        var mouse = _cameras == null ? FlxG.mouse : FlxG.mouse.getScreenPosition(cameras[cameras.length]);
+        if (mouse.x >= textBar.x && mouse.x <= textBar.x + textBar.width && mouse.y >= textBar.y && mouse.y <= textBar.y + textBar.height) {
+            FlxG.stage.window.textInputEnabled = true;
+        }
+        #end
+    }
+
     public function resize(w:Int, h:Int) {
         label.fieldWidth = w;
         textBar.resize(w, h);
