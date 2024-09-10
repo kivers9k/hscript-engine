@@ -34,7 +34,7 @@ class InputText extends FlxSpriteGroup {
 
     private static function getCam() {
         for (cam in _cameras) {
-            return cam
+            return cam;
         }
     }
 
