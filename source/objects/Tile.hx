@@ -3,9 +3,9 @@ package objects;
 import haxe.Json;
 
 typedef TileJson = {
-    playerPosition:{x:Float, y:Float};
-    map:{width:Int, height:Int};
-    tiles:Array<{x:Float, y:Float, image:String}>;
+    playerPosition:{x:Float, y:Float},
+    map:{width:Int, height:Int},
+    tiles:Array<{x:Float, y:Float, image:String}>
 }
 class Tile extends FlxSpriteGroup {
     public var tileData:TileJson;
