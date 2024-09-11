@@ -24,7 +24,7 @@ class InputText extends FlxSpriteGroup {
     override function update(elapsed:Float) {
         super.update(elapsed);
         #if mobile
-        var mouse = _cameras == null ? FlxG.mouse : FlxG.mouse.getScreenPosition();
+        var mouse = /*_cameras == null ? FlxG.mouse : */FlxG.mouse.getScreenPosition();
         if (mouse.x >= textBar.x && mouse.x <= textBar.x + textBar.width && mouse.y >= textBar.y && mouse.y <= textBar.y + textBar.height) {
             FlxG.stage.window.textInputEnabled = true;
             textBar.hasFocus = true;
