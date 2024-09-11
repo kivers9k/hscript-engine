@@ -23,7 +23,7 @@ class InputText extends FlxSpriteGroup {
 
     override function update(elapsed:Float) {
         super.update(elapsed);
-        #if android
+        #if mobile
         textBar.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
         #end
     }
