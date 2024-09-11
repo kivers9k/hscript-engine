@@ -33,9 +33,15 @@ class InputText extends FlxSpriteGroup {
         textBar.resize(w, h);
     }
 
-    private function set_text(txt:String) textBar.text = txt;
+    private function set_text(txt:String):String {
+        textBar.text = txt;
+        return textBar.text;
+    }
 
-    private function set_name(txt:String) label.text = txt;
+    private function set_name(txt:String):String {
+        label.text = txt;
+        return label.text;
+    }
 
     private function get_text():String return textBar.text;
 
