@@ -94,6 +94,15 @@ class HScript {
 		interp.variables.set('Math', Math);
 		interp.variables.set('Type', Type);
 		interp.variables.set('Std', Std);
+
+        //targeting device variable
+		interp.variables.set('deviceTarget',
+		    #if android 'android'
+			#elseif ios 'ios'
+			#elseif mobile 'mobile'
+			#elseif window 'window'
+			#end
+		);
 	}
 
 	public function call(name:String, args:Array<Dynamic>):Dynamic {

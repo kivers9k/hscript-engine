@@ -95,7 +95,4 @@ class AndroidExtension {
 			null
 		);
 	}
-
-    // useless stuff lol
-	static function resolveTypedef(td:String):Typedef<Dynamic>;
 } 
