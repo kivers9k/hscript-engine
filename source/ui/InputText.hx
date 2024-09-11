@@ -10,28 +10,16 @@ class InputText extends FlxSpriteGroup {
     public function new(x:Float, y:Float, widthField:Int, text:String, name:String = 'no name') {
         super(x, y);
 
-        label = new FlxText(x, y, widthField, name);
+        label = new FlxText(0, 0, widthField, name);
         label.scrollFactor.set();
         add(label);
 
-        textBar = new FlxUIInputText(x, y + 20, widthField, text);
+        textBar = new FlxUIInputText(0, 20, widthField, text);
+        textBar.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
         textBar.scrollFactor.set();
         add(textBar);
 
         scrollFactor.set();
-    }
-
-    override function update(elapsed:Float) {
-        super.update(elapsed);
-        #if mobile
-        var mouse = /*_cameras == null ? FlxG.mouse : */FlxG.mouse.getScreenPosition();
-        if (mouse.x >= textBar.x && mouse.x <= textBar.x + textBar.width && mouse.y >= textBar.y && mouse.y <= textBar.y + textBar.height) {
-            FlxG.stage.window.textInputEnabled = true;
-            textBar.hasFocus = true;
-        } else {
-            textBar.hasFocus = false;
-        }
-        #end
     }
 
     public function resize(w:Int, h:Int) {
