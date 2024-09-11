@@ -1,4 +1,4 @@
-package;
+package states;
 
 class PlayState extends FlxState {
 	#if (haxe >= "4.0.0")

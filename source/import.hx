@@ -16,6 +16,7 @@ import backends.AssetPaths as Paths;
 import backends.FlxCustomState;
 import hscript.HScript;
 import objects.Tile;
+import states.PlayState;
 import ui.InputText;
 
 #if sys
