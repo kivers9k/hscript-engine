@@ -4,8 +4,8 @@ class InputText extends FlxSpriteGroup {
     public var label:FlxText;
     public var textBar:FlxUIInputText;
 
-    public var text(default, set):String;
-    public var name(default, set):String;
+    public var text(set, get):String;
+    public var name(set, get):String;
 
     public function new(x:Float, y:Float, widthField:Int, text:String, name:String = 'no name') {
         super(x, y);
@@ -19,13 +19,13 @@ class InputText extends FlxSpriteGroup {
         add(textBar);
 
         scrollFactor.set();
-        this.text = text;
-        this.name = name;
     }
 
     override function update(elapsed:Float) {
         super.update(elapsed);
+        #if android
         textBar.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
+        #end
     }
 
     public function resize(w:Int, h:Int) {
@@ -33,13 +33,11 @@ class InputText extends FlxSpriteGroup {
         textBar.resize(w, h);
     }
 
-    private function set_text(txt:String):String {
-        textBar.text = txt;
-        return txt;
-    }
+    private function set_text(txt:String):String textBar.text = txt;
 
-    private function set_name(txt:String):String {
-        label.text = txt;
-        return txt;
-    }
+    private function set_name(txt:String):String label.text = txt;
+
+    private function get_text():String return textBar.text;
+
+    private function get_name():String return label.text;
 }
