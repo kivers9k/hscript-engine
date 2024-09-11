@@ -101,6 +101,7 @@ class HScript {
 			#elseif ios 'ios'
 			#elseif mobile 'mobile'
 			#elseif window 'window'
+			#elseif desktop 'desktop'
 			#end
 		);
 	}

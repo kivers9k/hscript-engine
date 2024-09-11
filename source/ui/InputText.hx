@@ -4,8 +4,8 @@ class InputText extends FlxSpriteGroup {
     public var label:FlxText;
     public var textBar:FlxUIInputText;
 
-    public var text(set, get):String;
-    public var name(set, get):String;
+    public var text(get, set):String;
+    public var name(get, set):String;
 
     public function new(x:Float, y:Float, widthField:Int, text:String, name:String = 'no name') {
         super(x, y);
