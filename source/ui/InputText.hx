@@ -26,7 +26,6 @@ class InputText extends FlxSpriteGroup {
 
     public function resize(w:Int, h:Int) {
         label.fieldWidth = w;
-        label.fieldHeight = h;
         textBar.resize(w, h);
     }
 
