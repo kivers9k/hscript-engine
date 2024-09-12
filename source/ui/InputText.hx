@@ -15,7 +15,7 @@ class InputText extends FlxSpriteGroup {
         add(label);
 
         textBar = new FlxUIInputText(0, 20, widthField, text);
-        if mobile
+        #if mobile
         textBar.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
         #end
         textBar.scrollFactor.set();
