@@ -15,21 +15,18 @@ class InputText extends FlxSpriteGroup {
         add(label);
 
         textBar = new FlxUIInputText(0, 20, widthField, text);
+        if mobile
+        textBar.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
+        #end
         textBar.scrollFactor.set();
         add(textBar);
 
         scrollFactor.set();
     }
 
-    override function update(elapsed:Float) {
-        super.update(elapsed);
-        #if mobile
-        textBar.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
-        #end
-    }
-
     public function resize(w:Int, h:Int) {
         label.fieldWidth = w;
+        label.fieldHeight = h;
         textBar.resize(w, h);
     }
 
