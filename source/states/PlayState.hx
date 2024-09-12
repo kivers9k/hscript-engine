@@ -1,12 +1,6 @@
 package states;
 
 class PlayState extends FlxState {
-	#if (haxe >= "4.0.0")
-	public var variables:Map<String, Dynamic> = new Map();
-	#else
-	public var variables:Map<String, Dynamic> = new Map<String, Dynamic>();
-	#end
-
 	public var scriptPaths:String = Paths.getPath('scripts/');
 	public var hxArray:Array<HScript> = [];
 
