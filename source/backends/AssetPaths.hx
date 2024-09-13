@@ -55,7 +55,7 @@ class AssetPaths {
 				image(key),
 				getTextFromFile('images/key.xml')
 			);
-		} else if (FileSystem.exists(getPath('images/$key.txt))) {
+		} else if (FileSystem.exists(getPath('images/$key.txt'))) {
 			return FlxAtlasFrames.fromSpriteSheetPacker(
                 image(key),
 				getTextFromFile('images/$key.txt')
