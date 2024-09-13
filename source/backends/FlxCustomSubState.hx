@@ -1,11 +1,12 @@
 package backends;
 
-class FlxCustomState extends FlxState {
+//it's the same as FlxCustomState
+class FlxCustomSubState extends FlxSubState {
     public var onCreate:() -> Void;
     public var onCreatePost:() -> Void;
     public var onUpdate:(Float) -> Void;
     public var onUpdatePost:(Float) -> Void;
-    
+
     override function create() {
         if (onCreate != null)
             onCreate();
@@ -19,6 +20,6 @@ class FlxCustomState extends FlxState {
             onUpdate(elapsed);
         super.update(elapsed);
         if (onUpdatePost != null)
-            onUpdatePost(elapsed);
+           onUpdatePost(elapsed);
     }
 }

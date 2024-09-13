@@ -8,12 +8,12 @@ import android.widget.Toast;
 import android.Tools;
 import android.Permissions;
 import android.Settings;
-
-import backends.AndroidExtension as SUtil;
 #end
 
+import backends.AndroidExtension as SUtil;
 import backends.AssetPaths as Paths;
 import backends.FlxCustomState;
+import backends.FlxCustomSubState;
 import hscript.HScript;
 import objects.Tile;
 import states.PlayState;

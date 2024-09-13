@@ -65,9 +65,12 @@ class HScript {
 		interp.variables.set('remove', FlxG.state.remove);
 		interp.variables.set('insert', FlxG.state.insert);
 
+        //PlayState function
 		interp.variables.set('game', PlayState.instance);
 		interp.variables.set('print', PlayState.instance.print);
+
 		interp.variables.set('FlxCustomState', FlxCustomState);
+		interp.variables.set('FlxCustomSubState', FlxCustomState);
 		interp.variables.set('Paths', Paths);
 		interp.variables.set('SUtil', SUtil);
 
