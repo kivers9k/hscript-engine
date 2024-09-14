@@ -18,6 +18,7 @@ class InputText extends FlxSpriteGroup {
         #if mobile
         textBar.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
         #end
+        textBar.name = name;
         textBar.scrollFactor.set();
         add(textBar);
 
@@ -36,6 +37,7 @@ class InputText extends FlxSpriteGroup {
 
     private function set_name(txt:String):String {
         label.text = txt;
+        textBar.name = txt;
         return label.text;
     }
 
