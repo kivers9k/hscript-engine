@@ -19,6 +19,7 @@ class InputText extends FlxUIGroup {
         add(textBar);
 
         scrollFactor.set();
+        this.name = name;
     }
 
     public function resize(w:Float, h:Float):Void {
@@ -33,12 +34,5 @@ class InputText extends FlxUIGroup {
         return textBar.text;
     }
 
-    private function set_name(txt:String):String {
-        label.text = txt;
-        return label.text;
-    }
-
     private function get_text():String return textBar.text;
-
-    private function get_name():String return label.text;
 }
