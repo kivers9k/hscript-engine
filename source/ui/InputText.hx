@@ -1,8 +1,8 @@
 package ui;
 
 class InputText extends FlxSpriteGroup {
-    public var label:FlxText;
-    public var textBar:FlxUIInputText;
+    private var label:FlxText;
+    private var textBar:FlxUIInputText;
 
     public var text(get, set):String;
     public var name(get, set):String;
@@ -12,17 +12,21 @@ class InputText extends FlxSpriteGroup {
 
         label = new FlxText(0, 0, widthField, name);
         label.scrollFactor.set();
-        add(label);
 
         textBar = new FlxUIInputText(0, 20, widthField, text);
-        #if mobile
-        textBar.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
-        #end
         textBar.name = name;
         textBar.scrollFactor.set();
-        add(textBar);
 
         scrollFactor.set();
+    }
+
+    override public function draw():Void {
+        if (label != null && label.visible)
+            label.draw();
+        if (textBar != null && textBar.visible)
+            textBar.draw();
+
+        super.draw();
     }
 
     public function resize(w:Int, h:Int) {
