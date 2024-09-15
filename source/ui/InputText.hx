@@ -2,7 +2,7 @@ package ui;
 
 class InputText extends FlxUIGroup {
     public var label:FlxText;
-    public var textBar:FlxUIInputText;
+    public var textBar:FlxInputText;
 
     public var text(get, set):String;
     public var name(get, set):String;
@@ -14,11 +14,7 @@ class InputText extends FlxUIGroup {
         label.scrollFactor.set();
         add(label);
 
-        textBar = new FlxUIInputText(0, 20, widthField, text);
-        #if mobile
-        textBar.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
-        #end
-        textBar.name = name;
+        textBar = new FlxInputText(0, 20, widthField, text);
         textBar.scrollFactor.set();
         add(textBar);
 
