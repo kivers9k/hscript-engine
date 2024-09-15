@@ -21,9 +21,11 @@ class InputText extends FlxUIGroup {
         scrollFactor.set();
     }
 
-    public function resize(w:Int, h:Int) {
+    public function resize(w:Float, h:Float):Void {
         label.fieldWidth = w;
-        textBar.resize(w, h);
+        textBar.width = w;
+        textBar.height = h;
+        textBar.calcFrame();
     }
 
     private function set_text(txt:String):String {
