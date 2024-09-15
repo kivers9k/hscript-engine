@@ -66,7 +66,7 @@ class AssetPaths {
 	}
 
 	public static function fromFrame(key:String, frame:String, w:Int, h:Int):FlxTileFrames {
-        if (FileSystem.exists(getPath('images/$sprite.png'))) {
+        if (FileSystem.exists(getPath('images/$key.png'))) {
             return FlxTileFrames.fromFrame(
 				getFrame(key).getByName(frame),
 				FlxPoint.get(w, h)
