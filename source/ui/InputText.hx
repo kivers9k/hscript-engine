@@ -19,16 +19,16 @@ class InputText extends FlxUIGroup {
     }
 
     public function resize(w:Float, h:Float):Void {
-        members[0].fieldWidth = w;
-        members[1].width = w;
-        members[1].height = h;
-        members[1].calcFrame();
+        members[1].fieldWidth = w;
+        members[2].width = w;
+        members[2].height = h;
+        members[2].calcFrame();
     }
 
     private function set_text(txt:String):String {
-        members[1].text = txt;
-        return members[1].text;
+        members[2].text = txt;
+        return members[2].text;
     }
 
-    private function get_text():String return members[1].text;
+    private function get_text():String return members[2].text;
 }
