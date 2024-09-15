@@ -35,7 +35,6 @@ class InputText extends FlxUIGroup {
 
     private function set_name(txt:String):String {
         label.text = txt;
-        textBar.name = txt;
         return label.text;
     }
 
