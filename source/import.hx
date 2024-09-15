@@ -15,6 +15,7 @@ import backends.AssetPaths as Paths;
 import backends.FlxCustomState;
 import backends.FlxCustomSubState;
 import hscript.HScript;
+import objects.SpriteGroup;
 import objects.Tile;
 import states.PlayState;
 import ui.InputText;
