@@ -1,6 +1,7 @@
 package backends;
 
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.frames.FlxTileFrames;
 import flixel.graphics.FlxGraphic;
 import openfl.display.BitmapData;
 import flash.media.Sound;
@@ -59,6 +60,18 @@ class AssetPaths {
 			return FlxAtlasFrames.fromSpriteSheetPacker(
                 image(key),
 				getTextFromFile('images/$key.txt')
+			);
+		}
+		return null;
+	}
+
+	public static function fromFrame(key:String, frame:String, w:Int, h:Int):FlxTileFrames {
+	    var sprite:String = getPath('images/$key');
+
+        if (FileSystem.exists('images/$sprite.png')) {
+            return FlxTileFrames.fromFrame(
+				getFrame(key).getByName(frame),
+				FlxPoint.get(w, h)
 			);
 		}
 		return null;
