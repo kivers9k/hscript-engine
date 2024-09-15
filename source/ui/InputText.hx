@@ -1,19 +1,16 @@
 package ui;
 
-class InputText extends FlxUIGroup {
-    public var label:FlxText;
-    public var textBar:FlxInputText;
-
+class InputText extends FlxUIGroup { 
     public var text(get, set):String;
 
     public function new(x:Float, y:Float, widthField:Int, text:String, name:String = 'no name') {
         super(x, y);
 
-        label = new FlxText(0, 0, widthField, name);
+        var label:FlxText = new FlxText(0, 0, widthField, name);
         label.scrollFactor.set();
         add(label);
 
-        textBar = new FlxInputText(0, 20, widthField, text);
+        var textBar:FlxInputText = new FlxInputText(0, 20, widthField, text);
         textBar.scrollFactor.set();
         add(textBar);
 
@@ -22,16 +19,16 @@ class InputText extends FlxUIGroup {
     }
 
     public function resize(w:Float, h:Float):Void {
-        label.fieldWidth = w;
-        textBar.width = w;
-        textBar.height = h;
-        textBar.calcFrame();
+        members[0].fieldWidth = w;
+        members[1].width = w;
+        members[1].height = h;
+        members[1].calcFrame();
     }
 
     private function set_text(txt:String):String {
-        textBar.text = txt;
-        return textBar.text;
+        members[1].text = txt;
+        return members[1].text;
     }
 
-    private function get_text():String return textBar.text;
+    private function get_text():String return members[1].text;
 }
