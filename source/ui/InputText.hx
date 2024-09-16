@@ -4,7 +4,7 @@ class InputText extends FlxUIGroup {
     private var label:FlxText;
     private var inputText:FlxInputText;
     
-    public var text(get, set):String = '';
+    public var text(get, set):String;
 
     public function new(x:Float, y:Float, widthField:Int, text:String, name:String = 'no name') {
         super(x, y);
