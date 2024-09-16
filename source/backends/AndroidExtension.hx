@@ -41,7 +41,7 @@ class AndroidExtension {
 			FileSystem.createDirectory(getPath());
 		} else {
 			if (!FileSystem.exists(getPath() + 'assets')) {
-				alert('Assets not found!', 'Please copy assets from apk and paste it to\n' + getPath());
+				alert('Assets not found!', 'Please copy assets from apk and paste it on\n' + getPath());
 			}
 			var folder:Array<String> = ['crash', 'saves'];
 			for (fold in folder) {

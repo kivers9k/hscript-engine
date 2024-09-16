@@ -4,10 +4,13 @@ class InputText extends FlxUIGroup {
     private var label:FlxText;
     private var inputText:FlxInputText;
     
-    public var text(get, set):String;
+    public var text(get, set):String = '';
 
     public function new(x:Float, y:Float, widthField:Int, text:String, name:String = 'no name') {
         super(x, y);
+
+        scrollFactor.set();
+        this.name = name;
 
         label = new FlxText(0, 0, widthField, name);
         label.scrollFactor.set();
@@ -16,9 +19,6 @@ class InputText extends FlxUIGroup {
         inputText = new FlxInputText(0, 20, widthField, text);
         inputText.scrollFactor.set();
         add(inputText);
-
-        scrollFactor.set();
-        this.name = name;
     }
 
     public function resize(w:Float, h:Float):Void {
