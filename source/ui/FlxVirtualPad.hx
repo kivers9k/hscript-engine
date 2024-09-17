@@ -13,7 +13,7 @@ class FlxVirtualPad extends FlxUIGroup {
         scrollFactor.set();
 
         dPad = new FlxUIGroup();
-        dpad.scrollFactor.set();
+        dPad.scrollFactor.set();
 
         actions = new FlxUIGroup();
         actions.scrollFactor.set();
