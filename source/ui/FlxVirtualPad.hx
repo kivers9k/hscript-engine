@@ -23,16 +23,16 @@ class FlxVirtualPad extends FlxSpriteGroup {
 
         switch (dpad) {
             case UP_DOWN:
-			    add(dpad.add(createButton(0, FlxG.height - 260, 132, 135, 'up')));
-			    add(dpad.add(createButton(0, FlxG.height - 135, 132, 135, 'down')));
+			    add(dPad.add(createButton(0, FlxG.height - 260, 132, 135, 'up')));
+			    add(dPad.add(createButton(0, FlxG.height - 135, 132, 135, 'down')));
             case LEFT_RIGHT:
-			    add(dpad.add(createButton(0, FlxG.height - 135, 132, 135, 'left')));
-			    add(dpad.add(createButton(126, FlxG.height - 135, 132, 135, 'right')));
+			    add(dPad.add(createButton(0, FlxG.height - 135, 132, 135, 'left')));
+			    add(dPad.add(createButton(126, FlxG.height - 135, 132, 135, 'right')));
             case FULL:
-			    add(dpad.add(createButton(110, FlxG.height - 350, 132, 135, 'up')));
-			    add(dpad.add(createButton(0, FlxG.height - 245, 132, 135, 'left')));
-			    add(dpad.add(createButton(220, FlxG.height - 245, 132, 135, 'right')));
-			    add(dpad.add(createButton(110, FlxG.height - 135, 132, 135, 'down')));
+			    add(dPad.add(createButton(110, FlxG.height - 350, 132, 135, 'up')));
+			    add(dPad.add(createButton(0, FlxG.height - 245, 132, 135, 'left')));
+			    add(dPad.add(createButton(220, FlxG.height - 245, 132, 135, 'right')));
+			    add(dPad.add(createButton(110, FlxG.height - 135, 132, 135, 'down')));
             case NONE:
         }
 
