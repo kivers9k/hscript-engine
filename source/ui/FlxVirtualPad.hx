@@ -8,7 +8,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
     public static var justPressed = {};
     public static var justReleased = {};
 
-    public function new(?DPad:FlxDPadMode, ?FlxActionModetion:FlxActionMode) {
+    public function new(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
         super(); 
         scrollFactor.set();
  
