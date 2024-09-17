@@ -18,6 +18,7 @@ import hscript.HScript;
 import objects.SpriteGroup;
 import objects.Tile;
 import states.PlayState;
+import ui.FlxVirtualPad;
 import ui.InputText;
 
 #if sys
@@ -43,8 +44,6 @@ import flixel.group.FlxSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
-import flixel.ui.FlxAnalog;
-import flixel.ui.FlxVirtualPad;
 import flixel.text.FlxText;
 
 // ui stuff
@@ -55,6 +54,7 @@ import flixel.addons.ui.FlxUICheckBox;
 import flixel.addons.ui.FlxUIInputText;
 import flixel.addons.ui.FlxUINumericStepper;
 import flixel.addons.ui.FlxUITabMenu;
+import flixel.addons.ui.FlxUIText;
 import flixel.addons.ui.FlxUI;
 
 using StringTools;

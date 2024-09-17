@@ -1,7 +1,7 @@
 package ui;
 
 class InputText extends FlxUIGroup { 
-    private var label:FlxText;
+    private var label:FlxUIText;
     private var inputText:FlxInputText;
     
     public var text(get, set):String;
@@ -12,7 +12,7 @@ class InputText extends FlxUIGroup {
         scrollFactor.set();
         this.name = name;
 
-        label = new FlxText(0, 0, widthField, name);
+        label = new FlxUIText(0, 0, widthField, name);
         label.scrollFactor.set();
         add(label);
 
