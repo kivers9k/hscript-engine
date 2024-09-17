@@ -4,16 +4,16 @@ class FlxVirtualPad extends FlxSpriteGroup {
     public var dPad:FlxSpriteGroup;
     public var actions:FlxSpriteGroup;
 
-    private static var buttonName:Array<String> = [];
-    public var fromString:Map<String, FlxButton>;
-
     public static var pressed = {};
     public static var justPressed = {};
     public static var justReleased = {};
 
-    public function new(?dpad:FlxDPadMode = FULL, ?action:FlxActionMode = A_B_C) {
+    public function new(?DPad:FlxDPadMode, ?FlxActionModetion:FlxActionMode) {
         super(); 
         scrollFactor.set();
+ 
+        if (DPad == null) DPad = FULL;
+        if (Action == null) Action = A_B_C;
 
         dPad = new FlxSpriteGroup();
         dPad.scrollFactor.set();
@@ -21,7 +21,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
         actions = new FlxSpriteGroup();
         actions.scrollFactor.set();
 
-        switch (dpad) {
+        switch (DPad) {
             case UP_DOWN:
 			    add(dPad.add(createButton(0, FlxG.height - 260, 132, 135, 'up')));
 			    add(dPad.add(createButton(0, FlxG.height - 135, 132, 135, 'down')));
@@ -36,7 +36,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
             case NONE:
         }
 
-        switch (action) {
+        switch (Action) {
             case A:
 			    add(actions.add(createButton(FlxG.width - 126, FlxG.height - 135, 132, 135, 'a')));
             case A_B:
@@ -54,33 +54,12 @@ class FlxVirtualPad extends FlxSpriteGroup {
             case NONE:
         }
     }
-
-    override public function update(elapsed:Float):Void {
+    /*
+    override function update(elapsed:Float):Void {
         super.update(elapsed);
-
-        for (name in buttonName) {
-            if (fromString.get(name) != null) {
-                pressed = {"$name": fromString.get(name).pressed};
-                justPressed = {"$name": fromString.get(name).justPressed};
-                justReleased = {"$name": fromString.get(name).justReleased};
-            }
-        }
     }
-
-    public function createButton(x:Float, y:Float, ?w:Int = 132, ?h:Int = 135, frame:String):FlxButton {
-        var button:FlxButton = new FlxButton(x, y);
-        button.frames = Paths.fromFrame('ui/virtual-input', frame, w, h);
-        button.resetSizeFromFrame();
-        button.scrollFactor.set();
-        button.alpha = 0.75;
-
-        buttonName.push(frame.toUpperCase());
-        fromString.set(frame, button);
-
-        return button;
-    }
-
-    override public function destroy():Void {
+    */
+    override function destroy():Void {
         super.destroy();
 
         dPad = FlxDestroyUtil.destroy(dPad);
@@ -88,6 +67,16 @@ class FlxVirtualPad extends FlxSpriteGroup {
 
         dPad = null;
         actions = null;
+    }
+
+    public function createButton(x:Float, y:Float, w:Int = 132, h:Int = 135, frame:String):FlxButton {
+        var button:FlxButton = new FlxButton(x, y);
+        button.frames = Paths.fromFrame('ui/virtual-input', frame, w, h);
+        button.resetSizeFromFrame();
+        button.scrollFactor.set();
+        button.alpha = 0.75;
+                         
+        return button;
     }
 }
 
