@@ -13,11 +13,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
     public var buttonC:FlxButton;
     public var buttonX:FlxButton;
     public var buttonY:FlxButton;
-
-    public var pressed(get, never):Bool;
-    public var justPressed(get, never):Bool;
-    public var justReleased(get, never):Bool;
-
+    
     public function new(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
         super(); 
         scrollFactor.set();
@@ -62,48 +58,6 @@ class FlxVirtualPad extends FlxSpriteGroup {
 			    add(actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
 			    add(actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b')));
             case NONE:
-        }
-    }
-
-    private function get_pressed():Bool {
-        return {
-            UP: buttonUp.pressed,
-            DOWN: buttonDown.pressed,
-            LEFT: buttonLeft.pressed,
-            RIGHT: buttonRight.pressed,
-            A: buttonA.pressed,
-            B: buttonB.pressed,
-            C: buttonC.pressed,
-            X: buttonX.pressed,
-            Y: buttonY.pressed
-        }
-    }
-
-    private function get_justPressed():Bool {
-        return {
-            UP: buttonUp.justPressed,
-            DOWN: buttonDown.justPressed,
-            LEFT: buttonLeft.justPressed,
-            RIGHT: buttonRight.justPressed,
-            A: buttonA.justPressed,
-            B: buttonB.justPressed,
-            C: buttonC.justPressed,
-            X: buttonX.justPressed,
-            Y: buttonY.justPressed
-        }
-    }
-
-    private function get_justReleased():Bool {
-        return {
-            UP: buttonUp.justReleased,
-            DOWN: buttonDown.justReleased,
-            LEFT: buttonLeft.justReleased,
-            RIGHT: buttonRight.justReleased,
-            A: buttonA.justReleased,
-            B: buttonB.justReleased,
-            C: buttonC.justReleased,
-            X: buttonX.justReleased,
-            Y: buttonY.justReleased
         }
     }
 
