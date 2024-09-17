@@ -38,14 +38,14 @@ class FlxVirtualPad extends FlxUIGroup {
 }
 
 enum FlxDPadMode {
-    LEFT_RIGHT,
-    UP_DOWN,
-    FULL
+    LEFT_RIGHT;
+    UP_DOWN;
+    FULL;
 }
 
 enum FlxActionMode {
-    A,
-    A_B,
-    A_B_C,
-    A_B_X_Y
+    A;
+    A_B;
+    A_B_C;
+    A_B_X_Y;
 }
