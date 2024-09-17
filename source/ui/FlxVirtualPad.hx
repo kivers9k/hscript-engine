@@ -5,7 +5,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
     public var actions:FlxSpriteGroup;
 
     private static var buttonName:Array<String> = [];
-    public var fromString:Map<String, FlxSpriteButton>;
+    public var fromString:Map<String, FlxButton>;
 
     public static var pressed = {};
     public static var justPressed = {};
