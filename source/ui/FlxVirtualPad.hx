@@ -1,11 +1,11 @@
 package ui;
 
-class FlxVirtualPad extends FlxUIGroup {
-    public var dPad:FlxUIGroup;
-    public var actions:FlxUIGroup;
+class FlxVirtualPad extends FlxSpriteGroup {
+    public var dPad:FlxSpriteGroup;
+    public var actions:FlxSpriteGroup;
 
     private static var buttonName:Array<String> = [];
-    public var fromString:Map<String, FlxButton>;
+    public var fromString:Map<String, FlxSpriteButton>;
 
     public static var pressed = {};
     public static var justPressed = {};
@@ -15,10 +15,10 @@ class FlxVirtualPad extends FlxUIGroup {
         super(); 
         scrollFactor.set();
 
-        dPad = new FlxUIGroup();
+        dPad = new FlxSpriteGroup();
         dPad.scrollFactor.set();
 
-        actions = new FlxUIGroup();
+        actions = new FlxSpriteGroup();
         actions.scrollFactor.set();
 
         switch (dpad) {
@@ -27,7 +27,7 @@ class FlxVirtualPad extends FlxUIGroup {
             case FULL:
         }
 
-        switch (actions) {
+        switch (action) {
             case A:
             case A_B:
             case A_B_C:
@@ -36,7 +36,7 @@ class FlxVirtualPad extends FlxUIGroup {
     }
 
     public function createButton(x:Float, y:Float, ?w:Int = 132, ?h:Int = 135, frame:String) {
-        var button:FlxSpriteButton = new FlxSpriteButton(x, y);
+        var button:FlxButton = new FlxButton(x, y);
         button.frames = Paths.fromFrame('ui/virtual-input', frame, w, h);
         button.scrollFactor.set();
 
