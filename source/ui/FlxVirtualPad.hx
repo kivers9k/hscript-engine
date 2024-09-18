@@ -4,6 +4,8 @@ class FlxVirtualPad extends FlxSpriteGroup {
     public var dPad:FlxSpriteGroup;
     public var actions:FlxSpriteGroup;
 
+    public var fromStringMap:Map<String, FlxButton>;
+
     public var buttonUp:FlxButton;
     public var buttonDown:FlxButton;
     public var buttonLeft:FlxButton;
@@ -44,7 +46,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
 
         switch (Action) {
             case A:
-			    add(actions.add(buttonA = createButton(FlxG.width - 126, FlxG.height - 135, 132, 135, 'a')));
+			    add(actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
             case A_B:
 			    add(actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
 			    add(actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b')));
@@ -86,8 +88,15 @@ class FlxVirtualPad extends FlxSpriteGroup {
         button.resetSizeFromFrame();
         button.scrollFactor.set();
         button.alpha = 0.75;
-                         
+        
+        if (!fromStringMap.exists(frame))
+            fromStringMap.set(frame.toUpperCase(), button);
+        
         return button;
+    }
+
+    public function fromString(name:String):FlxButton {
+        return fromStringMap.exists(name) ? fromStringMap.get(name) : null;
     }
 }
 
