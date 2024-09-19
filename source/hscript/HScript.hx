@@ -90,7 +90,7 @@ class HScript {
 					return true;
 				}
 			}
-			return null;
+			return false;
 		});
 		
 		interp.variables.set('StringTools', StringTools);
