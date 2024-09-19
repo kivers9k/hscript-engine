@@ -6,6 +6,8 @@ import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
+import openfl.Lib;
+import openfl.display.StageScaleMode;
 
 class Main extends Sprite {
 	var game = {
@@ -73,6 +75,8 @@ class Main extends Sprite {
 			game.skipSplash,
 			game.startFullscreen
 		));
+
+		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
