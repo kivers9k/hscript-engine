@@ -25,6 +25,7 @@ class PlayState extends FlxState {
 			}
 		}
 
+        callOnHx('onCreate', []);
 		super.create();
 		callOnHx('onCreatePost', []);
 	}

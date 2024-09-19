@@ -13,13 +13,12 @@ class HScript {
 		return interp.variables;
 	}
 
-	public var scriptName:String = null;
 	private var linePos:Array<String> = [];
+	public var scriptName:String = null;
 	public function new(hxPath:String) {
+		presetVars();
 		scriptName = hxPath;
-		preset();
 		
-		// the
 		var contents:String = File.getContent(hxPath);
 		var lines:String = '';
 		
@@ -31,15 +30,14 @@ class HScript {
 				var libName:String = lib.split('.')[lib.split('.').length - 1];
 				
 				//enum support yay!
-				var isEnum:Bool = Type.resolveEnum(lib) != null;
-				if (isEnum || Type.resolveClass(lib) != null) {
-					interp.variables.set(libName,
-						isEnum ? Type.resolveEnum(lib) : Type.resolveClass(lib)
+				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
+					interp.variables.set(
+						libName,
+						(Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib)
 					);
 				} else {
-					SUtil.alert((isEnum ? 'Enum' : 'Class') + ' not Found', lib);
+					SUtil.alert(((Type.resolveEnum(lib) != null) ? 'Enum' : 'Class') + ' not Found', lib);
 				}
-				
 				linePos.push(splitStr);
 			}
 		}
@@ -49,11 +47,9 @@ class HScript {
 		} catch(e:Dynamic) {
 			SUtil.alert('Error on Hscript', '$scriptName\n$e');
 		}
-		
-		call('onCreate', []);
 	}
 
-	public function preset() {
+	public function presetVars() {
 		interp.variables.set('FlxG', FlxG);
 		interp.variables.set('FlxSprite', FlxSprite);
 		interp.variables.set('FlxCamera', FlxCamera);
@@ -65,7 +61,7 @@ class HScript {
 		interp.variables.set('remove', FlxG.state.remove);
 		interp.variables.set('insert', FlxG.state.insert);
 
-        //PlayState function
+		//PlayState function
 		interp.variables.set('game', PlayState.instance);
 		interp.variables.set('print', PlayState.instance.print);
 
@@ -76,25 +72,25 @@ class HScript {
 
 		interp.variables.set('setVar', function(name:String, args:Dynamic) {
 			for (hx in PlayState.instance.hxArray)
-			    hx.variables.set(name, args);
+				hx.variables.set(name, args);
 		});
 		interp.variables.set('getVar', function(name:String) {
 			var result:Dynamic = null;
 			for (hx in PlayState.instance.hxArray) {
-			    if (hx.variables.exists(name)) {
-				    result = hx.variables.get(name);
-			    }
+				if (hx.variables.exists(name)) {
+					result = hx.variables.get(name);
+				}
 			}
 			return result;
 		});
 		interp.variables.set('removeVar', function(name:String) {
 			for (hx in PlayState.instance.hxArray) {
-			    if (hx.variables.exists(name)) {
-				    hx.variables.remove(name);
-				    return true;
+				if (hx.variables.exists(name)) {
+					hx.variables.remove(name);
+					return true;
 				}
 			}
-			return false;
+			return null;
 		});
 		
 		interp.variables.set('StringTools', StringTools);
@@ -103,9 +99,9 @@ class HScript {
 		interp.variables.set('Type', Type);
 		interp.variables.set('Std', Std);
 
-        //targeting device variable
+		//targeting device variable
 		interp.variables.set('deviceTarget',
-		    #if android 'android'
+			#if android 'android'
 			#elseif ios 'ios'
 			#elseif mobile 'mobile'
 			#elseif window 'window'
@@ -114,16 +110,21 @@ class HScript {
 		);
 	}
 
-	public function call(name:String, args:Array<Dynamic>):Dynamic {
-		try {
-			if (interp.variables.exists(name)) {
-				return Reflect.callMethod(this, interp.variables.get(name), args);
+	public function call(funcName:String, param:Array<Dynamic>):Dynamic {
+		if (interp.variables.exists(funcName)) {
+			var func = interp.variables.get(funcName);
+			if (Reflect.isFunction(func)) {
+				var returnFunc = null;
+				try {
+					returnFunc = Reflect.callMethod(this, func, param);
+				} catch(e:Dynamic) {
+					SUtil.alert('Error on "$func"', '$func\n$e');
+					trace(e);
+				}
+				return returnFunc;
 			}
-		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript', '$scriptName\n$e');
-			return false;
 		}
-		return false;
+		return null;
 	}
 
 	public function execute(code:String):Dynamic {
