@@ -118,7 +118,7 @@ class HScript {
 				try {
 					returnFunc = Reflect.callMethod(this, func, param);
 				} catch(e:Dynamic) {
-					SUtil.alert('Error on "$func"', '$func\n$e');
+					SUtil.alert('Error on "$funcName"', '$scriptName\n$e');
 					trace(e);
 				}
 				return returnFunc;
