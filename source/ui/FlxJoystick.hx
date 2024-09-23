@@ -1,5 +1,7 @@
 package ui;
 
+import flixel.input.touch.FlxTouch;
+
 typedef ControlDirect = {
 	LEFT:Bool,
 	RIGHT:Bool,
@@ -10,38 +12,44 @@ typedef ControlDirect = {
 class FlxJoystick extends FlxSpriteGroup {
 	public var base:FlxSprite;
 	public var thumb:FlxSprite;
-	
-	static var _joysticks:Array<FlxJoystick> = [];
-	
+    
+	var _touch:FlxTouch;
+
 	var _direction:Float = 0;
 	var _radius:Float = 0;
 	var _amount:Float = 0;
 	
 	var controlDirect:ControlDirect;
 	
-	public function new(x:Float, y:Float) {
+	public function new(x:Float, y:Float, radius:Float = 0) {
 		super(x, y);
-		_joysticks.push(this);
 		scrollFactor.set();
 		
 		createBase();
 		createThumb();
+
+		if (base != null && radius == 0)
+		    _radius = base.width * 0.5;
 	}
 	
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 		
-		for (jstick in _joysticks) {
-			thumb.x = base.x + (base.width - thumb.width) / 2;
-			thumb.y = base.y + (base.height - thumb.height) / 2;
-			_direction = 0;
-			_amount = 0;
+		thumb.x = base.x + (base.width - thumb.width) / 2;
+		thumb.y = base.y + (base.height - thumb.height) / 2;
+		_direction = 0;
+		_amount = 0;
+
+		if (FlxG.mouseOverlaps(base) && _touch.pressed) {
+            updateAnalog();
+		    thumb.x = base.x + (base.width * 0.5) + Math.cos(_direction) * _amount * _radius - (thumb.width * 0.5);
+			thumb.y = base.y + (base.height * 0.5) + Math.sin(_direction) * _amount * _radius - (thumb.height * 0.5);
 		}
 	}
 
-	function updateAnalog() {
-		var dx:Float = mouse.x - base.x - (base.width * 0.5);
-		var dy:Float = mouse.y - base.y - (base.height * 0.5);
+	function updateAnalog():Void {
+		var dx:Float = _touch.x - base.x - (base.width * 0.5);
+		var dy:Float = _touch.y - base.y - (base.height * 0.5);
 		
 		var dist:Float = Math.sqrt(dx * dx + dy * dy);
 		
@@ -55,6 +63,8 @@ class FlxJoystick extends FlxSpriteGroup {
 		super.destroy();
 		
 		_joysticks.remove(this);
+		_touch = null;
+
 		base = null;
 		thumb = null;
 	}
@@ -62,14 +72,18 @@ class FlxJoystick extends FlxSpriteGroup {
 	function createBase():Void {
 		base = new FlxSprite(0, 0);
 		base.frames = Paths.fromFrame('ui/virtual-input', 'base', 252, 252);
+		base.resetSizeFromFrame();
 		base.scrollFactor.set();
+		base.solid = false;
 		add(base);
 	}
 
 	function createThumb():Void {
 		thumb = new FlxSprite(0, 0);
 		thumb.frames = Paths.fromFrame('ui/virtual-input', 'thumb', 156, 156);
+		thumb.resetSizeFromFrame();
 		thumb.scrollFactor.set();
+		thumb.solid = false;
 		add(thumb);
 	}
 }
