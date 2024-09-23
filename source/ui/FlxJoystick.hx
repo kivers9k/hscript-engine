@@ -14,6 +14,7 @@ class FlxJoystick extends FlxSpriteGroup {
 	public var thumb:FlxSprite;
     
 	var _touch:FlxTouch;
+	var _analogs:Array<FlxJoystick> = [];
 
 	var _direction:Float = 0;
 	var _radius:Float = 0;
@@ -23,24 +24,31 @@ class FlxJoystick extends FlxSpriteGroup {
 	
 	public function new(x:Float, y:Float, radius:Float = 0) {
 		super(x, y);
-		scrollFactor.set();
-		
+
+		_analogs.push(this);
+
 		createBase();
 		createThumb();
 
 		if (base != null && radius == 0)
 		    _radius = base.width * 0.5;
+		
+		scrollFactor.set();
+		moves = false;
+		alpha = 0.7;
 	}
 	
 	override function update(elapsed:Float) {
 		super.update(elapsed);
+
+		_touch = FlxG.touches.list[_analogs.length];
 		
 		thumb.x = base.x + (base.width - thumb.width) / 2;
 		thumb.y = base.y + (base.height - thumb.height) / 2;
 		_direction = 0;
 		_amount = 0;
 
-		if (FlxG.mouse.overlaps(base) && _touch.pressed) {
+		if (_touch.pressed && (_touch.overlaps(base) || _touch.overlaps(thumb))) {
             updateAnalog();
 		    thumb.x = base.x + (base.width * 0.5) + Math.cos(_direction) * _amount * _radius - (thumb.width * 0.5);
 			thumb.y = base.y + (base.height * 0.5) + Math.sin(_direction) * _amount * _radius - (thumb.height * 0.5);
