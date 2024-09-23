@@ -12,12 +12,13 @@ import android.Settings;
 
 import backends.AndroidExtension as SUtil;
 import backends.AssetPaths as Paths;
-import backends.FlxCustomState;
-import backends.FlxCustomSubState;
 import hscript.HScript;
 import objects.SpriteGroup;
 import objects.Tile;
+import states.substates.FlxCustomSubState;
+import states.FlxCustomState;
 import states.PlayState;
+import ui.FlxJoystick;
 import ui.FlxVirtualPad;
 import ui.InputText;
 
