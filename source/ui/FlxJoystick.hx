@@ -40,7 +40,7 @@ class FlxJoystick extends FlxSpriteGroup {
 		_direction = 0;
 		_amount = 0;
 
-		if (FlxG.mouseOverlaps(base) && _touch.pressed) {
+		if (FlxG.mouse.overlaps(base) && _touch.pressed) {
             updateAnalog();
 		    thumb.x = base.x + (base.width * 0.5) + Math.cos(_direction) * _amount * _radius - (thumb.width * 0.5);
 			thumb.y = base.y + (base.height * 0.5) + Math.sin(_direction) * _amount * _radius - (thumb.height * 0.5);
@@ -61,10 +61,8 @@ class FlxJoystick extends FlxSpriteGroup {
 
 	override function destroy() {
 		super.destroy();
-		
-		_joysticks.remove(this);
-		_touch = null;
 
+		_touch = null; 
 		base = null;
 		thumb = null;
 	}
