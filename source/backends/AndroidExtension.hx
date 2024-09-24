@@ -7,9 +7,13 @@ import openfl.Lib;
 import haxe.CallStack.StackItem;
 import haxe.CallStack;
 import haxe.io.Path;
+import flash.events.Event;
+import flash.net.FileReference;
 import flash.system.System;
 
 class AndroidExtension {
+	public var _file:FileReference;
+
 	public static function getPath():String {
 		#if android
 			return '/storage/emulated/0/.' + Application.current.meta.get('file') + '/';
@@ -94,5 +98,11 @@ class AndroidExtension {
 			{name: buttonName.toUpperCase(), func: func},
 			null
 		);
+	}
+
+    //just a test
+	public static function browse():Void {
+		_file = new FileReference();
+		_file.browse();
 	}
 } 
