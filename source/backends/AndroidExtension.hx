@@ -12,8 +12,6 @@ import flash.net.FileReference;
 import flash.system.System;
 
 class AndroidExtension {
-	public var _file:FileReference;
-
 	public static function getPath():String {
 		#if android
 			return '/storage/emulated/0/.' + Application.current.meta.get('file') + '/';
@@ -101,8 +99,19 @@ class AndroidExtension {
 	}
 
     //just a test
+    var _file:FileReference;
+	public var fileName:String;
+
 	public function browse():Void {
 		_file = new FileReference();
+		_file.addEventListener(Event.SELECT, onSelect, false, 0, true);
 		_file.browse();
+	}
+
+	function onSelect(E:Event):Void {
+		_file = cast(E.target, FileReference);
+        fileName = _file.name;
+
+		_file.load();
 	}
 } 
