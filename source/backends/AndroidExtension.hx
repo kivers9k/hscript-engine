@@ -7,9 +7,11 @@ import openfl.Lib;
 import haxe.CallStack.StackItem;
 import haxe.CallStack;
 import haxe.io.Path;
-import flash.events.Event;
-import flash.net.FileReference;
 import flash.system.System;
+
+import flash.events.Event;
+import openfl.net.FileReference;
+import openfl.net.FileFilter;
 
 class AndroidExtension {
 	public static function getPath():String {
@@ -105,7 +107,11 @@ class AndroidExtension {
 	public function browse():Void {
 		_file = new FileReference();
 		_file.addEventListener(Event.SELECT, onSelect, false, 0, true);
-		_file.browse();
+		var ff:FileFilter:Array<FileFilter> = [
+			new FileFilter('image file', '*.png'),
+			new FileFilter('json file', '*.json')
+		];
+		_file.browse(ff);
 	}
 
 	function onSelect(E:Event):Void {
