@@ -107,7 +107,7 @@ class AndroidExtension {
 	public function browse():Void {
 		_file = new FileReference();
 		_file.addEventListener(Event.SELECT, onSelect, false, 0, true);
-		var ff:FileFilter:Array<FileFilter> = [
+		var ff:Array<FileFilter> = [
 			new FileFilter('image file', '*.png'),
 			new FileFilter('json file', '*.json')
 		];
