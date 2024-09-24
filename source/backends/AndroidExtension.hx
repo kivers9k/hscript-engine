@@ -101,7 +101,7 @@ class AndroidExtension {
 	}
 
     //just a test
-	public static function browse():Void {
+	public function browse():Void {
 		_file = new FileReference();
 		_file.browse();
 	}
