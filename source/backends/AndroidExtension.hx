@@ -9,10 +9,6 @@ import haxe.CallStack;
 import haxe.io.Path;
 import flash.system.System;
 
-import flash.events.Event;
-import openfl.net.FileReference;
-import openfl.net.FileFilter;
-
 class AndroidExtension {
 	public static function getPath():String {
 		#if android
@@ -99,30 +95,4 @@ class AndroidExtension {
 			null
 		);
 	}
-
-    //just a test
-    var _file:FileReference;
-	public var fileName:String;
-
-	public function browse():Void {
-		var filters:Array<FileFilter> = Array<FileFilter>();
-		filters.push(new FileFilter('image file', '*.png'));
-		filters.push(new FileFilter('json file', '*.json'));
-
-		_file = new FileReference();
-		_file.addEventListener(Event.SELECT, onSelect, false, 0, true);
-		_file.browse(filters);
-	}
-
-	function onSelect(E:Event):Void {
-		_file = cast(E.target, FileReference);
-        fileName = _file.name;
-        _file.addEventListener(Event.COMPLETE, onLoad, false, 0, true);
-		_file.load();
-	}
-
-	function onLoad(E:Event):Void {
-		_file = cast E.target;
-		_file.removeEventListener(Event.COMPLET, onLoad);
-	}
-} 
+}
