@@ -57,7 +57,7 @@ class AssetPaths {
 			case 'packer': fileData = getPath('images/$key.txt');
 		}
 
-		if (FileSystem.exists('images/$key.png') && FileSystem.exists(fileData)) {
+		if (FileSystem.exists(getPath('images/$key.png')) && FileSystem.exists(fileData)) {
             switch (types) {
 				case 'sparrow':
 				    return FlxAtlasFrames.fromSparrow(image(key), getTextFromFile('images/$key.xml'));
