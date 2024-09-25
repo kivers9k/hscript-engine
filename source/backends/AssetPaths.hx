@@ -68,9 +68,9 @@ class AssetPaths {
 		return null;
 	}
 
-	public static function fromFrame(key:String, frame:String, w:Int, h:Int):FlxTileFrames {
+	public static function fromFrame(key:String, frame:String, w:Int, h:Int, ?types = 'sparrow'):FlxTileFrames {
         if (FileSystem.exists(getPath('images/$key.png'))) {
-            return FlxTileFrames.fromFrame(getFrame(key).getByName(frame), FlxPoint.get(w, h));
+            return FlxTileFrames.fromFrame(getFrame(key, types).getByName(frame), FlxPoint.get(w, h));
 		}
 		return null;
 	}

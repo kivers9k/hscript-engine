@@ -77,7 +77,7 @@ class FlxJoystick extends FlxSpriteGroup {
 
 	function createBase():Void {
 		base = new FlxSprite(0, 0);
-		base.frames = Paths.fromFrame('ui/virtual-input', 'base', 252, 252);
+		base.frames = Paths.fromFrame('ui/virtual-input', 'base', 252, 252, 'packer');
 		base.resetSizeFromFrame();
 		base.scrollFactor.set();
 		base.solid = false;
@@ -86,7 +86,7 @@ class FlxJoystick extends FlxSpriteGroup {
 
 	function createThumb():Void {
 		thumb = new FlxSprite(0, 0);
-		thumb.frames = Paths.fromFrame('ui/virtual-input', 'thumb', 156, 156);
+		thumb.frames = Paths.fromFrame('ui/virtual-input', 'thumb', 156, 156, 'packer');
 		thumb.resetSizeFromFrame();
 		thumb.scrollFactor.set();
 		thumb.solid = false;
