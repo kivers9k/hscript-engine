@@ -53,8 +53,8 @@ class AssetPaths {
 	public static function getFrame(key:String, ?types:String = 'sparrow'):FlxAtlasFrames {
 		var fileData:String = null;
 		switch (types) {
-            case 'sparrow': fileData = getPath('images/&key.xml');
-			case 'packer': fileData = getPath('images/&key.txt');
+            case 'sparrow': fileData = getPath('images/$key.xml');
+			case 'packer': fileData = getPath('images/$key.txt');
 		}
 
 		if (FileSystem.exists('images/$key.png') && FileSystem.exists(fileData)) {
