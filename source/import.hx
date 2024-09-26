@@ -13,6 +13,7 @@ import android.Settings;
 import backends.AndroidExtension as SUtil;
 import backends.AssetPaths as Paths;
 import hscript.HScript;
+import objects.AnimateSprite;
 import objects.SpriteGroup;
 import objects.Tile;
 import states.substates.FlxCustomSubState;
