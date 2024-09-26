@@ -13,7 +13,11 @@ class AnimateSprite extends FlxSprite {
 
 	public function setOffset(name:String, x:Int, y:Int) {
 		if (animation.getByName(name) != null) {
-			offsetMap.set(name, new FlxPoint(x, y));
+			if (!offsetMap.exists(name)) {
+			    offsetMap.set(name, new FlxPoint(x, y));
+			} else {
+			    offsetMap.get(name).set(x, y);
+			}
 		}
 	}
 	
