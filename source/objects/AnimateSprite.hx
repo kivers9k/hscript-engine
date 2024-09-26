@@ -19,10 +19,10 @@ class AnimateSprite extends FlxSprite {
 	
 	public function play(name:String, force:Bool = false, reversed:Bool = false, frame:Int = 0) {
 		if (animation.getByName(name) != null) {
-			if (offsetMap.exists(name)) {
-				offset.x = offsetMap.get(name).x;
-				offset.y = offsetMap.get(name).y;
-			}
+			var exist:Bool = offsetMap.exists(name);
+			offset.x = exist ? offsetMap.get(name).x : 0;
+			offset.y = exist ? offsetMap.get(name).y : 0;
+			
 			animation.play(name, force, reversed, frame);
 		}
 	}
