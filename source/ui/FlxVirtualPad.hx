@@ -4,7 +4,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
     public var dPad:FlxSpriteGroup;
     public var actions:FlxSpriteGroup;
 
-    public var fromStringMap:Map<String, FlxButton> = #if (haxe >= "4.0.0") new Map<String, FlxButton>() #else new Map() #end;
+    public var fromStringMap:Map<String, FlxButton> = new Map<String, FlxButton>();
 
     public var buttonUp:FlxButton;
     public var buttonDown:FlxButton;

@@ -3,17 +3,17 @@ package objects;
 import flixel.animation.FlxAnimation;
 
 class AnimateSprite extends FlxSprite {
-	private var offsetMap:Map<String, {x:Int, y:Int}> = new Map();
+	private var offsetMap:Map<String, FlxPoint> = new Map<String, FlxPoint>();
 
 	public function new(x:Float, y:Float, ?image:String, ?type:String = 'sparrow') {
-		new(x, y);
+		super(x, y);
 		if (image != null)
 			frames = Paths.getFrame(image, type);
 	}
 
 	public function setOffset(name:String, x:Int, y:Int) {
 		if (animation.getByName(name) != null) {
-			offsetMap.set(name, {x: x, y: y});
+			offsetMap.set(name, new FlxPoint(x, y));
 		}
 	}
 	

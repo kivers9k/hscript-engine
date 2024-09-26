@@ -50,15 +50,15 @@ class AssetPaths {
 		return null;
     }
 
-	public static function getFrame(key:String, ?types:String = 'sparrow'):FlxAtlasFrames {
+	public static function getFrame(key:String, ?type:String = 'sparrow'):FlxAtlasFrames {
 		var fileData:String = null;
-		switch (types) {
+		switch (type) {
             case 'sparrow': fileData = getPath('images/$key.xml');
 			case 'packer': fileData = getPath('images/$key.txt');
 		}
 
 		if (FileSystem.exists(getPath('images/$key.png')) && FileSystem.exists(fileData)) {
-            switch (types) {
+            switch (type) {
 				case 'sparrow':
 				    return FlxAtlasFrames.fromSparrow(image(key), getTextFromFile('images/$key.xml'));
  				case 'packer':
@@ -68,9 +68,9 @@ class AssetPaths {
 		return null;
 	}
 
-	public static function fromFrame(key:String, frame:String, w:Int, h:Int, ?types = 'sparrow'):FlxTileFrames {
+	public static function fromFrame(key:String, frame:String, w:Int, h:Int, ?type = 'sparrow'):FlxTileFrames {
         if (FileSystem.exists(getPath('images/$key.png'))) {
-            return FlxTileFrames.fromFrame(getFrame(key, types).getByName(frame), FlxPoint.get(w, h));
+            return FlxTileFrames.fromFrame(getFrame(key, type).getByName(frame), FlxPoint.get(w, h));
 		}
 		return null;
 	}
