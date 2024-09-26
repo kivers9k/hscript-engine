@@ -20,7 +20,7 @@ class AnimateSprite extends FlxSprite {
 	public function play(name:String, force:Bool = false, reversed:Bool = false, frame:Int = 0) {
 		if (animation.getByName(name) != null) {
 			if (offsetMap.exists(name)) {
-				offses.x = offsetMap.get(name).x;
+				offset.x = offsetMap.get(name).x;
 				offset.y = offsetMap.get(name).y;
 			}
 			animation.play(name, force, reversed, frame);
@@ -32,12 +32,12 @@ class AnimateSprite extends FlxSprite {
 	public function getNameList():Array<String> return animation.getNameList();
 	
 	//animation controlling
-	public function destroyAnimation() animation.destroyAnimation();
+	public function destroyAnimations() animation.destroyAnimations();
 	public function finish() animation.finish();
-	public function pause() animation.pause();
 	public function randomFrame() animation.randomFrame();
-	public function reset() animation.reset();
+	public function stop() animation.stop();
+	public function pause() animation.pause();
+	public function resets() animation.reset();
 	public function resume() animation.resume();
 	public function reverse() animation.reverse();
-	public function stop() animation.stop();
 }
