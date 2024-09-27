@@ -50,6 +50,13 @@ class HScript {
 	}
 
 	public function presetVars() {
+		//default set
+		interp.variables.set('StringTools', StringTools);
+		interp.variables.set('Reflect', Reflect);
+		interp.variables.set('Math', Math);
+		interp.variables.set('Type', Type);
+		interp.variables.set('Std', Std);
+
 		interp.variables.set('FlxG', FlxG);
 		interp.variables.set('FlxSprite', FlxSprite);
 		interp.variables.set('FlxCamera', FlxCamera);
@@ -62,6 +69,7 @@ class HScript {
 		interp.variables.set('insert', FlxG.state.insert);
 
 		//PlayState function
+		interp.variables.set('PlayState', PlayState);
 		interp.variables.set('game', PlayState.instance);
 		interp.variables.set('print', PlayState.instance.print);
 
@@ -92,13 +100,7 @@ class HScript {
 			}
 			return false;
 		});
-		
-		interp.variables.set('StringTools', StringTools);
-		interp.variables.set('Reflect', Reflect);
-		interp.variables.set('Math', Math);
-		interp.variables.set('Type', Type);
-		interp.variables.set('Std', Std);
-
+        
 		//targeting device variable
 		interp.variables.set('deviceTarget',
 			#if android 'android'
