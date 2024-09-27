@@ -50,60 +50,54 @@ class HScript {
 	}
 
 	public function presetVars() {
-		interp.variables = [					
-	        //default set
-			'StringTools' => StringTools,
-			'Reflect' => Reflect,
-		    'Math' => Math,
-			'Type' => Type,
-		    'Std' => Std,
+		interp.variables.set('FlxG', FlxG);
+		interp.variables.set('FlxSprite', FlxSprite);
+		interp.variables.set('FlxCamera', FlxCamera);
+		interp.variables.set('FlxTween', FlxTween);
+		interp.variables.set('FlxEase', FlxEase);
+		interp.variables.set('FlxTimer', FlxTimer);
 
-			'FlxG' => FlxG,
-	        'FlxSprite' => FlxSprite,
-		    'FlxCamera' => FlxCamera,
-		    'FlxTween' =>  FlxTween,
-		    'FlxEase' => FlxEase,
-	        'FlxTimer' => FlxTimer,
+		interp.variables.set('add', FlxG.state.add);
+		interp.variables.set('remove', FlxG.state.remove);
+		interp.variables.set('insert', FlxG.state.insert);
 
-		    'add' => FlxG.state.add,
-            'remove' => FlxG.state.remove,
-		    'insert' => FlxG.state.insert,
+		//PlayState function
+		interp.variables.set('game', PlayState.instance);
+		interp.variables.set('print', PlayState.instance.print);
 
-		    //PlayState
-			'PlayState' => PlayState,
-	        'game' => PlayState.instance,
-		    'print' => PlayState.instance.print,
+		interp.variables.set('FlxCustomState', FlxCustomState);
+		interp.variables.set('FlxCustomSubState', FlxCustomState);
+		interp.variables.set('Paths', Paths);
+		interp.variables.set('SUtil', SUtil);
 
-	        'FlxCustomState' => FlxCustomState,
-	        'FlxCustomSubState' => FlxCustomState,
-			'Paths' => Paths,
-		    'SUtil' => SUtil,
+		interp.variables.set('setVar', function(name:String, args:Dynamic) {
+			for (hx in PlayState.instance.hxArray)
+				hx.variables.set(name, args);
+		});
+		interp.variables.set('getVar', function(name:String) {
+			var result:Dynamic = null;
+			for (hx in PlayState.instance.hxArray) {
+				if (hx.variables.exists(name)) {
+					result = hx.variables.get(name);
+				}
+			}
+			return result;
+		});
+		interp.variables.set('removeVar', function(name:String) {
+			for (hx in PlayState.instance.hxArray) {
+				if (hx.variables.exists(name)) {
+					hx.variables.remove(name);
+					return true;
+				}
+			}
+			return false;
+		});
 		
-	        'setVar' => function(name:String, args:Dynamic) {
-			    for (hx in PlayState.instance.hxArray)
-			    	hx.variables.set(name, args);
-			},
-
-		    'getVar' => function(name:String) {
-			    var result:Dynamic = null;
-			    for (hx in PlayState.instance.hxArray) {
-			    	if (hx.variables.exists(name)) {
-			    		result = hx.variables.get(name);
-			    	}
-			    }
-			    return result;
-			},
-
-		    'removeVar' => function(name:String) {
-			    for (hx in PlayState.instance.hxArray) {
-				    if (hx.variables.exists(name)) {
-					    hx.variables.remove(name);
-					    return true;
-				    }
-			    }
-			    return false;
-		    }
-		];
+		interp.variables.set('StringTools', StringTools);
+		interp.variables.set('Reflect', Reflect);
+		interp.variables.set('Math', Math);
+		interp.variables.set('Type', Type);
+		interp.variables.set('Std', Std);
 
 		//targeting device variable
 		interp.variables.set('deviceTarget',
@@ -113,7 +107,7 @@ class HScript {
 			#elseif window 'window'
 			#elseif desktop 'desktop'
 			#end
-	    );
+		);
 	}
 
 	public function call(funcName:String, param:Array<Dynamic>):Dynamic {
