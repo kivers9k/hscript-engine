@@ -1,7 +1,7 @@
 package states.substates;
 
 class FlxCustomSubState extends FlxSubState {
-    var hscript:Hscript;
+    var hscript:HScript;
 
     function new(subStateName:String) {
         super();
