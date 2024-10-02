@@ -1,25 +1,35 @@
 package states.substates;
 
-//it's the same as FlxCustomState
 class FlxCustomSubState extends FlxSubState {
-    public var onCreate:() -> Void;
-    public var onCreatePost:() -> Void;
-    public var onUpdate:(Float) -> Void;
-    public var onUpdatePost:(Float) -> Void;
+    var hscript:Hscript;
+
+    function new(subStateName:String) {
+        super();
+
+        hscript = new HScript(Paths.getPath('subStates/$subStateName.hx'));
+    }
 
     override function create() {
-        if (onCreate != null)
-            onCreate();
+        hscript.call('onCreate', []);
+
         super.create();
-        if (onCreatePost != null)
-            onCreatePost();
+
+        hscript.call('onCreatePost', []);
     }
 
     override function update(elapsed:Float) {
-        if (onUpdate != null)
-            onUpdate(elapsed);
+        hscript.call('onUpdate', [elapsed]);
+
         super.update(elapsed);
-        if (onUpdatePost != null)
-           onUpdatePost(elapsed);
+
+        hscript.call('onUpdatePost', [elapsed]);
+    }
+
+    override function destroy() {
+        hscript.call('onDestroy', []);
+        hscript.close();
+        hscript = null;
+
+        super.destroy();
     }
 }

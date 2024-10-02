@@ -14,10 +14,11 @@ class HScript {
 	}
 
 	private var linePos:Array<String> = [];
-	public var scriptName:String = null;
+	public var scriptName:String;
+
 	public function new(hxPath:String) {
 		presetVars();
-		scriptName = hxPath;
+		scriptName = hxPath.split('/').pop().replace('.hx', '');
 		
 		var contents:String = File.getContent(hxPath);
 		var lines:String = '';
@@ -31,10 +32,7 @@ class HScript {
 				
 				//enum support yay!
 				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
-					interp.variables.set(
-						libName,
-						(Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib)
-					);
+					interp.variables.set(libName, (Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib));
 				} else {
 					SUtil.alert(((Type.resolveEnum(lib) != null) ? 'Enum' : 'Class') + ' not Found', lib);
 				}
@@ -45,12 +43,12 @@ class HScript {
 		try {
 			execute(lines);
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript', '$scriptName\n$e');
+			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
 		}
 	}
 
 	public function presetVars() {
-		//default set
+		// default set
 		interp.variables.set('StringTools', StringTools);
 		interp.variables.set('Reflect', Reflect);
 		interp.variables.set('Math', Math);
@@ -58,6 +56,7 @@ class HScript {
 		interp.variables.set('Std', Std);
 		interp.variables.set('this', this);
 
+        // flixel class
 		interp.variables.set('FlxG', FlxG);
 		interp.variables.set('FlxSprite', FlxSprite);
 		interp.variables.set('FlxCamera', FlxCamera);
@@ -65,15 +64,18 @@ class HScript {
 		interp.variables.set('FlxEase', FlxEase);
 		interp.variables.set('FlxTimer', FlxTimer);
 
+        // state method
 		interp.variables.set('add', FlxG.state.add);
 		interp.variables.set('remove', FlxG.state.remove);
 		interp.variables.set('insert', FlxG.state.insert);
+        interp.variables.set('members', FlxG.state.memebrs);
 
-		//PlayState function
+		// PlayState function
 		interp.variables.set('PlayState', PlayState);
 		interp.variables.set('game', PlayState.instance);
 		interp.variables.set('print', PlayState.instance.print);
 
+        // the
 		interp.variables.set('FlxCustomState', FlxCustomState);
 		interp.variables.set('FlxCustomSubState', FlxCustomState);
 		interp.variables.set('Paths', Paths);
@@ -128,7 +130,7 @@ class HScript {
 				try {
 					returnFunc = Reflect.callMethod(this, func, param);
 				} catch(e:Dynamic) {
-					SUtil.alert('Error on "$funcName"', '$scriptName\n$e');
+					SUtil.alert('Error on "$funcName"', 'in $scriptName\n$e');
 					trace(e);
 				}
 				return returnFunc;
@@ -137,10 +139,9 @@ class HScript {
 		return null;
 	}
 
-	public function stop():Void {
-		if (interp != null && interp.variables != null)
+	public function close():Void {
+		if (interp != null && interp.variables != null) {
 		    interp.variables.clear();
-		
-		interp = null;
+	    }
 	}
 }
