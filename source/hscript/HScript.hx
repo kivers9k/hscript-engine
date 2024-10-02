@@ -27,7 +27,7 @@ class HScript {
 				lines += splitStr + '\n';
 			} else {
 				var lib:String = splitStr.split(' ')[1].replace(';', '');
-				var libName:String = lib.split('.')[lib.split('.').length - 1];
+				var libName:String = lib.split('.').pop();
 				
 				//enum support yay!
 				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
@@ -56,6 +56,7 @@ class HScript {
 		interp.variables.set('Math', Math);
 		interp.variables.set('Type', Type);
 		interp.variables.set('Std', Std);
+		interp.variables.set('this', this);
 
 		interp.variables.set('FlxG', FlxG);
 		interp.variables.set('FlxSprite', FlxSprite);
@@ -112,6 +113,13 @@ class HScript {
 		);
 	}
 
+	public function execute(code:String):Dynamic {
+		parser.line = 1 + linePos.length;
+		parser.allowTypes = true;
+		parser.allowJSON = true;
+		return interp.execute(parser.parseString(code));
+	}
+
 	public function call(funcName:String, param:Array<Dynamic>):Dynamic {
 		if (interp.variables.exists(funcName)) {
 			var func = interp.variables.get(funcName);
@@ -129,10 +137,10 @@ class HScript {
 		return null;
 	}
 
-	public function execute(code:String):Dynamic {
-		parser.line = 1 + linePos.length;
-		parser.allowTypes = true;
-		parser.allowJSON = true;
-		return interp.execute(parser.parseString(code));
+	public function stop():Void {
+		if (interp != null && interp.variables != null)
+		    interp.variables.clear();
+		
+		interp = null;
 	}
 }
