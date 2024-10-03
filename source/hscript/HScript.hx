@@ -74,7 +74,7 @@ class HScript {
 		interp.variables.set('SUtil', SUtil);
 
         // state variable
-        var state:Any;
+        var state:Any = FlxG.state;
 		switch (FlxG.state) {
 			case PlayState.instance:
 			    state = PlayState.instance;
