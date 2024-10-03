@@ -3,10 +3,21 @@ package states.substates;
 class FlxCustomSubState extends FlxSubState {
     var hscript:HScript;
 
-    function new(subStateName:String) {
+    public function new(stateName:String) {
         super();
 
-        hscript = new HScript(Paths.getPath('subStates/$subStateName.hx'));
+        if (FileSystem(Paths.getPath('subStates/stateName.hx'))) {
+            hscript = new HScript(Paths.getPath('subStates/$stateName.hx'));
+        } else {
+            close();
+        }
+
+		hscript.variables.set('game', this);
+        hscript.variables.set('add', this.add);
+        hscript.variables.set('remove', this.remove);
+        hscript.variables.set('insert', this.insert);
+        hscript.variables.set('members', this.members);
+        hscript.variables.set('close', this.close);
     }
 
     override function create() {

@@ -64,17 +64,8 @@ class HScript {
 		interp.variables.set('FlxEase', FlxEase);
 		interp.variables.set('FlxTimer', FlxTimer);
 
-        // state method
-		interp.variables.set('add', FlxG.state.add);
-		interp.variables.set('remove', FlxG.state.remove);
-		interp.variables.set('insert', FlxG.state.insert);
-        interp.variables.set('members', FlxG.state.members);
-
-		// PlayState function
+		// source class
 		interp.variables.set('PlayState', PlayState);
-		interp.variables.set('game', PlayState.instance);
-
-        // the
 		interp.variables.set('FlxCustomState', FlxCustomState);
 		interp.variables.set('FlxCustomSubState', FlxCustomState);
 		interp.variables.set('Paths', Paths);
