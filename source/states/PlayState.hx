@@ -3,7 +3,7 @@ package states;
 class PlayState extends FlxState {
 	public var scriptPaths:String = Paths.getPath('scripts/');
 	public var hxArray:Array<HScript> = [];
-	public var canHUD:FlxCamera;
+	public var camHUD:FlxCamera;
 
 	function new() {
 		super();
@@ -13,7 +13,7 @@ class PlayState extends FlxState {
 				hxArray.push(new HScript(scriptPaths + file));
 			}
 		}
-		
+
         for (hscript in hxArray) {
 			hscript.variables.set('game', this);
 			hscript.variables.set('add', this.add);
@@ -47,6 +47,7 @@ class PlayState extends FlxState {
 		for (hscript in hxArray) {
 			hscript.call('onDestroy', []);
 		    hscript.close();
+			hscript = null;
 		}
 
         super.destroy();

@@ -6,7 +6,7 @@ class FlxCustomSubState extends FlxSubState {
     public function new(stateName:String) {
         super();
 
-        if (FileSystem(Paths.getPath('subStates/stateName.hx'))) {
+        if (FileSystem.exists(Paths.getPath('subStates/stateName.hx'))) {
             hscript = new HScript(Paths.getPath('subStates/$stateName.hx'));
         } else {
             close();

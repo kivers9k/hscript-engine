@@ -6,7 +6,7 @@ class FlxCustomState extends FlxState {
     public function new(stateName:String) {
         super();
 
-        if (FileSystem(Paths.getPath('states/stateName.hx'))) {
+        if (FileSystem.exists(Paths.getPath('states/stateName.hx'))) {
             hscript = new HScript(Paths.getPath('states/$stateName.hx'));
         } else {
             FlxG.switchState(new PlayState());
