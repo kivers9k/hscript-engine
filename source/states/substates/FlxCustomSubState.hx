@@ -2,7 +2,7 @@ package states.substates;
 
 class FlxCustomSubState extends FlxSubState {
     var hscript:HScript;
-    var instance:FlxCustomSubState;
+    var static instance:FlxCustomSubState;
 
     public function new(subStateName:String) {
         instance = this;

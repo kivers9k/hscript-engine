@@ -45,6 +45,8 @@ class HScript {
 		} catch(e:Dynamic) {
 			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
 		}
+
+		call('new', [])
 	}
 
 	public function presetVars() {
@@ -71,8 +73,8 @@ class HScript {
 		interp.variables.set('Paths', Paths);
 		interp.variables.set('SUtil', SUtil);
 
-		// variable
-		if (FlxG.state == PlayState) {
+		// playState variable
+		if ((FlxG.state is PlayState) && FlxG.state == PlayState.instance) {
 			interp.variables.set('setVar', function(name:String, vars:Dynamic) {
 				for (hx in PlayState.instance.hxArray) {
 					hx.variables.set(name, vars);

@@ -4,7 +4,7 @@ class PlayState extends FlxState {
 	public var scriptPaths:String = Paths.getPath('scripts/');
 	public var hxArray:Array<HScript> = [];
 	public var camHUD:FlxCamera;
-    public var instance:PlayState;
+    public static var instance:PlayState;
 
 	function new() {
 		instance = this;
