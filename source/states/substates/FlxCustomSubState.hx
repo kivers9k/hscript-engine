@@ -4,8 +4,6 @@ class FlxCustomSubState extends FlxSubState {
     var hscript:HScript;
 
     public function new(stateName:String) {
-        super();
-
         if (FileSystem.exists(Paths.getPath('subStates/stateName.hx'))) {
             hscript = new HScript(Paths.getPath('subStates/$stateName.hx'));
         } else {
@@ -18,6 +16,8 @@ class FlxCustomSubState extends FlxSubState {
         hscript.variables.set('insert', this.insert);
         hscript.variables.set('members', this.members);
         hscript.variables.set('close', this.close);
+
+        super();
     }
 
     override function create() {

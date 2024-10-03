@@ -3,10 +3,8 @@ package states;
 class FlxCustomState extends FlxState {
     var hscript:HScript;
 
-    public function new(stateName:String) {
-        super();
-
-        if (FileSystem.exists(Paths.getPath('states/stateName.hx'))) {
+    function new(stateName:String) {
+        if (FileSystem.exists(Paths.getPath('states/$stateName.hx'))) {
             hscript = new HScript(Paths.getPath('states/$stateName.hx'));
         } else {
             FlxG.switchState(new PlayState());
@@ -17,6 +15,8 @@ class FlxCustomState extends FlxState {
         hscript.variables.set('remove', this.remove);
         hscript.variables.set('insert', this.insert);
         hscript.variables.set('members', this.members);
+
+        super();
     }
 
     override function create() {

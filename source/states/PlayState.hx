@@ -5,7 +5,7 @@ class PlayState extends FlxState {
 	public var hxArray:Array<HScript> = [];
 	public var camHUD:FlxCamera;
 
-	function new() {
+	public function new() {
 		super();
         
         for (file in FileSystem.readDirectory(scriptPaths)) {
