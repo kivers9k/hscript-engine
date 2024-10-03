@@ -13,13 +13,6 @@ class FlxCustomSubState extends FlxSubState {
             close();
         }
 
-		hscript.variables.set('game', instance);
-        hscript.variables.set('add', instance.add);
-        hscript.variables.set('remove', instance.remove);
-        hscript.variables.set('insert', instance.insert);
-        hscript.variables.set('members', instance.members);
-        hscript.variables.set('close', instance.close);
-
         super();
     }
 

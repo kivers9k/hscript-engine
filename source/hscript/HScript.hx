@@ -73,38 +73,22 @@ class HScript {
 		interp.variables.set('Paths', Paths);
 		interp.variables.set('SUtil', SUtil);
 
-        interp.variables.set('addScript', function(path:String) {
-			if (FileSystem.exists(Paths.getPath('$path.hx'))) {
-                return new HScript(Paths.getPath('$path.hx'));
-			}
-			return null;
-		});
+        // state variable
+        var state:Any;
+		switch (FlxG.state) {
+			case PlayState.instance:
+			    state = PlayState.instance;
+			case FlxCustomState.instance:
+			    state = FlxCustomState.instance;
+			case FlxCustomSubState.instance:
+			    state = FlxCustomSubState.instance;
+				interp.variables.set('close', state.close);
+		}
 
-		// playState variable
-		interp.variables.set('setVar', function(name:String, args:Dynamic) {
-			for (hx in PlayState.instance.hxArray)
-				hx.variables.set(name, args);
-		});
-
-		interp.variables.set('getVar', function(vars:String) {
-			var result:Dynamic = null;
-			for (hx in PlayState.instance.hxArray) {
-				if (hx.variables.exists(vars)) {
-					result = hx.variables.get(vars); 
-				}
-			}
-			return result;
-		});
-
-		interp.variables.set('removeVar', function(vars:String) {
-            for (hx in PlayState.instance.hxArray) {
-				if (hx.variables.exists(vars)) {
-					hx.variables.remove(vars);
-					return true;
-				}
-			}
-			return false;
-		});
+		interp.variables.set('add', state.add);
+		interp.variables.set('remove', state.remove);
+		interp.variables.set('insert', state.insert);
+		interp.variables.set('members', state.members);
         
 		//targeting device variable
 		interp.variables.set('deviceTarget',

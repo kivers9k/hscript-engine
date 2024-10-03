@@ -10,12 +10,6 @@ class FlxCustomState extends FlxState {
         if (FileSystem.exists(Paths.getPath('states/$stateName.hx')) && stateName != null)
             hscript = new HScript(Paths.getPath('states/$stateName.hx'));
 
-		hscript.variables.set('game', instance);
-        hscript.variables.set('add', instance.add);
-        hscript.variables.set('remove', instance.remove);
-        hscript.variables.set('insert', instance.insert);
-        hscript.variables.set('members', instance.members);
-
         super();
     }
 

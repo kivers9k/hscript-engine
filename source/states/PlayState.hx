@@ -15,14 +15,6 @@ class PlayState extends FlxState {
 			}
 		}
 
-        for (hscript in hxArray) {
-			hscript.variables.set('game', instance);
-			hscript.variables.set('add', instance.add);
-		    hscript.variables.set('remove', instance.remove);
-			hscript.variables.set('insert', instance.insert);
-            hscript.variables.set('members', instance.members);
-		}
-
 		super();
 	}
 
