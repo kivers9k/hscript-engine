@@ -46,7 +46,7 @@ class HScript {
 			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
 		}
 
-		call('new', [])
+		call('new', []);
 	}
 
 	public function presetVars() {
@@ -73,6 +73,13 @@ class HScript {
 		interp.variables.set('Paths', Paths);
 		interp.variables.set('SUtil', SUtil);
 
+        interp.variables.set('addScript', function(path:String) {
+			if (FileSystem.exists(getPath('$path.hx'))) {
+                return new HScript(Paths.getPath('$path.hx'));
+			}
+			return null;
+		});
+
 		// playState variable
 		if ((FlxG.state is PlayState) && FlxG.state == PlayState.instance) {
 			interp.variables.set('setVar', function(name:String, vars:Dynamic) {
@@ -86,7 +93,7 @@ class HScript {
 					if (hx.variables.exists(vars)) {
 						return hx.variables.get(vars);
 					}
-					return false;
+					return null;
 				}
 			});
 
