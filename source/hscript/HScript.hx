@@ -70,29 +70,6 @@ class HScript {
 		interp.variables.set('FlxCustomSubState', FlxCustomState);
 		interp.variables.set('Paths', Paths);
 		interp.variables.set('SUtil', SUtil);
-
-		interp.variables.set('setVar', function(name:String, args:Dynamic) {
-			for (hx in PlayState.hxArray)
-				hx.variables.set(name, args);
-		});
-		interp.variables.set('getVar', function(name:String) {
-			var result:Dynamic = null;
-			for (hx in PlayState.hxArray) {
-				if (hx.variables.exists(name)) {
-					result = hx.variables.get(name);
-				}
-			}
-			return result;
-		});
-		interp.variables.set('removeVar', function(name:String) {
-			for (hx in PlayState.hxArray) {
-				if (hx.variables.exists(name)) {
-					hx.variables.remove(name);
-					return true;
-				}
-			}
-			return false;
-		});
         
 		//targeting device variable
 		interp.variables.set('deviceTarget',
