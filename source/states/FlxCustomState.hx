@@ -30,9 +30,11 @@ class FlxCustomState extends FlxState {
     }
 
     override function destroy() {
-        hscript.call('onDestroy', []);
-        hscript.close();
-        hscript = null;
+        if (hscript != null) {
+            hscript.call('onDestroy', []);
+            hscript.close();
+            hscript = null;
+        }
 
         super.destroy();
     }

@@ -40,9 +40,11 @@ class PlayState extends FlxState {
 	
 	override function destroy() {
 		for (hscript in hxArray) {
-			hscript.call('onDestroy', []);
-		    hscript.close();
-			hscript = null;
+	        if (hscript != null) {
+                hscript.call('onDestroy', []);
+                hscript.close();
+                hscript = null;
+			}
 		}
 
         super.destroy();
