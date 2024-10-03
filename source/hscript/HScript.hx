@@ -85,6 +85,7 @@ class HScript {
 				interp.variables.set('close', state.close);
 		}
 
+        interp.variables.set('game', state);
 		interp.variables.set('add', state.add);
 		interp.variables.set('remove', state.remove);
 		interp.variables.set('insert', state.insert);
