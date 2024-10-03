@@ -2,19 +2,19 @@ package states;
 
 class FlxCustomState extends FlxState {
     var hscript:HScript;
+    public static var instance:FlxCustomState;
 
     function new(stateName:String) {
-        if (FileSystem.exists(Paths.getPath('states/$stateName.hx'))) {
-            hscript = new HScript(Paths.getPath('states/$stateName.hx'));
-        } else {
-            FlxG.switchState(new PlayState());
-        }
+        instance = this;
 
-		hscript.variables.set('game', this);
-        hscript.variables.set('add', this.add);
-        hscript.variables.set('remove', this.remove);
-        hscript.variables.set('insert', this.insert);
-        hscript.variables.set('members', this.members);
+        if (FileSystem.exists(Paths.getPath('states/$stateName.hx')) && stateName != null)
+            hscript = new HScript(Paths.getPath('states/$stateName.hx'));
+
+		hscript.variables.set('game', instance);
+        hscript.variables.set('add', instance.add);
+        hscript.variables.set('remove', instance.remove);
+        hscript.variables.set('insert', instance.insert);
+        hscript.variables.set('members', instance.members);
 
         super();
     }

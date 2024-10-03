@@ -4,9 +4,10 @@ class PlayState extends FlxState {
 	public var scriptPaths:String = Paths.getPath('scripts/');
 	public var hxArray:Array<HScript> = [];
 	public var camHUD:FlxCamera;
+    public var instance:PlayState;
 
-	public function new() {
-		super();
+	function new() {
+		instance = this;
         
         for (file in FileSystem.readDirectory(scriptPaths)) {
 		    if (file.endsWith('.hx')) {
@@ -15,12 +16,14 @@ class PlayState extends FlxState {
 		}
 
         for (hscript in hxArray) {
-			hscript.variables.set('game', this);
-			hscript.variables.set('add', this.add);
-		    hscript.variables.set('remove', this.remove);
-			hscript.variables.set('insert', this.insert);
-            hscript.variables.set('members', this.members);
+			hscript.variables.set('game', instance);
+			hscript.variables.set('add', instance.add);
+		    hscript.variables.set('remove', instance.remove);
+			hscript.variables.set('insert', instance.insert);
+            hscript.variables.set('members', instance.members);
 		}
+
+		super();
 	}
 
 	override function create() {

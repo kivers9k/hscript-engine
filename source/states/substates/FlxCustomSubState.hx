@@ -2,20 +2,23 @@ package states.substates;
 
 class FlxCustomSubState extends FlxSubState {
     var hscript:HScript;
+    var instance:FlxCustomSubState;
 
-    public function new(stateName:String) {
-        if (FileSystem.exists(Paths.getPath('subStates/stateName.hx'))) {
-            hscript = new HScript(Paths.getPath('subStates/$stateName.hx'));
+    public function new(subStateName:String) {
+        instance = this;
+        
+        if (FileSystem.exists(Paths.getPath('subStates/&subStateName.hx')) && subStateName != null) {
+            hscript = new HScript(Paths.getPath('subStates/$subStateName.hx'));
         } else {
             close();
         }
 
-		hscript.variables.set('game', this);
-        hscript.variables.set('add', this.add);
-        hscript.variables.set('remove', this.remove);
-        hscript.variables.set('insert', this.insert);
-        hscript.variables.set('members', this.members);
-        hscript.variables.set('close', this.close);
+		hscript.variables.set('game', instance);
+        hscript.variables.set('add', instance.add);
+        hscript.variables.set('remove', instance.remove);
+        hscript.variables.set('insert', instance.insert);
+        hscript.variables.set('members', instance.members);
+        hscript.variables.set('close', instance.close);
 
         super();
     }
