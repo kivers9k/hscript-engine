@@ -74,7 +74,7 @@ class HScript {
 		interp.variables.set('SUtil', SUtil);
 
         interp.variables.set('addScript', function(path:String) {
-			if (FileSystem.exists(getPath('$path.hx'))) {
+			if (FileSystem.exists(Paths.getPath('$path.hx'))) {
                 return new HScript(Paths.getPath('$path.hx'));
 			}
 			return null;
@@ -82,27 +82,29 @@ class HScript {
 
 		// playState variable
 		if ((FlxG.state is PlayState) && FlxG.state == PlayState.instance) {
-			interp.variables.set('setVar', function(name:String, vars:Dynamic) {
-				for (hx in PlayState.instance.hxArray) {
-					hx.variables.set(name, vars);
-				}
+			interp.variables.set('setVar', function(name:String, args:Dynamic) {
+				for (hx in PlayState.instance.hxArray)
+					hx.variables.set(name, args);
 			});
 
 			interp.variables.set('getVar', function(vars:String) {
+				var result:Dynamic = null;
 				for (hx in PlayState.instance.hxArray) {
 					if (hx.variables.exists(vars)) {
-						return hx.variables.get(vars);
+						result = hx.variables.get(vars); 
 					}
-					return null;
 				}
+				return result;
 			});
 
 			interp.variables.set('removeVar', function(vars:String) {
                 for (hx in PlayState.instance.hxArray) {
 					if (hx.variables.exists(vars)) {
 						hx.variables.remove(vars);
+						return true;
 					}
 				}
+				return false;
 			});
 		}
         
@@ -144,6 +146,7 @@ class HScript {
 	public function close():Void {
 		if (interp != null && interp.variables != null) {
 		    interp.variables.clear();
+			interp = null;
 	    }
 	}
 }
