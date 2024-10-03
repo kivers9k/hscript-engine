@@ -6,7 +6,7 @@ class PlayState extends FlxState {
 	public var camHUD:FlxCamera;
     public static var instance:PlayState;
 
-	function new() {
+	public function new() {
 		instance = this;
         
         for (file in FileSystem.readDirectory(scriptPaths)) {

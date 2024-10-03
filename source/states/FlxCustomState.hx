@@ -4,7 +4,7 @@ class FlxCustomState extends FlxState {
     var hscript:HScript;
     public static var instance:FlxCustomState;
 
-    function new(stateName:String) {
+    public function new(stateName:String) {
         instance = this;
 
         if (FileSystem.exists(Paths.getPath('states/$stateName.hx')) && stateName != null)
