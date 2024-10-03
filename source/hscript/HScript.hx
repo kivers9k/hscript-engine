@@ -81,32 +81,30 @@ class HScript {
 		});
 
 		// playState variable
-		if ((FlxG.state is PlayState) && FlxG.state == PlayState.instance) {
-			interp.variables.set('setVar', function(name:String, args:Dynamic) {
-				for (hx in PlayState.instance.hxArray)
-					hx.variables.set(name, args);
-			});
+		interp.variables.set('setVar', function(name:String, args:Dynamic) {
+			for (hx in PlayState.instance.hxArray)
+				hx.variables.set(name, args);
+		});
 
-			interp.variables.set('getVar', function(vars:String) {
-				var result:Dynamic = null;
-				for (hx in PlayState.instance.hxArray) {
-					if (hx.variables.exists(vars)) {
-						result = hx.variables.get(vars); 
-					}
+		interp.variables.set('getVar', function(vars:String) {
+			var result:Dynamic = null;
+			for (hx in PlayState.instance.hxArray) {
+				if (hx.variables.exists(vars)) {
+					result = hx.variables.get(vars); 
 				}
-				return result;
-			});
+			}
+			return result;
+		});
 
-			interp.variables.set('removeVar', function(vars:String) {
-                for (hx in PlayState.instance.hxArray) {
-					if (hx.variables.exists(vars)) {
-						hx.variables.remove(vars);
-						return true;
-					}
+		interp.variables.set('removeVar', function(vars:String) {
+            for (hx in PlayState.instance.hxArray) {
+				if (hx.variables.exists(vars)) {
+					hx.variables.remove(vars);
+					return true;
 				}
-				return false;
-			});
-		}
+			}
+			return false;
+		});
         
 		//targeting device variable
 		interp.variables.set('deviceTarget',
