@@ -74,13 +74,13 @@ class HScript {
 		interp.variables.set('SUtil', SUtil);
 
 		// state variable
-		static var state = PlayState.instance;
-		switch (state) {
-			case FlxCustomState.instance:
-				state = FlxCustomState.instance;
-			case FlxCustomSubState.instance:
-				state = FlxCustomSubState.instance;
-				interp.variables.set('close', state.close);
+		var state:FlxState;
+		if (FlxG.state == PlayState.instance) {
+			state == PlayState.instance;
+		} else if (FlxG.state == FlxCustomState.instance) {
+			state = FlxCustomState.instance;
+		} else if (FlxG.state == FlxCustomSubState.instance) {
+			state = FlxCustomSubState.instance;
 		}
 
 		interp.variables.set('game', state);
