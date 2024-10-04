@@ -6,7 +6,7 @@ class PlayState extends FlxState {
 	public var camHUD:FlxCamera;
 	public static var instance:PlayState;
 
-	public function new() {
+	public function create() {
 		instance = this;
 		
 		for (file in FileSystem.readDirectory(scriptPaths)) {
@@ -15,10 +15,6 @@ class PlayState extends FlxState {
 			}
 		}
 
-		super();
-	}
-
-	override function create() {
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(camHUD, false);

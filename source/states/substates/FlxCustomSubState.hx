@@ -2,21 +2,22 @@ package states.substates;
 
 class FlxCustomSubState extends FlxSubState {
 	var hscript:HScript;
+	private var substatePath:String;
 	public static var instance:FlxCustomSubState;
 	
 	public function new(subStateName:String) {
 		instance = this;
-		
-		if (FileSystem.exists(Paths.getPath('subStates/$subStateName.hx')) && subStateName != null) {
-			hscript = new HScript(Paths.getPath('subStates/$subStateName.hx'));
+		substatePath = subStateName;
+		super();
+	}
+
+	override function create() {
+		if (FileSystem.exists(Paths.getPath('subStates/$substatePath.hx')) && substatePath != null) {
+			hscript = new HScript(Paths.getPath('subStates/$substatePath.hx'));
 		} else {
 			close();
 		}
-		
-		super();
-	}
-	
-	override function create() {
+
 		hscript.call('onCreate', []);
 		
 		super.create();
