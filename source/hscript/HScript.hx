@@ -74,12 +74,12 @@ class HScript {
 		interp.variables.set('SUtil', SUtil);
 
 		// state variable
-		var state:Any = FlxG.state;
+		var state = FlxG.state;
 		switch (state) {
 			case FlxCustomState.instance:
-			    state = FlxCustomState.instance;
+				state = FlxCustomState.instance;
 			case FlxCustomSubState.instance:
-			    state = FlxCustomSubState.instance;
+				state = FlxCustomSubState.instance;
 				interp.variables.set('close', state.close);
 		}
 
