@@ -4,13 +4,13 @@ class PlayState extends FlxState {
 	public var scriptPaths:String = Paths.getPath('scripts/');
 	public var hxArray:Array<HScript> = [];
 	public var camHUD:FlxCamera;
-    public static var instance:PlayState;
+	public static var instance:PlayState;
 
 	public function new() {
 		instance = this;
-        
-        for (file in FileSystem.readDirectory(scriptPaths)) {
-		    if (file.endsWith('.hx')) {
+		
+		for (file in FileSystem.readDirectory(scriptPaths)) {
+			if (file.endsWith('.hx')) {
 				hxArray.push(new HScript(scriptPaths + file));
 			}
 		}
@@ -23,7 +23,7 @@ class PlayState extends FlxState {
 		camHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(camHUD, false);
 
-        callOnHx('onCreate', []);
+		callOnHx('onCreate', []);
 
 		super.create();
 		
@@ -40,14 +40,14 @@ class PlayState extends FlxState {
 	
 	override function destroy() {
 		for (hscript in hxArray) {
-	        if (hscript != null) {
-                hscript.call('onDestroy', []);
-                hscript.close();
-                hscript = null;
+			if (hscript != null) {
+				hscript.call('onDestroy', []);
+				hscript.stop();
+				hscript = null;
 			}
 		}
 
-        super.destroy();
+		super.destroy();
 	}
 
 	public function callOnHx(name:String, args:Array<Dynamic>):Dynamic {
