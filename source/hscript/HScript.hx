@@ -58,7 +58,7 @@ class HScript {
 		interp.variables.set('Std', Std);
 		interp.variables.set('this', this);
 
-        // flixel class
+		// flixel class
 		interp.variables.set('FlxG', FlxG);
 		interp.variables.set('FlxSprite', FlxSprite);
 		interp.variables.set('FlxCamera', FlxCamera);
@@ -73,11 +73,9 @@ class HScript {
 		interp.variables.set('Paths', Paths);
 		interp.variables.set('SUtil', SUtil);
 
-        // state variable
-        var state:FlxState = FlxG.state;
+		// state variable
+		var state:Any = FlxG.state;
 		switch (state) {
-			case PlayState.instance:
-			    state = PlayState.instance;
 			case FlxCustomState.instance:
 			    state = FlxCustomState.instance;
 			case FlxCustomSubState.instance:
@@ -85,12 +83,12 @@ class HScript {
 				interp.variables.set('close', state.close);
 		}
 
-        interp.variables.set('game', state);
+		interp.variables.set('game', state);
 		interp.variables.set('add', state.add);
 		interp.variables.set('remove', state.remove);
 		interp.variables.set('insert', state.insert);
 		interp.variables.set('members', state.members);
-        
+		
 		//targeting device variable
 		interp.variables.set('deviceTarget',
 			#if android 'android'
