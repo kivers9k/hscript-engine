@@ -30,7 +30,6 @@ class HScript {
 				var lib:String = splitStr.split(' ')[1].replace(';', '');
 				var libName:String = lib.split('.').pop();
 				
-				//enum support yay!
 				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
 					interp.variables.set(libName, (Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib));
 				} else {
@@ -124,10 +123,10 @@ class HScript {
 		return null;
 	}
 
-	public function close():Void {
+	public function stop():Void {
 		if (interp != null && interp.variables != null) {
-		    interp.variables.clear();
+			interp.variables.clear();
 			interp = null;
-	    }
+		}
 	}
 }
