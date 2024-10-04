@@ -35,7 +35,7 @@ class FlxCustomSubState extends FlxSubState {
 	override function destroy() {
 		if (hscript != null) {
 			hscript.call('onDestroy', []);
-			hscript.close();
+			hscript.stop();
 			hscript = null;
 		}
 		
