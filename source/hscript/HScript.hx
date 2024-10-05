@@ -44,8 +44,6 @@ class HScript {
 		} catch(e:Dynamic) {
 			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
 		}
-
-		call('new', []);
 	}
 
 	public function presetVars() {

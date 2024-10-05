@@ -18,28 +18,19 @@ class FlxCustomSubState extends FlxSubState {
 			close();
 		}
 
-		hscript.call('onCreate', []);
-		
-		super.create();
-		
-		hscript.call('onCreatePost', []);
+		hscript.call('create', []);
 	}
 	
 	override function update(elapsed:Float) {
-		hscript.call('onUpdate', [elapsed]);
-		
-		super.update(elapsed);
-		
-		hscript.call('onUpdatePost', [elapsed]);
+		hscript.call('update', [elapsed]);
 	}
 	
 	override function destroy() {
 		if (hscript != null) {
-			hscript.call('onDestroy', []);
+			hscript.call('destroy', []);
 			hscript.stop();
 			hscript = null;
 		}
-		
 		super.destroy();
 	}
 }

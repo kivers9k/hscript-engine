@@ -19,30 +19,21 @@ class PlayState extends FlxState {
 		camHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(camHUD, false);
 
-		callOnHx('onCreate', []);
-
-		super.create();
-		
-		callOnHx('onCreatePost', []);
+		callOnHx('create', []);
 	}
 
 	override function update(elapsed:Float) {
-		callOnHx('onUpdate', [elapsed]);
-
-		super.update(elapsed);
-
-		callOnHx('onUpdatePost', [elapsed]);
+		callOnHx('update', [elapsed]);
 	}
 	
 	override function destroy() {
 		for (hscript in hxArray) {
 			if (hscript != null) {
-				hscript.call('onDestroy', []);
+				hscript.call('destroy', []);
 				hscript.stop();
 				hscript = null;
 			}
 		}
-
 		super.destroy();
 	}
 
