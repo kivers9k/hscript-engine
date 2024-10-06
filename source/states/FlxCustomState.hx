@@ -15,10 +15,14 @@ class FlxCustomState extends FlxState {
 		if (FileSystem.exists(Paths.getPath('states/$statePath.hx')) && statePath != null)
 			hscript = new HScript(Paths.getPath('states/$statePath.hx'));
  
+        super.create();
+
 		hscript.call('create', []);
 	}
 
 	override function update(elapsed:Float) {
+		super.update(elapsed);
+
 		hscript.call('update', [elapsed]);
 	}
 
@@ -29,5 +33,9 @@ class FlxCustomState extends FlxState {
 			hscript = null;
 		}
 		super.destroy();
+	}
+
+	override function resetState():Void {
+		FlxG.switchState(new FlxCustomState(Paths.getPath('states/$statePath.hx')));
 	}
 }

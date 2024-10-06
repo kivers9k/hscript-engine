@@ -19,10 +19,14 @@ class PlayState extends FlxState {
 		camHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(camHUD, false);
 
+        super.create();
+		
 		callOnHx('create', []);
 	}
 
 	override function update(elapsed:Float) {
+		super.update(elapsed);
+
 		callOnHx('update', [elapsed]);
 	}
 	

@@ -12,16 +12,20 @@ class FlxCustomSubState extends FlxSubState {
 	}
 
 	override function create() {
-		if (FileSystem.exists(Paths.getPath('subStates/$substatePath.hx')) && substatePath != null) {
-			hscript = new HScript(Paths.getPath('subStates/$substatePath.hx'));
+		if (FileSystem.exists(Paths.getPath('substates/$substatePath.hx')) && substatePath != null) {
+			hscript = new HScript(Paths.getPath('substates/$substatePath.hx'));
 		} else {
 			close();
 		}
+
+        super.create();
 
 		hscript.call('create', []);
 	}
 	
 	override function update(elapsed:Float) {
+		super.update(elapsed);
+
 		hscript.call('update', [elapsed]);
 	}
 	
