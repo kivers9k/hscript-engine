@@ -36,6 +36,6 @@ class FlxCustomState extends FlxState {
 	}
 
 	public function resetState():Void {
-		FlxG.switchState(new FlxCustomState(Paths.getPath('states/$statePath.hx')));
+		FlxG.switchState(new FlxCustomState(statePath));
 	}
 }
