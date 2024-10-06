@@ -35,7 +35,7 @@ class FlxCustomState extends FlxState {
 		super.destroy();
 	}
 
-	override function resetState():Void {
+	public function resetState():Void {
 		FlxG.switchState(new FlxCustomState(Paths.getPath('states/$statePath.hx')));
 	}
 }
