@@ -56,20 +56,7 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
-		if (!FileSystem.exists(SUtil.getPath('game.json'))) {
-		    game = {
-				width: 270,
-				height: 1080,
-                zoom: -1.0,
-				framerate: 60,
-				state: 'your state',
-				skipSplash: true,
-				fullscreen: false
-			}
-			var gameData:String = haxe.Json.stringify(game, '\t');
-			File.saveContent(SUtil.getPath('game.json'), gameData.trim());
-	    }
-
+		gameData();
 		game = haxe.Json.parse(File.getContent(SUtil.getPath('game.json')));
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
@@ -86,7 +73,7 @@ class Main extends Sprite {
 		addChild(new FlxGame(
 			game.width,
 			game.height,
-			new FlxCustomState(game.state),
+			new FlxCustomState(game.initialState),
 			game.zoom,
 			game.framerate,
 			game.framerate,
@@ -99,5 +86,21 @@ class Main extends Sprite {
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
+	}
+
+	function gameData():Void {
+		if (!FileSystem.exists(SUtil.getPath('game.json'))) {
+			var games:GameJson = {
+			    width: 270,
+				height: 1080,
+				zoom: -1.0,
+				framerate: 60,
+				initialState: 'game',
+				skipSplash: true,
+			    fullscreen: false
+			}
+			var gameData:String = haxe.Json.stringify(games, '\t');
+			File.saveContent(SUtil.getPath('game.json'), gameData.trim());
+		}
 	}
 }

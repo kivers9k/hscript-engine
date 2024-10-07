@@ -1,4 +1,4 @@
-package states.substates;
+package state.substate;
 
 class FlxCustomSubState extends FlxSubState {
 	var hscript:HScript;

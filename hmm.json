@@ -45,11 +45,18 @@
             "version":null
         },
         {
-            "name":"extension-androidtools",
-            "type":"git",
+            "name": "extension-androidtools",
+            "type": "git",
             "dir": null,
-            "ref": "df9dfd0cda74e5460ae3afcfff1081c50959ed4a",
+            "ref": "main",
             "url": "https://github.com/MAJigsaw77/extension-androidtools"
+        },
+        {
+            "name": "linc_luajit",
+            "type": "git",
+            "dir": null,
+            "ref": "master",
+            "url": "https://github.com/AndreiRudenko/linc_luajit.git"
         }
     ]
 }

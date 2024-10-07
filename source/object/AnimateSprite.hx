@@ -1,4 +1,4 @@
-package objects;
+package object;
 
 import flixel.animation.FlxAnimation;
 

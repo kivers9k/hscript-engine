@@ -10,15 +10,27 @@ import android.Permissions;
 import android.Settings;
 #end
 
-import backends.AndroidExtension as SUtil;
-import backends.AssetPaths as Paths;
-import hscript.HScript;
-import objects.AnimateSprite;
-import objects.SpriteGroup;
-import objects.Tile;
-import states.substates.FlxCustomSubState;
-import states.FlxCustomState;
-import states.PlayState;
+//hscript
+import hscript.Parser;
+import hscript.Interp;
+import hscript.Expr;
+
+//lua
+import llua.Lua_helper;
+import llua.Lua;
+import llua.LuaL;
+import llua.State;
+import llua.Convert;
+
+import backend.AndroidExtension as SUtil;
+import backend.AssetPaths as Paths;
+import object.AnimateSprite;
+import object.SpriteGroup;
+import object.Tile;
+import script.HScript;
+import state.substate.FlxCustomSubState;
+import state.FlxCustomState;
+import state.PlayState;
 import ui.FlxJoystick;
 import ui.FlxVirtualPad;
 import ui.InputText;
@@ -58,5 +70,8 @@ import flixel.addons.ui.FlxUINumericStepper;
 import flixel.addons.ui.FlxUITabMenu;
 import flixel.addons.ui.FlxUIText;
 import flixel.addons.ui.FlxUI;
+
+//shader
+import flixel.addons.display.FlxRuntimeShader;
 
 using StringTools;

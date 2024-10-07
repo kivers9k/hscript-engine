@@ -1,4 +1,4 @@
-package states;
+package state;
 
 class PlayState extends FlxState {
 	public var scriptPaths:String = Paths.getPath('scripts/');

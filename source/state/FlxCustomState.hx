@@ -1,4 +1,4 @@
-package states;
+package state;
 
 class FlxCustomState extends FlxState {
 	var hscript:HScript;
