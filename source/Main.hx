@@ -56,7 +56,7 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
-		gameData();
+		createGameData();
 		game = haxe.Json.parse(File.getContent(SUtil.getPath('game.json')));
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
@@ -89,7 +89,7 @@ class Main extends Sprite {
 		#end
 	}
 
-	function gameData():Void {
+	function createGameData():Void {
 		if (!FileSystem.exists(SUtil.getPath('game.json'))) {
 			var games:GameJson = {
 			    width: 270,
