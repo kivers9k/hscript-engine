@@ -10,9 +10,9 @@ import haxe.io.Path;
 import flash.system.System;
 
 class AndroidExtension {
-	public static function getPath():String {
+	public static function getPath(path:String = ''):String {
 		#if android
-			return '/storage/emulated/0/.' + Application.current.meta.get('file') + '/';
+			return '/storage/emulated/0/.' + Application.current.meta.get('file') + '/$path';
 		#else
 			return '';
 		#end
@@ -40,13 +40,13 @@ class AndroidExtension {
 		if (!FileSystem.exists(getPath())) {
 			FileSystem.createDirectory(getPath());
 		} else {
-			if (!FileSystem.exists(getPath() + 'assets')) {
+			if (!FileSystem.exists(getPath('assets'))) {
 				alert('Assets not found!', 'Please copy assets from apk and paste it on\n' + getPath());
 			}
 			var folder:Array<String> = ['crash', 'saves'];
 			for (fold in folder) {
-				if (!FileSystem.exists(getPath() + fold)) {
-					FileSystem.createDirectory(getPath() + fold);
+				if (!FileSystem.exists(getPath(fold))) {
+					FileSystem.createDirectory(getPath(fold));
 				}
 			}
 		}
@@ -78,7 +78,7 @@ class AndroidExtension {
 
 		errMsg += e.error;
 
-		File.saveContent(getPath() + path, errMsg + "\n");
+		File.saveContent(getPath(path), errMsg + "\n");
 
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));

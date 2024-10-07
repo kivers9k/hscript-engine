@@ -8,7 +8,7 @@ import flash.media.Sound;
 
 class AssetPaths {
 	public static function getPath(key:String):String {
-		return SUtil.getPath() + 'assets/$key';
+		return SUtil.getPath('assets/$key');
 	}
 	
 	inline static public function image(key:String):FlxGraphic {
@@ -41,7 +41,7 @@ class AssetPaths {
         return null;
     }
     
-	public static function getTextFromFile(key:String):String {
+	public static function getContent(key:String):String {
 		var path:String = getPath(key);
 		
 		if (FileSystem.exists(path)) {

@@ -9,16 +9,18 @@ import openfl.events.Event;
 import openfl.Lib;
 import openfl.display.StageScaleMode;
 
+typedef GameJson = {
+    width:Int,
+	height:Int,
+	zoom:Float,
+	framerate:Int,
+	state:String,
+	skipSplash:Bool,
+	fullscreen:Bool
+}
+
 class Main extends Sprite {
-	var game = {
-		width: 1280, // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
-		height: 720, // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
-		initialState: PlayState, // The FlxState the game starts with.
-		zoom: -1.0, // If -1, zoom is automatically calculated to fit the window dimensions.
-		framerate: 60, // How many frames per second the game should run at.
-		skipSplash: true, // Whether to skip the flixel splash screen that appears in release mode.
-		startFullscreen: true // Whether to start the game in fullscreen on desktop targets
-	}
+	var game:GameJson;
 	
 	// You can pretty much ignore everything from here on - your code should go in your states.
 	public static function main():Void {
@@ -54,6 +56,22 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
+		if (!FileSystem.exists(SUtil.getPath('game.json'))) {
+		    game = {
+				width: 270,
+				height: 1080,
+                zoom: -1.0,
+				framerate; 60,
+				state: 'your state',
+				skipSplash: true,
+				fullscreen: false
+			}
+			var gameData:String = haxe.Json.stringify(game, '\t');
+			File.saveContent(SUtil.getPath('game.json'), gameData.trim());
+	    }
+
+		game = new haxe.Json.parse(File.getContent(SUtil.getPath('game.json')));
+
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
@@ -68,7 +86,7 @@ class Main extends Sprite {
 		addChild(new FlxGame(
 			game.width,
 			game.height,
-			game.initialState,
+			new FlxCustomState(game.state),
 			game.zoom,
 			game.framerate,
 			game.framerate,

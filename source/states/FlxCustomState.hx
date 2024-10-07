@@ -12,8 +12,11 @@ class FlxCustomState extends FlxState {
 	}
 
 	override function create() {
-		if (FileSystem.exists(Paths.getPath('states/$statePath.hx')) && statePath != null)
+		if (FileSystem.exists(Paths.getPath('states/$statePath.hx')) && statePath != null) {
 			hscript = new HScript(Paths.getPath('states/$statePath.hx'));
+		} else {
+			SUtil.alert('Error!', "couldn't load state '$statePath'");
+		}
  
         super.create();
 
