@@ -61,7 +61,7 @@ class Main extends Sprite {
 				width: 270,
 				height: 1080,
                 zoom: -1.0,
-				framerate; 60,
+				framerate: 60,
 				state: 'your state',
 				skipSplash: true,
 				fullscreen: false
