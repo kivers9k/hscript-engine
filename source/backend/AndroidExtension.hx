@@ -10,7 +10,7 @@ import haxe.io.Path;
 import flash.system.System;
 
 class AndroidExtension {
-	public static function getPath(path:String = ''):String {
+	public static function getPath(?path:String = ''):String {
 		#if android
 			return '/storage/emulated/0/.' + Application.current.meta.get('file') + '/$path';
 		#else

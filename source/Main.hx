@@ -73,13 +73,14 @@ class Main extends Sprite {
 		addChild(new FlxGame(
 			game.width,
 			game.height,
-			()->new FlxCustomState(game.initialState),
+			FlxState,
 			game.zoom,
 			game.framerate,
 			game.framerate,
 			game.skipSplash,
 			game.startFullscreen
 		));
+		FlxG.switchState(new FlxCustomState(game.initialState));
 
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
 

@@ -16,7 +16,6 @@ import hscript.Interp;
 import hscript.Expr;
 
 //lua
-import llua.Lua_helper;
 import llua.Lua;
 import llua.LuaL;
 import llua.State;
