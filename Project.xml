@@ -50,9 +50,10 @@
 	<haxelib name="flixel-ui" />
 
 	<haxelib name="hscript" />
-	<define name="hscriptPos" /> 
-
+	<haxelib name="linc_luajit" />
 	<haxelib name="extension-androidtools" if="android"/>
+    
+	<define name="hscriptPos" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
