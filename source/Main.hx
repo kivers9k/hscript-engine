@@ -14,7 +14,7 @@ typedef GameJson = {
 	height:Int,
 	zoom:Float,
 	framerate:Int,
-	state:String,
+	initialState:String,
 	skipSplash:Bool,
 	fullscreen:Bool
 }
