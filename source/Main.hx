@@ -73,7 +73,7 @@ class Main extends Sprite {
 		addChild(new FlxGame(
 			game.width,
 			game.height,
-			new FlxCustomState(game.initialState),
+			()->new FlxCustomState(game.initialState),
 			game.zoom,
 			game.framerate,
 			game.framerate,

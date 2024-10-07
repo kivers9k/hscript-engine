@@ -71,7 +71,4 @@ import flixel.addons.ui.FlxUITabMenu;
 import flixel.addons.ui.FlxUIText;
 import flixel.addons.ui.FlxUI;
 
-//shader
-import flixel.addons.display.FlxRuntimeShader;
-
 using StringTools;
