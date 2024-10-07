@@ -70,7 +70,7 @@ class Main extends Sprite {
 			File.saveContent(SUtil.getPath('game.json'), gameData.trim());
 	    }
 
-		game = new haxe.Json.parse(File.getContent(SUtil.getPath('game.json')));
+		game = haxe.Json.parse(File.getContent(SUtil.getPath('game.json')));
 
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
