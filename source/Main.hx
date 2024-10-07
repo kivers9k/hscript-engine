@@ -78,7 +78,7 @@ class Main extends Sprite {
 			game.framerate,
 			game.framerate,
 			game.skipSplash,
-			game.startFullscreen
+			game.fullscreen
 		));
 		FlxG.switchState(new FlxCustomState(game.initialState));
 
