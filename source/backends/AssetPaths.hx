@@ -60,9 +60,9 @@ class AssetPaths {
 		if (FileSystem.exists(getPath('images/$key.png')) && FileSystem.exists(fileData)) {
             switch (type) {
 				case 'sparrow':
-				    return FlxAtlasFrames.fromSparrow(image(key), getTextFromFile('images/$key.xml'));
+				    return FlxAtlasFrames.fromSparrow(image(key), getContent('images/$key.xml'));
  				case 'packer':
-				    return FlxAtlasFrames.fromSpriteSheetPacker(image(key), getTextFromFile('images/$key.txt'));
+				    return FlxAtlasFrames.fromSpriteSheetPacker(image(key), getContent('images/$key.txt'));
 			}		
 		}
 		return null;
