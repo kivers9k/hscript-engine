@@ -1,9 +1,5 @@
 package script;
 
-import hscript.Parser;
-import hscript.Interp;
-import hscript.Expr;
-
 class HScript {
 	public static var parser:Parser = new Parser();
 	public var interp:Interp = new Interp();
@@ -86,6 +82,11 @@ class HScript {
 		interp.variables.set('insert', state.insert);
 		interp.variables.set('members', state.members);
 		
+		interp.variables.set('addScript', function(fileName:String) {
+			if (FileSystem.exists(Paths.getPath('scripts/$fileName.hx')))
+			    state.hxArray.push(new HScript(Paths.getPath('scripts/$fileName.hx')));
+		});
+
 		//targeting device variable
 		interp.variables.set('deviceTarget',
 			#if android 'android'
@@ -104,15 +105,15 @@ class HScript {
 		return interp.execute(parser.parseString(code));
 	}
 
-	public function call(funcName:String, param:Array<Dynamic>):Dynamic {
-		if (interp.variables.exists(funcName)) {
-			var func = interp.variables.get(funcName);
+	public function call(name:String, args:Array<Dynamic>):Dynamic {
+		if (interp.variables.exists(name)) {
+			var func = interp.variables.get(name);
 			if (Reflect.isFunction(func)) {
 				var returnFunc = null;
 				try {
-					returnFunc = Reflect.callMethod(this, func, param);
+					returnFunc = Reflect.callMethod(this, func, args);
 				} catch(e:Dynamic) {
-					SUtil.alert('Error on "$funcName"', 'in $scriptName\n$e');
+					SUtil.alert('Error on $name', 'in $scriptName\n$e');
 					trace(e);
 				}
 				return returnFunc;

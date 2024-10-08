@@ -1,7 +1,7 @@
 package state.substate;
 
 class FlxCustomSubState extends FlxSubState {
-	var hscript:HScript;
+	public var hxArray:Array<HScript> = [];
 	private var substatePath:String;
 	public static var instance:FlxCustomSubState;
 	
@@ -12,29 +12,40 @@ class FlxCustomSubState extends FlxSubState {
 	}
 
 	override function create() {
-		if (FileSystem.exists(Paths.getPath('substates/$substatePath.hx')) && substatePath != null) {
-			hscript = new HScript(Paths.getPath('substates/$substatePath.hx'));
+		if (FileSystem.exists(Paths.getPath('substates/$substatePath.hx'))) {
+			hxArray.push(new HScript(Paths.getPath('substates/$substatePath.hx')));
 		} else {
+			SUtil.alert('Error on loading substate', "couldn't load substate $substatePath");
 			close();
 		}
 
         super.create();
 
-		hscript.call('create', []);
+		callOnHx('create', []);
 	}
 	
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		hscript.call('update', [elapsed]);
+		callOnHx('update', [elapsed]);
 	}
 	
 	override function destroy() {
-		if (hscript != null) {
-			hscript.call('destroy', []);
-			hscript.stop();
-			hscript = null;
+		for (hx in hxArray) {
+		    if (hx != null) {
+			    hx.call('destroy', []);
+			    hx.stop();
+			    hx = null;
+		    }
 		}
 		super.destroy();
+	}
+
+	public function callOnHx(name:String, args:Array<Dynamic>):Dynamic {
+        var result:Dynamic = null;
+		for (hx in hxArray) {
+			result = hx.call(name, args);
+		}
+		return result;
 	}
 }

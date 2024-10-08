@@ -1,7 +1,7 @@
 package state;
 
 class FlxCustomState extends FlxState {
-	var hscript:HScript;
+	public var hxArray:Array<HScript> = [];
 	private var statePath:String;
 	public static var instance:FlxCustomState;
 
@@ -12,30 +12,40 @@ class FlxCustomState extends FlxState {
 	}
 
 	override function create() {
-		if (FileSystem.exists(Paths.getPath('states/$statePath.hx')) && statePath != null) {
-			hscript = new HScript(Paths.getPath('states/$statePath.hx'));
+		if (FileSystem.exists(Paths.getPath('states/$statePath.hx'))) {
+			hxArray.push(new HScript(Paths.getPath('states/$statePath.hx')));
 		} else {
-			SUtil.alert('Error!', "couldn't load state '$statePath'");
+			SUtil.alert('Error on loading state', "couldn't load state $statePath");
 		}
  
         super.create();
 
-		hscript.call('create', []);
+		callOnHx('create', []);
 	}
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		hscript.call('update', [elapsed]);
+		callOnHx('update', [elapsed]);
 	}
 
 	override function destroy() {
-		if (hscript != null) {
-			hscript.call('destroy', []);
-			hscript.stop();
-			hscript = null;
+		for (hx in hxArray) {
+		    if (hx != null) {
+		    	hx.call('destroy', []);
+			    hx.stop();
+			    hx = null;
+		    }
 		}
 		super.destroy();
+	}
+
+    public callOnHx(name:String, args:Array<Dynamic>):Dynamic {
+        var result:Dynamic = null;
+		for (hx in hxArray) {
+			result = hx.call(name, args);
+		}
+		return result;
 	}
 
 	public function resetState():Void {

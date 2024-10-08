@@ -92,8 +92,8 @@ class Main extends Sprite {
 	function createGameData():Void {
 		if (!FileSystem.exists(SUtil.getPath('game.json'))) {
 			var games:GameJson = {
-			    width: 270,
-				height: 1080,
+			    width: 1080,
+				height: 270,
 				zoom: -1.0,
 				framerate: 60,
 				initialState: 'game',
