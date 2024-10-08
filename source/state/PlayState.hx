@@ -1,23 +1,14 @@
 package state;
 
-class PlayState extends FlxState {
+class PlayState extends State {
 	public var scriptPaths:String = Paths.getPath('scripts/');
-	public var hxArray:Array<HScript> = [];
-	public var camHUD:FlxCamera;
-	public static var instance:PlayState;
-
+	
 	override function create() {
-		instance = this;
-		
 		for (file in FileSystem.readDirectory(scriptPaths)) {
 			if (file.endsWith('.hx')) {
 				hxArray.push(new HScript(scriptPaths + file));
 			}
 		}
-
-		camHUD = new FlxCamera();
-		camHUD.bgColor.alpha = 0;
-		FlxG.cameras.add(camHUD, false);
 
         super.create();
 		

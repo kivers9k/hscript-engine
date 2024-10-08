@@ -1,12 +1,9 @@
 package state.substate;
 
-class FlxCustomSubState extends FlxSubState {
-	public var hxArray:Array<HScript> = [];
+class FlxCustomSubState extends SubState {
 	private var substatePath:String;
-	public static var instance:FlxCustomSubState;
 	
 	public function new(subStateName:String) {
-		instance = this;
 		substatePath = subStateName;
 		super();
 	}

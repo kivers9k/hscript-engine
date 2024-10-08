@@ -1,12 +1,9 @@
 package state;
 
-class FlxCustomState extends FlxState {
-	public var hxArray:Array<HScript> = [];
+class FlxCustomState extends State {
 	private var statePath:String;
-	public static var instance:FlxCustomState;
 
 	public function new(stateName:String) {
-		instance = this;
 		statePath = stateName;
         super();
 	}
