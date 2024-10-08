@@ -40,7 +40,7 @@ class FlxCustomState extends FlxState {
 		super.destroy();
 	}
 
-    public callOnHx(name:String, args:Array<Dynamic>):Dynamic {
+    public function callOnHx(name:String, args:Array<Dynamic>):Dynamic {
         var result:Dynamic = null;
 		for (hx in hxArray) {
 			result = hx.call(name, args);
