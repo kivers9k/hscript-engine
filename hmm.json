@@ -22,7 +22,7 @@
         {
             "name": "flixel",
             "type": "haxelib",
-            "version": "4.11.0"
+            "version": "5.8.0"
         },
         {
             "name": "flixel-addons",
