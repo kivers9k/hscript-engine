@@ -10,13 +10,13 @@ import openfl.Lib;
 import openfl.display.StageScaleMode;
 
 typedef GameJson = {
-    width:Int,
-	height:Int,
-	zoom:Float,
-	framerate:Int,
+    gameWidth:Int,
+	gameHeight:Int,
 	initialState:String,
+	updateFramerate:Int,
+	drawFramerate:Int,
 	skipSplash:Bool,
-	fullscreen:Bool
+	startFullscreen:Bool
 }
 
 class Main extends Sprite {
@@ -59,26 +59,27 @@ class Main extends Sprite {
 		createGameData();
 		game = haxe.Json.parse(File.getContent(SUtil.getPath('game.json')));
 
+        /*
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
 		if (game.zoom == -1) {
-			var ratioX:Float = stageWidth / game.width;
-			var ratioY:Float = stageHeight / game.height;
+			var ratioX:Float = stageWidth / game.gameWidth;
+			var ratioY:Float = stageHeight / game.gameHeight;
 			game.zoom = Math.min(ratioX, ratioY);
-			game.width = Math.ceil(stageWidth / game.zoom);
-			game.height = Math.ceil(stageHeight / game.zoom);
+			game.gameWidth = Math.ceil(stageWidth / game.zoom);
+			game.gameHeight = Math.ceil(stageHeight / game.zoom);
 		}
+		*/
 
 		addChild(new FlxGame(
-			game.width,
-			game.height,
+			game.gameWidth,
+			game.gameHeight,
 			FlxState,
-			game.zoom,
-			game.framerate,
-			game.framerate,
+			game.updateFramerate,
+			game.drawFramerate,
 			game.skipSplash,
-			game.fullscreen
+			game.startFullscreen
 		));
 		FlxG.switchState(new FlxCustomState(game.initialState));
 
@@ -92,13 +93,13 @@ class Main extends Sprite {
 	function createGameData():Void {
 		if (!FileSystem.exists(SUtil.getPath('game.json'))) {
 			var games:GameJson = {
-			    width: 1080,
-				height: 270,
-				zoom: -1.0,
-				framerate: 60,
+			    gameWidth: 1080,
+				gameHeight: 270,
 				initialState: 'game',
+				updateFramerate: 60,
+				drawFramerate: 60,
 				skipSplash: true,
-			    fullscreen: false
+			    startFullscreen: false
 			}
 			var gameData:String = haxe.Json.stringify(games, '\t');
 			File.saveContent(SUtil.getPath('game.json'), gameData.trim());

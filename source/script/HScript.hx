@@ -67,8 +67,10 @@ class HScript {
 		interp.variables.set('SUtil', SUtil);
 
 		// state variable
-		var state = PlayState.instance;
-		if (FlxG.state == FlxCustomState.instance) {
+		var state:Any = FlxG.state;
+		if (FlxG.state == PlayState.instance) {
+			state = PlayState.instance;
+		} else if (FlxG.state == FlxCustomState.instance) {
 			state = FlxCustomState.instance;
 		} else if (FlxG.state == FlxCustomSubState.instance) {
 			state = FlxCustomSubState.instance;
