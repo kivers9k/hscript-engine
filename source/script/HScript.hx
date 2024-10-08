@@ -67,8 +67,8 @@ class HScript {
 		interp.variables.set('SUtil', SUtil);
 
 		// state variable
-		var state:State = State.instance;
-		
+		var state:GameState = GameState.instance;
+
 		interp.variables.set('game', state);
 		interp.variables.set('add', state.add);
 		interp.variables.set('remove', state.remove);
