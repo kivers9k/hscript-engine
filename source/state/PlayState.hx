@@ -1,8 +1,8 @@
 package state;
 
-class PlayState extends State {
+class PlayState extends GameState {
 	public var scriptPaths:String = Paths.getPath('scripts/');
-	
+
 	override function create() {
 		for (file in FileSystem.readDirectory(scriptPaths)) {
 			if (file.endsWith('.hx')) {

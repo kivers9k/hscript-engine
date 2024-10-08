@@ -1,6 +1,6 @@
 package state;
 
-class FlxCustomState extends State {
+class FlxCustomState extends GameState {
 	private var statePath:String;
 
 	public function new(stateName:String) {

@@ -1,7 +1,7 @@
 package state.substate;
 
 //another substate example
-class SubState extends FlxSubState {
+class GameSubState extends FlxSubState {
     public var hxArray:Array<HScript> = [];
     public static var instance:SubState;
 

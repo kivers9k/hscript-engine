@@ -1,6 +1,6 @@
 package state.substate;
 
-class FlxCustomSubState extends SubState {
+class FlxCustomSubState extends GameSubState {
 	private var substatePath:String;
 	
 	public function new(subStateName:String) {
