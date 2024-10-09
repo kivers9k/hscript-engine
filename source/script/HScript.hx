@@ -75,6 +75,7 @@ class HScript {
 		interp.variables.set('remove', state.remove);
 		interp.variables.set('insert', state.insert);
 		interp.variables.set('members', state.members);
+		interp.variables.set('close', GameSubState.instance.close);
 		
 		interp.variables.set('addScript', function(fileName:String) {
 			if (FileSystem.exists(Paths.getPath('scripts/$fileName.hx')))
