@@ -68,25 +68,30 @@ class HScript {
 		interp.variables.set('SUtil', SUtil);
 
 		// state variable
-		var state:GameState = GameState.instance;
+		var state = GameState.instance;
+		if (FlxG.state.subState == GameSubState.instance) {
+		    state = GameSubState.instance;
+		}
 
 		interp.variables.set('game', state);
 		interp.variables.set('add', state.add);
 		interp.variables.set('remove', state.remove);
 		interp.variables.set('insert', state.insert);
 		interp.variables.set('members', state.members);
-		interp.variables.set('close', GameSubState.instance.close);
 		
 		interp.variables.set('addScript', function(fileName:String) {
 			if (FileSystem.exists(Paths.getPath('scripts/$fileName.hx')))
 			    state.hxArray.push(new HScript(Paths.getPath('scripts/$fileName.hx')));
 		});
 
-		//shader
+        // subState variables
+			interp.variables.set('close', GameSubState.instance.close);
+
+		// shader
 		interp.variables.set('FlxRuntimeShader', FlxRuntimeShader);
 		interp.variables.set('ShaderFilter', openfl.filters.ShaderFilter);
 
-		//targeting device variable
+		// targeting device variable
 		interp.variables.set('deviceTarget',
 			#if android 'android'
 			#elseif ios 'ios'
