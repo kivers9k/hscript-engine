@@ -54,7 +54,7 @@ class AssetPaths {
 		var path:String = getPath('shaders/$key');
 
 		if (FileSystem.exists(path) && (path.endsWith('.frag') || path.endsWith('.vert'))) {
-			return getContent(path);
+			return getContent('shaders/$key');
 		}
 		return null;
 	}
