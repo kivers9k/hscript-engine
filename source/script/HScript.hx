@@ -58,6 +58,7 @@ class HScript {
 		interp.variables.set('FlxTween', FlxTween);
 		interp.variables.set('FlxEase', FlxEase);
 		interp.variables.set('FlxTimer', FlxTimer);
+		interp.variables.set('FlxText', FlxText);
 
 		// source class
 		interp.variables.set('PlayState', PlayState);
@@ -79,6 +80,10 @@ class HScript {
 			if (FileSystem.exists(Paths.getPath('scripts/$fileName.hx')))
 			    state.hxArray.push(new HScript(Paths.getPath('scripts/$fileName.hx')));
 		});
+
+		//shader
+		interp.variables.set('FlxRuntimeShader', FlxRuntimeShader);
+		interp.variables.set('ShaderFilter', openfl.filters.ShaderFilter);
 
 		//targeting device variable
 		interp.variables.set('deviceTarget',
