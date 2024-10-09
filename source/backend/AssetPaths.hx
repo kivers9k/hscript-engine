@@ -50,6 +50,15 @@ class AssetPaths {
 		return null;
     }
 
+	public static var shader(key:String):String {
+		var path:String = getPath('shaders/$key');
+
+		if (FileSystem.exists(path) && (path.endsWith('.frag') || path.endsWith('.vert'))) {
+			return getContent(path);
+		}
+		return null;
+	}
+
 	public static function getFrame(key:String, ?type:String = 'sparrow'):FlxAtlasFrames {
 		var fileData:String = null;
 		switch (type) {

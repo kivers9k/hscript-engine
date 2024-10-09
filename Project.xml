@@ -41,7 +41,10 @@
     <assets path="assets/fonts" />
 	<assets path="assets/images" />
 	<assets path="assets/scripts" />
+	<assets path="assets/shaders" />
 	<assets path="assets/sounds" />
+	<assets path="assets/states" />
+	<assets path="assets/substates" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 

@@ -9,19 +9,7 @@ import openfl.events.Event;
 import openfl.Lib;
 import openfl.display.StageScaleMode;
 
-typedef GameJson = {
-    gameWidth:Int,
-	gameHeight:Int,
-	initialState:String,
-	updateFramerate:Int,
-	drawFramerate:Int,
-	skipSplash:Bool,
-	startFullscreen:Bool
-}
-
 class Main extends Sprite {
-	var game:GameJson;
-	
 	// You can pretty much ignore everything from here on - your code should go in your states.
 	public static function main():Void {
 		Lib.current.addChild(new Main());
@@ -56,9 +44,6 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
-		createGameData();
-		game = haxe.Json.parse(File.getContent(SUtil.getPath('game.json')));
-
         /*
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
@@ -72,37 +57,11 @@ class Main extends Sprite {
 		}
 		*/
 
-		addChild(new FlxGame(
-			game.gameWidth,
-			game.gameHeight,
-			FlxState,
-			game.updateFramerate,
-			game.drawFramerate,
-			game.skipSplash,
-			game.startFullscreen
-		));
-		FlxG.switchState(new FlxCustomState(game.initialState));
-
-		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
+		addChild(new FlxGame(1280, 720, FlxState, 60, 60, true, false));
+		FlxG.switchState(new FlxCustomState(File.getContent(SUtil.getPath('initialState.txt'))));
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
-	}
-
-	function createGameData():Void {
-		if (!FileSystem.exists(SUtil.getPath('game.json'))) {
-			var games:GameJson = {
-			    gameWidth: 1080,
-				gameHeight: 270,
-				initialState: 'game',
-				updateFramerate: 60,
-				drawFramerate: 60,
-				skipSplash: true,
-			    startFullscreen: false
-			}
-			var gameData:String = haxe.Json.stringify(games, '\t');
-			File.saveContent(SUtil.getPath('game.json'), gameData.trim());
-		}
 	}
 }
