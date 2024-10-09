@@ -85,7 +85,7 @@ class HScript {
 		});
 
         // subState variables
-			interp.variables.set('close', GameSubState.instance.close);
+		interp.variables.set('close', GameSubState.instance.close);
 
 		// shader
 		interp.variables.set('FlxRuntimeShader', FlxRuntimeShader);
