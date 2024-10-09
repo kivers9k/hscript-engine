@@ -63,7 +63,7 @@ class HScript {
 		// source class
 		interp.variables.set('PlayState', PlayState);
 		interp.variables.set('FlxCustomState', FlxCustomState);
-		interp.variables.set('FlxCustomSubState', FlxCustomState);
+		interp.variables.set('FlxCustomSubState', FlxCustomSubState);
 		interp.variables.set('Paths', Paths);
 		interp.variables.set('SUtil', SUtil);
 
