@@ -3,13 +3,8 @@ package script;
 class HScript {
 	public static var parser:Parser = new Parser();
 	public var interp:Interp = new Interp();
-	
-	public var variables(get, never):Map<String, Dynamic>;
-	public function get_variables():Dynamic {
-		return interp.variables;
-	}
 
-	private var linePos:Array<String> = [];
+	private var importLine:Array<String> = [];
 	public var scriptName:String;
 
 	public function new(hxPath:String) {
@@ -17,26 +12,26 @@ class HScript {
 		scriptName = hxPath.split('/').pop().replace('.hx', '');
 		
 		var contents:String = File.getContent(hxPath);
-		var lines:String = '';
+		var lines:Array<String> = [];
 		
 		for (splitStr in contents.split('\n')) {
 			if (!splitStr.startsWith('import')) {
-				lines += splitStr + '\n';
+				lines.push(splitStr);
 			} else {
 				var lib:String = splitStr.split(' ')[1].replace(';', '');
 				var libName:String = lib.split('.').pop();
 				
 				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
-					interp.variables.set(libName, (Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib));
+					setVariable(libName, (Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib));
 				} else {
 					SUtil.alert(((Type.resolveEnum(lib) != null) ? 'Enum' : 'Class') + ' not Found', lib);
 				}
-				linePos.push(splitStr);
+				importLine.push(splitStr);
 			}
 		}
 		
 		try {
-			execute(lines);
+			execute(lines.join('\n'));
 		} catch(e:Dynamic) {
 			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
 		}
@@ -44,28 +39,28 @@ class HScript {
 
 	public function presetVars() {
 		// default set
-		interp.variables.set('StringTools', StringTools);
-		interp.variables.set('Reflect', Reflect);
-		interp.variables.set('Math', Math);
-		interp.variables.set('Type', Type);
-		interp.variables.set('Std', Std);
-		interp.variables.set('this', this);
+		setVariable('StringTools', StringTools);
+		setVariable('Reflect', Reflect);
+		setVariable('Math', Math);
+		setVariable('Type', Type);
+		setVariable('Std', Std);
+		setVariable('this', this);
 
 		// flixel class
-		interp.variables.set('FlxG', FlxG);
-		interp.variables.set('FlxSprite', FlxSprite);
-		interp.variables.set('FlxCamera', FlxCamera);
-		interp.variables.set('FlxTween', FlxTween);
-		interp.variables.set('FlxEase', FlxEase);
-		interp.variables.set('FlxTimer', FlxTimer);
-		interp.variables.set('FlxText', FlxText);
+		setVariable('FlxG', FlxG);
+		setVariable('FlxSprite', FlxSprite);
+		setVariable('FlxCamera', FlxCamera);
+		setVariable('FlxTween', FlxTween);
+		setVariable('FlxEase', FlxEase);
+		setVariable('FlxTimer', FlxTimer);
+		setVariable('FlxText', FlxText);
 
 		// source class
-		interp.variables.set('PlayState', PlayState);
-		interp.variables.set('FlxCustomState', FlxCustomState);
-		interp.variables.set('FlxCustomSubState', FlxCustomSubState);
-		interp.variables.set('Paths', Paths);
-		interp.variables.set('SUtil', SUtil);
+		setVariable('PlayState', PlayState);
+		setVariable('FlxCustomState', FlxCustomState);
+		setVariable('FlxCustomSubState', FlxCustomSubState);
+		setVariable('Paths', Paths);
+		setVariable('SUtil', SUtil);
 
 		// state variable
 		var state = GameState.instance;
@@ -73,26 +68,26 @@ class HScript {
 		    var state = GameSubState.instance;
 		}
 
-		interp.variables.set('game', state);
-		interp.variables.set('add', state.add);
-		interp.variables.set('remove', state.remove);
-		interp.variables.set('insert', state.insert);
-		interp.variables.set('members', state.members);
+		setVariable('game', state);
+		setVariable('add', state.add);
+		setVariable('remove', state.remove);
+		setVariable('insert', state.insert);
+		setVariable('members', state.members);
 		
-		interp.variables.set('addScript', function(fileName:String) {
+		setVariable('addScript', function(fileName:String) {
 			if (FileSystem.exists(Paths.getPath('scripts/$fileName.hx')))
 			    state.hxArray.push(new HScript(Paths.getPath('scripts/$fileName.hx')));
 		});
 
         // subState variables
-		interp.variables.set('close', GameSubState.instance.close);
+		setVariable('close', GameSubState.instance.close);
 
 		// shader
-		interp.variables.set('FlxRuntimeShader', FlxRuntimeShader);
-		interp.variables.set('ShaderFilter', openfl.filters.ShaderFilter);
+		setVariable('FlxRuntimeShader', FlxRuntimeShader);
+		setVariable('ShaderFilter', openfl.filters.ShaderFilter);
 
 		// targeting device variable
-		interp.variables.set('deviceTarget',
+		setVariable('deviceTarget',
 			#if android 'android'
 			#elseif ios 'ios'
 			#elseif mobile 'mobile'
@@ -103,7 +98,7 @@ class HScript {
 	}
 
 	public function execute(code:String):Dynamic {
-		parser.line = 1 + linePos.length;
+		parser.line = 1 + importLine.length;
 		parser.allowTypes = true;
 		parser.allowJSON = true;
 		return interp.execute(parser.parseString(code));
@@ -111,7 +106,7 @@ class HScript {
 
 	public function call(name:String, args:Array<Dynamic>):Dynamic {
 		if (interp.variables.exists(name)) {
-			var func = interp.variables.get(name);
+			var func = getVariable(name);
 			if (Reflect.isFunction(func)) {
 				var returnFunc = null;
 				try {
@@ -131,5 +126,24 @@ class HScript {
 			interp.variables.clear();
 			interp = null;
 		}
+	}
+
+	public function setVariable(name:String, args:Dynamic) {
+		interp.variables.set(name, args);
+	}
+
+	public function getVariable(name:String):Dynamic {
+	    if (interp.variables.exists(name)) {
+			return interp.variables.get(name);
+		}
+		return null;
+	}
+
+	public function removeVariable(name:String) {
+		interp.variables.remove(name);
+	}
+
+	public function variableExists(name:String):Bool {
+		return interp.variables.exists(name);
 	}
 }
