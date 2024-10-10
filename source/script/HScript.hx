@@ -105,7 +105,7 @@ class HScript {
 	}
 
 	public function call(name:String, args:Array<Dynamic>):Dynamic {
-		if (interp.variables.exists(name)) {
+		if (existsVariable(name)) {
 			var func = getVariable(name);
 			if (Reflect.isFunction(func)) {
 				var returnFunc = null;
@@ -143,7 +143,7 @@ class HScript {
 		interp.variables.remove(name);
 	}
 
-	public function variableExists(name:String):Bool {
+	public function existsVariable(name:String):Bool {
 		return interp.variables.exists(name);
 	}
 }
