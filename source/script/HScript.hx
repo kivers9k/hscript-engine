@@ -20,12 +20,20 @@ class HScript {
 			} else {
 				var lib:String = splitStr.split(' ')[1].replace(';', '');
 				var libName:String = lib.split('.').pop();
-				
+				/*
 				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
 					setVariable(libName, (Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib));
 				} else {
 					SUtil.alert(((Type.resolveEnum(lib) != null) ? 'Enum' : 'Class') + ' not Found', lib);
+				}*/
+
+                var class = Type.resolveClass('${libName}_HSC');
+		        if (class != null) {
+                    setVariable(libName, class);
+				} else {
+					SUtil.alert('Error!', "class/enum doesn't exist\n$libName");
 				}
+
 				importLine.push(splitStr);
 			}
 		}
