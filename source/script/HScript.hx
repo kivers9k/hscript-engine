@@ -56,7 +56,8 @@ class HScript {
 		setVariable('FlxText', FlxText);
 
 		// source class
-		setVariable('PlayState', PlayState);
+		setVariable('GameState', GameState);
+		setVariable('GameSubState', GameSubState);
 		setVariable('FlxCustomState', FlxCustomState);
 		setVariable('FlxCustomSubState', FlxCustomSubState);
 		setVariable('Paths', Paths);

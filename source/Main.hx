@@ -44,6 +44,7 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
+		/*
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
@@ -54,6 +55,7 @@ class Main extends Sprite {
 			game.gameWidth = Math.ceil(stageWidth / game.zoom);
 			game.gameHeight = Math.ceil(stageHeight / game.zoom);
 		}
+		*/
 
 		addChild(new FlxGame(1280, 720, state.InitialState, 60, 60, true, false));
 
