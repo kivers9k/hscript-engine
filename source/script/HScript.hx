@@ -27,11 +27,11 @@ class HScript {
 					SUtil.alert(((Type.resolveEnum(lib) != null) ? 'Enum' : 'Class') + ' not Found', lib);
 				}*/
 
-                var class = Type.resolveClass('${lib}_HSC');
+                var class = Type.resolveClass('${libName}_HSC');
 		        if (class != null) {
                     setVariable(libName, class);
 				} else {
-					SUtil.alert('Error!', "class/enum doesn't exists\n$libName");
+					SUtil.alert('Error!', "class/enum doesn't exist\n$libName");
 				}
 
 				importLine.push(splitStr);
