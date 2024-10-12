@@ -31,7 +31,6 @@ import state.substate.FlxCustomSubState;
 import state.substate.GameSubState;
 import state.FlxCustomState;
 import state.GameState;
-import state.PlayState;
 import ui.FlxJoystick;
 import ui.FlxVirtualPad;
 import ui.InputText;
