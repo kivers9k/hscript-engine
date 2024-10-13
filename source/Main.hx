@@ -17,15 +17,16 @@ class Main extends Sprite {
 
 	public function new() {
 		#if android
-		SUtil.createDirs();
-		SUtil.permissionCheck();  
+		SUtil.permissionCheck();
 		#end
 		
 		super();
 
 		#if android
+		SUtil.createDirs();
 		SUtil.gameCrashCheck();
 		#end
+
 		if (stage != null) {
 			init();
 		} else {
