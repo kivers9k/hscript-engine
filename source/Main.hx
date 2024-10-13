@@ -44,19 +44,6 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
-		/*
-		var stageWidth:Int = Lib.current.stage.stageWidth;
-		var stageHeight:Int = Lib.current.stage.stageHeight;
-
-		if (game.zoom == -1) {
-			var ratioX:Float = stageWidth / game.gameWidth;
-			var ratioY:Float = stageHeight / game.gameHeight;
-			game.zoom = Math.min(ratioX, ratioY);
-			game.gameWidth = Math.ceil(stageWidth / game.zoom);
-			game.gameHeight = Math.ceil(stageHeight / game.zoom);
-		}
-		*/
-
 		addChild(new FlxGame(1280, 720, state.InitialState, 1, 60, 60, true, false));
 
 		#if android
