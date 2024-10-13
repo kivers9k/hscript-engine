@@ -17,27 +17,27 @@
         {
             "name": "openfl",
             "type": "haxelib",
-            "version": "9.2.2"
+            "version": "9.1.0"
         },
         {
             "name": "flixel",
             "type": "haxelib",
-            "version": "5.2.2"
+            "version": "4.11.0"
         },
         {
             "name": "flixel-addons",
             "type": "haxelib",
-            "version": "2.10.0"
+            "version": "2.11.0"
         },
         {
             "name": "flixel-tools",
             "type": "haxelib",
-            "version": "1.5.1"
+            "version": null
         },
         {
             "name": "flixel-ui",
             "type": "haxelib",
-            "version": "2.5.0"
+            "version": null
         },
         {
             "name":"hscript",
