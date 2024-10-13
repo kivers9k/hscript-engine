@@ -71,7 +71,7 @@ class AndroidExtension {
 		alert("Uncaught Error", errMsg);
 	}
 
-	public function createDirs() {
+	public static function createDirs() {
 		if (!FileSystem.exists(getPath())) {
 			FileSystem.createDirectory(getPath());
 		}
