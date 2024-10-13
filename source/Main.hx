@@ -57,7 +57,7 @@ class Main extends Sprite {
 		}
 		*/
 
-		addChild(new FlxGame(1280, 720, state.InitialState, 60, 60, true, false));
+		addChild(new FlxGame(1280, 720, state.InitialState, 1, 60, 60, true, false));
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
