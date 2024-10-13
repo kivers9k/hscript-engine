@@ -36,20 +36,6 @@ class AndroidExtension {
 		(VERSION.SDK_INT < VERSION_CODES.TIRAMISU && !Permissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE'))) {
 			alert('Permission check!', "Make sure you accepted the permission\n If denied you unable to play");
 		}
-
-		if (!FileSystem.exists(getPath())) {
-			FileSystem.createDirectory(getPath());
-		} else {
-			if (!FileSystem.exists(getPath('assets'))) {
-				alert('Assets not found!', 'Please copy assets from apk and paste it on\n' + getPath());
-			}
-			var folder:Array<String> = ['crash', 'saves'];
-			for (fold in folder) {
-				if (!FileSystem.exists(getPath(fold))) {
-					FileSystem.createDirectory(getPath(fold));
-				}
-			}
-		}
 	}
 
 	public static function gameCrashCheck() {
@@ -77,22 +63,27 @@ class AndroidExtension {
 		}
 
 		errMsg += e.error;
-
 		File.saveContent(getPath(path), errMsg + "\n");
 
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 		Sys.println("Making a simple alert ...");
-
-		alert("Uncaught Error", errMsg, 'close', function() {
-			System.exit(0);
-		});
+		alert("Uncaught Error", errMsg);
 	}
 
-	public static function alert(title:String, msg:String, ?buttonName:String = 'ok', ?func:() -> Void) {
-		Tools.showAlertDialog(title, msg,
-			{name: buttonName.toUpperCase(), func: func},
-			null
-		);
+	public function createDirs():Void {
+		if (!FileSystem.exists(getPath())) {
+			FileSystem.createDirectory(getPath());
+		}
+
+		var folders:Array<String> = ['assets', 'crash', 'logs', 'saves'];
+		for (folderName in folders) {
+            if (!FileSystem.exists(getPath(folderName)))
+			    FileSystem.createDirectory(getPath(folderName));
+		}
+	}
+
+	public static function alert(title:String, msg:String) {
+		Lib.application.window.alert(msg, title);
 	}
 }

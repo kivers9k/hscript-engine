@@ -15,12 +15,10 @@ class Main extends Sprite {
 		Lib.current.addChild(new Main());
 	}
 
-	public function new() { 
-		#if mobile
+	public function new() {
 		#if android
-		SUtil.permissionCheck(); 
-		#end
-		Sys.setCwd(SUtil.getPath());
+		SUtil.createDirs();
+		SUtil.permissionCheck();  
 		#end
 		
 		super();
