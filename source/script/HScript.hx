@@ -100,6 +100,7 @@ class HScript {
 
 	public function execute(code:String):Dynamic {
 		parser.line = 1 + importLine.length;
+		parser.allowMetadata = true;
 		parser.allowTypes = true;
 		parser.allowJSON = true;
 		return interp.execute(parser.parseString(code));
