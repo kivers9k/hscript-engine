@@ -15,11 +15,10 @@ import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
 
-//lua
-import llua.Lua;
-import llua.LuaL;
-import llua.State;
-import llua.Convert;
+//rulescript test
+import rulescript.parsers.HxParser;
+import rulescript.parsers.HxParser.HScriptParserPlus;
+import rulescript.RuleScriptInterp;
 
 import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;

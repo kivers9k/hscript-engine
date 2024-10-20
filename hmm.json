@@ -52,11 +52,11 @@
             "url": "https://github.com/MAJigsaw77/extension-androidtools"
         },
         {
-            "name": "linc_luajit",
+            "name": "rulescript",
             "type": "git",
             "dir": null,
             "ref": "master",
-            "url": "https://github.com/Sirox228/linc_luajit.git"
+            "url": "https://github.com/Kriptel/RuleScript"
         }
     ]
 }
