@@ -16,9 +16,8 @@ import hscript.Interp;
 import hscript.Expr;
 
 //rulescript test
-import rulescript.parsers.HxParser;
-import rulescript.parsers.HxParser.HScriptParserPlus;
-import rulescript.RuleScriptInterp;
+import rulescript.HxParser;
+import rulescript.RuleScript;
 
 import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;
