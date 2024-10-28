@@ -3,9 +3,11 @@ package state;
 class FlxCustomState extends GameState {
 	private var statePath:String;
 
-	public function new(stateName:String) {
+	public function new(stateName:String, args:Array<Dynamic>) {
+		super();
+        
 		statePath = stateName;
-        super();
+		callOnHx('new' args);
 	}
 
 	override function create() {

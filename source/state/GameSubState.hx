@@ -1,4 +1,4 @@
-package state.substate;
+package state;
 
 //another substate example
 class GameSubState extends FlxSubState {

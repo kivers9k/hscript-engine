@@ -1,11 +1,13 @@
-package state.substate;
+package state;
 
 class FlxCustomSubState extends GameSubState {
 	private var substatePath:String;
 	
-	public function new(subStateName:String) {
-		substatePath = subStateName;
+	public function new(subStateName:String, args:Array<Dynamic>) {
 		super();
+
+		substatePath = subStateName;
+		callOnHx('new', args);
 	}
 
 	override function create() {
