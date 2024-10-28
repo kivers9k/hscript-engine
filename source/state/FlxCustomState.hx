@@ -2,11 +2,13 @@ package state;
 
 class FlxCustomState extends GameState {
 	private var statePath:String;
+	private var newArgs:Array<Dynamic> = [];
 
 	public function new(stateName:String, args:Array<Dynamic>) {
 		super();
         
 		statePath = stateName;
+		newArgs = args;
 		callOnHx('new', args);
 	}
 
@@ -48,6 +50,6 @@ class FlxCustomState extends GameState {
 	}
 
 	public function resetState():Void {
-		FlxG.switchState(new FlxCustomState(statePath));
+		FlxG.switchState(new FlxCustomState(statePath, newArgs));
 	}
 }
