@@ -9,7 +9,7 @@ class FlxCustomState extends GameState {
         
 		statePath = stateName;
 		newArgs = args;
-		callOnHx('new', args);
+		callOnHx('new', (newArgs == null) ? [] : newArgs);
 	}
 
 	override function create() {
