@@ -11,7 +11,7 @@
         	"name": "lime",
             "type": "git",
             "dir": null,
-            "ref": "develop",
+            "ref": "main",
             "url": "https://github.com/mcagabe19-stuff/lime"
         },
         {
@@ -40,9 +40,9 @@
             "version": null
         },
         {
-            "name":"hscript",
-            "type":"haxelib",
-            "version":null
+            "name": "hscript",
+            "type": "haxelib",
+            "version": null
         },
         {
             "name": "extension-androidtools",
