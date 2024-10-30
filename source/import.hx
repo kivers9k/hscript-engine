@@ -15,6 +15,11 @@ import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
 
+//rulescript
+import rulescript.parsers.*;
+import rulescript.scriptedClass.*;
+import rulescript.*;
+
 import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;
 import object.AnimateSprite;

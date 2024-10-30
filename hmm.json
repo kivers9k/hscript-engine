@@ -45,6 +45,11 @@
             "version": null
         },
         {
+            "name": "rulescript",
+            "type": "haxelib",
+            "version": "0.2.0-rc"
+        },
+        {
             "name": "extension-androidtools",
             "type": "git",
             "dir": null,
