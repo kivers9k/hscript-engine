@@ -46,8 +46,10 @@
         },
         {
             "name": "rulescript",
-            "type": "haxelib",
-            "version": "0.2.0-rc"
+            "type": "git",
+            "dir": null,
+            "ref": "master",
+            "url": "https://github.com/Kriptel/RuleScript"
         },
         {
             "name": "extension-androidtools",
