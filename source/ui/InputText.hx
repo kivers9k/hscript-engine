@@ -17,6 +17,7 @@ class InputText extends FlxUIGroup {
         add(label);
 
         inputText = new FlxInputText(0, 20, widthField, text);
+        inputText.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
         inputText.scrollFactor.set();
         add(inputText);
     }

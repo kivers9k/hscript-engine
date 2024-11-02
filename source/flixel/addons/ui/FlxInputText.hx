@@ -310,10 +310,6 @@ class FlxInputText extends FlxText
 		// Set focus and caretIndex as a response to mouse press
 		if (FlxG.mouse.justPressed)
 		{
-			#if mobile
-			FlxG.stage.window.textInputEnabled = mouseOverlapping();
-	        #end
-
 			var hadFocus:Bool = hasFocus;
 			if (mouseOverlapping())
 			{
