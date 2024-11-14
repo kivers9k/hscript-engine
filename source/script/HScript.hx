@@ -84,8 +84,8 @@ class HScript {
 		setVariable('close', GameSubState.instance.close);
 
         //rulescript
-		setVariable('RuleScript', rulescript.Rulescript);
-		setVariable('HxParser', rulescript.HxParser);
+		setVariable('RuleScript', rulescript.RuleScript);
+		setVariable('HxParser', rulescript.parsers.HxParser);
 		
 		// shader
 		setVariable('FlxRuntimeShader', FlxRuntimeShader);
