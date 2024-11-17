@@ -85,7 +85,7 @@ class HScript {
 
         //rulescript
 		setVariable('RuleScript', rulescript.RuleScript);
-		setVariable('HxParser', rulescript.parsers.HxParser);
+		setVariable('HxParser', rulescript.HxParser);
 		
 		// shader
 		setVariable('FlxRuntimeShader', FlxRuntimeShader);
