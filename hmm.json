@@ -59,6 +59,13 @@
             "url": "https://github.com/EliteMasterEric/jsonpath"
         },
         {
+            "name": "thx.core",
+            "type": "git",
+            "dir": null,
+            "ref": "master",
+            "url": "https://github.com/fponticelli/thx.core"
+        },
+        {
             "name": "extension-androidtools",
             "type": "git",
             "dir": null,
