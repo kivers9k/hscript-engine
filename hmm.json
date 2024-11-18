@@ -52,6 +52,13 @@
             "url": "https://github.com/larsiusprime/polymod"
         },
         {
+            "name": "jsonpath",
+            "type": "git",
+            "dir": null,
+            "ref": "main",
+            "url": "https://github.com/EliteMasterEric/jsonpath"
+        },
+        {
             "name": "extension-androidtools",
             "type": "git",
             "dir": null,
