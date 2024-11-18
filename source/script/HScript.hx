@@ -10,7 +10,8 @@ class HScript {
 	public function new(hxPath:String) {
 		presetVars();
 		scriptName = hxPath.split('/').pop().replace('.hx', '');
-		
+
+		/*
 		var contents:String = File.getContent(hxPath);
 		var lines:Array<String> = [];
 		
@@ -29,9 +30,10 @@ class HScript {
 				importLine.push(splitStr);
 			}
 		}
+		*/
 		
 		try {
-			execute(lines.join('\n'));
+			execute(File.getContent(hxPath));
 		} catch(e:Dynamic) {
 			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
 		}
@@ -99,10 +101,12 @@ class HScript {
 	}
 
 	public function execute(code:String):Dynamic {
-		parser.line = 1 + importLine.length;
 		parser.allowMetadata = true;
 		parser.allowTypes = true;
 		parser.allowJSON = true;
+		parser.parseModuleDecl();
+		parser.parseField();
+
 		return interp.execute(parser.parseString(code));
 	}
 
