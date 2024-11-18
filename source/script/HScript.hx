@@ -31,7 +31,7 @@ class HScript {
 			}
 		}
 		*/
-		
+
 		try {
 			execute(File.getContent(hxPath));
 		} catch(e:Dynamic) {
@@ -101,13 +101,7 @@ class HScript {
 	}
 
 	public function execute(code:String):Dynamic {
-		parser.allowMetadata = true;
-		parser.allowTypes = true;
-		parser.allowJSON = true;
-		parser.parseModuleDecl();
-		parser.parseField();
-
-		return interp.execute(parser.parseString(code));
+		return interp.execute(parser.parseModule(code));
 	}
 
 	public function call(name:String, args:Array<Dynamic>):Dynamic {
