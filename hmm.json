@@ -45,9 +45,11 @@
             "version": null
         },
         {
-            "name": "rulescript",
-            "type": "haxelib",
-            "version": "0.1.1"
+            "name": "polymod",
+            "type": "git",
+            "dir": null,
+            "ref": "master",
+            "url": "https://github.com/larsiusprime/polymod"
         },
         {
             "name": "extension-androidtools",
