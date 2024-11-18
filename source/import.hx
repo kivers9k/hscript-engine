@@ -14,6 +14,7 @@ import android.Settings;
 import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
+import polymod.hscript.*;
 
 import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;
