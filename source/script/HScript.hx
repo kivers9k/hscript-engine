@@ -11,7 +11,6 @@ class HScript {
 		presetVars();
 		scriptName = hxPath.split('/').pop().replace('.hx', '');
 
-		/*
 		var contents:String = File.getContent(hxPath);
 		var lines:Array<String> = [];
 		
@@ -30,13 +29,8 @@ class HScript {
 				importLine.push(splitStr);
 			}
 		}
-		*/
 
-		try {
-			execute(File.getContent(hxPath));
-		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
-		}
+		execute(File.getContent(hxPath));
 	}
 
 	public function presetVars() {
@@ -101,7 +95,11 @@ class HScript {
 	}
 
 	public function execute(code:String):Dynamic {
-		return interp.execute(parser.parseModule(code));
+		try {
+		    return interp.execute(parser.parseString(code));
+		} catch(e:Dynamic) {
+			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
+		}
 	}
 
 	public function call(name:String, args:Array<Dynamic>):Dynamic {
