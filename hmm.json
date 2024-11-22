@@ -45,25 +45,11 @@
             "version": null
         },
         {
-            "name": "polymod",
+            "name": "rulescript",
             "type": "git",
             "dir": null,
-            "ref": "master",
-            "url": "https://github.com/larsiusprime/polymod"
-        },
-        {
-            "name": "jsonpath",
-            "type": "git",
-            "dir": null,
-            "ref": "main",
-            "url": "https://github.com/EliteMasterEric/jsonpath"
-        },
-        {
-            "name": "thx.core",
-            "type": "git",
-            "dir": null,
-            "ref": "master",
-            "url": "https://github.com/fponticelli/thx.core"
+            "ref": "dev",
+            "url": "https://github.com/Kriptel/RuleScript"
         },
         {
             "name": "extension-androidtools",

@@ -15,9 +15,8 @@ import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
 
-import polymod.hscript.HScriptable.HScriptParams;
-import polymod.hscript.HScriptable.ScriptRunner;
-import polymod.hscript.HScriptable.Script;
+import rulescript.RuleScript;
+import rulescript.parsers.HxParser;
 
 import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;
