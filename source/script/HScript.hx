@@ -103,6 +103,7 @@ class HScript {
 		} catch(e:Dynamic) {
 			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
 		}
+		return null;
 	}
 
 	public function call(name:String, args:Array<Dynamic>):Dynamic {
