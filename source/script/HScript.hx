@@ -30,6 +30,9 @@ class HScript {
 			}
 		}
 
+        parser.allowMetadata = true;
+		parser.allowTypes = true;
+		parser.allowJSON = true;
 		execute(File.getContent(hxPath));
 	}
 
