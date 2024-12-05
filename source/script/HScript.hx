@@ -33,7 +33,7 @@ class HScript {
         parser.allowMetadata = true;
 		parser.allowTypes = true;
 		parser.allowJSON = true;
-		execute(File.getContent(hxPath));
+		execute(lines.join('\n'));
 	}
 
 	public function presetVars() {
