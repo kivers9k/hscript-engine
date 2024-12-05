@@ -41,8 +41,10 @@
         },
         {
             "name": "hscript",
-            "type": "haxelib",
-            "version": "2.4.0"
+            "type": "git",
+            "dir": null,
+            "ref": "master",
+            "url": "https://github.com/HaxeFoundation/hscript"
         },
         {
             "name": "rulescript",
