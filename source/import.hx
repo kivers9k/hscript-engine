@@ -17,6 +17,7 @@ import hscript.Expr;
 
 import rulescript.RuleScript;
 import rulescript.parsers.HxParser;
+import rulescript.scriptedClass.RuleScriptedClass;
 
 import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;
@@ -31,6 +32,10 @@ import state.GameSubState;
 import ui.FlxJoystick;
 import ui.FlxVirtualPad;
 import ui.InputText;
+
+//scripted class
+import script.scripted.ScriptedSprite;
+import script.scripted.ScriptedSpriteGroup;
 
 #if sys
 import sys.*;
