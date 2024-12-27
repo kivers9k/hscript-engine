@@ -53,7 +53,7 @@
 	<haxelib name="flixel-ui" />
 
 	<haxelib name="hscript" />
-	<haxelib name="rulescript" />
+	<haxelib name="hscript-plus" />
 	<haxelib name="extension-androidtools" if="android" />
     
 	<define name="hscriptPos" />

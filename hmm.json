@@ -47,11 +47,11 @@
             "url": "https://github.com/HaxeFoundation/hscript"
         },
         {
-            "name": "rulescript",
+            "name": "hscript-plus",
             "type": "git",
             "dir": null,
-            "ref": "dev",
-            "url": "https://github.com/Kriptel/RuleScript"
+            "ref": "master",
+            "url": "https://github.com/DleanJeans/hscript-plus"
         },
         {
             "name": "extension-androidtools",
