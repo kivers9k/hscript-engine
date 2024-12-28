@@ -47,13 +47,6 @@
             "url": "https://github.com/HaxeFoundation/hscript"
         },
         {
-            "name": "hscript-plus",
-            "type": "git",
-            "dir": null,
-            "ref": "master",
-            "url": "https://github.com/DleanJeans/hscript-plus"
-        },
-        {
             "name": "extension-androidtools",
             "type": "git",
             "dir": null,

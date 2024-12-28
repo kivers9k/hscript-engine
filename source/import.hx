@@ -15,9 +15,6 @@ import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
 
-//hscript plus
-import hscript.plus.*;
-
 import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;
 import object.AnimateSprite;
