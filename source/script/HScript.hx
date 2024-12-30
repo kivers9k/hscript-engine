@@ -33,6 +33,8 @@ class HScript {
         parser.allowMetadata = true;
 		parser.allowTypes = true;
 		parser.allowJSON = true;
+		parser.line = importLine.length;
+		
 		execute(lines.join('\n'));
 	}
 
@@ -78,6 +80,15 @@ class HScript {
 			var vars = {};
 
 			var script:HScript = new HScript(Paths.getPath('scripts/$fileName.hx'));
+			var variables = script.interp.variables, locals = script.interp.locals;
+
+			for (k in variables.keys()) {
+				if (Reflect.isFunction(variables.get(k)))
+				    Reflect.setField(vars, k, variables.get(k));
+			}
+			for (k in locals.keys())
+			    Reflect.setField(vars, k, locals.get(k).r);
+
 			return vars;
 		});
 
