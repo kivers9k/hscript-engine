@@ -75,22 +75,6 @@ class HScript {
 		setVariable('remove', state.remove);
 		setVariable('insert', state.insert);
 		setVariable('members', state.members);
-		
-		setVariable('addScript', function(fileName:String) {
-			var vars = {};
-
-			var script:HScript = new HScript(Paths.getPath('scripts/$fileName.hx'));
-			var variables = script.interp.variables, locals = script.interp.locals;
-
-			for (k in variables.keys()) {
-				if (Reflect.isFunction(variables.get(k)))
-				    Reflect.setField(vars, k, variables.get(k));
-			}
-			for (k in locals.keys())
-			    Reflect.setField(vars, k, locals.get(k).r);
-
-			return vars;
-		});
 
         // subState variables
 		setVariable('close', GameSubState.instance.close);
