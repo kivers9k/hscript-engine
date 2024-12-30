@@ -2,8 +2,8 @@ package state;
 
 //another substate example
 class GameSubState extends FlxSubState {
-    public var hxArray:Array<HScript> = [];
     public static var instance:GameSubState;
+    public var hscript:HScript;
 
     public function new() {
         instance = this;

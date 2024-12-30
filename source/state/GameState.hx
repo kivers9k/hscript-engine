@@ -1,9 +1,9 @@
 package state;
 
 // state example
-class GameState extends FlxState {
-    public var hxArray:Array<HScript> = [];
+class GameState extends FlxState { 
     public static var instance:GameState;
+    public var hscript:HScript;
     public var camHUD:FlxCamera;
 
     public function new() {

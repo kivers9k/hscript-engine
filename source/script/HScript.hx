@@ -75,8 +75,10 @@ class HScript {
 		setVariable('members', state.members);
 		
 		setVariable('addScript', function(fileName:String) {
-			if (FileSystem.exists(Paths.getPath('scripts/$fileName.hx')))
-			    state.hxArray.push(new HScript(Paths.getPath('scripts/$fileName.hx')));
+			var vars = {};
+
+			var script:HScript = new HScript(Paths.getPath('scripts/$fileName.hx'));
+			return vars;
 		});
 
         // subState variables
@@ -101,7 +103,7 @@ class HScript {
 		try {
 		    return interp.execute(parser.parseString(code));
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on Hscript', 'in $scriptName\n$e');
+			SUtil.alert('Error on HScript', 'in $scriptName\n$e');
 		}
 		return null;
 	}

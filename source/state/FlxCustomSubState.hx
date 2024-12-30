@@ -10,7 +10,7 @@ class FlxCustomSubState extends GameSubState {
 
 	override function create() {
 		if (FileSystem.exists(Paths.getPath('substates/$substatePath.hx'))) {
-			hxArray.push(new HScript(Paths.getPath('substates/$substatePath.hx')));
+			hscript = new HScript(Paths.getPath('substates/$substatePath.hx'));
 		} else {
 			SUtil.alert('Error on loading substate', "couldn't" + ' load substate $substatePath');
 			close();
@@ -18,31 +18,21 @@ class FlxCustomSubState extends GameSubState {
 
         super.create();
 
-		callOnHx('create', []);
+		hscript.call('create', []);
 	}
 	
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		callOnHx('update', [elapsed]);
+		hscript.call('update', [elapsed]);
 	}
 	
 	override function destroy() {
-		for (hx in hxArray) {
-		    if (hx != null) {
-			    hx.call('destroy', []);
-			    hx.stop();
-			    hx = null;
-		    }
+		if (hscript != null) {
+		    hscript.call('destroy', []);
+			hscript.stop();
+			hscript = null;
 		}
 		super.destroy();
-	}
-
-	public function callOnHx(name:String, args:Array<Dynamic>):Dynamic {
-        var result:Dynamic = null;
-		for (hx in hxArray) {
-			result = hx.call(name, args);
-		}
-		return result;
 	}
 }

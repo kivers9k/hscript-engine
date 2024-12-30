@@ -10,39 +10,29 @@ class FlxCustomState extends GameState {
 
 	override function create() {
 		if (FileSystem.exists(Paths.getPath('states/$statePath.hx'))) {
-			hxArray.push(new HScript(Paths.getPath('states/$statePath.hx')));
+	        hscript = new HScript(Paths.getPath('states/$statePath.hx'));
 		} else {
 			SUtil.alert('Error on loading state', "couldn't" + ' load state $statePath');
 		}
  
         super.create();
 
-		callOnHx('create', []);
+		hscript.call('create', []);
 	}
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		callOnHx('update', [elapsed]);
+		hscript.call('update', [elapsed]);
 	}
 
 	override function destroy() {
-		for (hx in hxArray) {
-		    if (hx != null) {
-		    	hx.call('destroy', []);
-			    hx.stop();
-			    hx = null;
-		    }
+		if (hscript != null) {
+		   	hscript.call('destroy', []);
+		    hscript.stop();
+		    hscript = null;
 		}
 		super.destroy();
-	}
-
-    public function callOnHx(name:String, args:Array<Dynamic>):Dynamic {
-        var result:Dynamic = null;
-		for (hx in hxArray) {
-			result = hx.call(name, args);
-		}
-		return result;
 	}
 
 	public function resetState():Void {
