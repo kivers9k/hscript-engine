@@ -1,9 +1,9 @@
 name: android
 on:
   push:
-    branches: [test]
+    branches: [master]
   pull_request:
-    branches: [test]
+    branches: [master]
   workflow_dispatch:
 jobs:
   android:
