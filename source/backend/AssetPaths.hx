@@ -10,11 +10,15 @@ class AssetPaths {
 	public static function getPath(key:String):String {
 		return SUtil.getPath('assets/$key');
 	}
-	
+
+	public static function exists(key:String):Bool {
+		return FileSystem.exists(getPath(key));
+	}
+
 	inline static public function image(key:String):FlxGraphic {
 		var path:String = getPath('images/$key.png');
 		
-		if (FileSystem.exists(path)) {
+		if (exists('images/$key.png)) {
 			var bitmap:BitmapData = BitmapData.fromFile(path);
 			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, path);
 			
@@ -26,47 +30,48 @@ class AssetPaths {
 	static public function sound(key:String):Sound {
 		var path:String = getPath('sounds/$key.ogg');
 
-		if (FileSystem.exists(path)) {
+		if (exists('sounds/key.ogg')) {
 			return Sound.fromFile(path);
 		}
 		return null;
 	}
     
 	public static function font(key:String):String {
-		var path:String = getPath('fonts/$key');
-
-		if (FileSystem.exists(path) && (path.endsWith('.ttf') || path.endsWith('.otf'))) {
-			return path;
+		if (exists(key) && (key.endsWith('.ttf') || key.endsWith('.otf'))) {
+			return getPath(key);
 		}
         return null;
     }
     
 	public static function getContent(key:String):String {
-		var path:String = getPath(key);
-		
-		if (FileSystem.exists(path)) {
-			return File.getContent(path);
+		if (exists(key)) {
+			return File.getContent(getPath(key));
 		}
 		return null;
     }
 
-	public static function shader(key:String):String {
-		var path:String = getPath('shaders/$key');
+	public static function json(key:String):Dynamic {
+		if (exists('$key.json')) {
+			return haxe.json.parse(getContent('$key.json'));
+		}
+		return null;
+	}
 
-		if (FileSystem.exists(path) && (path.endsWith('.frag') || path.endsWith('.vert'))) {
+	public static function shader(key:String):String {
+ 		if (exists('shaders/$key') && (key.endsWith('.frag') || key.endsWith('.vert'))) {
 			return getContent('shaders/$key');
 		}
 		return null;
 	}
 
 	public static function getFrame(key:String, ?type:String = 'sparrow'):FlxAtlasFrames {
-		var fileData:String = null;
+		var fileFormat:String = null;
 		switch (type) {
-            case 'sparrow': fileData = getPath('images/$key.xml');
-			case 'packer': fileData = getPath('images/$key.txt');
+            case 'sparrow': fileData = 'xml';
+			case 'packer': fileData = 'txt';
 		}
 
-		if (FileSystem.exists(getPath('images/$key.png')) && FileSystem.exists(fileData)) {
+		if (exists('images/$key.png') && exists('images/$key.fileFormat')) {
             switch (type) {
 				case 'sparrow':
 				    return FlxAtlasFrames.fromSparrow(image(key), getContent('images/$key.xml'));
@@ -78,7 +83,7 @@ class AssetPaths {
 	}
 
 	public static function fromFrame(key:String, frame:String, w:Int, h:Int, ?type = 'sparrow'):FlxTileFrames {
-        if (FileSystem.exists(getPath('images/$key.png'))) {
+        if (exists('images/key.png')) {
             return FlxTileFrames.fromFrame(getFrame(key, type).getByName(frame), FlxPoint.get(w, h));
 		}
 		return null;
