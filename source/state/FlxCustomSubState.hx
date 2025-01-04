@@ -9,7 +9,7 @@ class FlxCustomSubState extends GameSubState {
 	}
 
 	override function create() {
-		if (FileSystem.exists(Paths.getPath('substates/$substatePath.hx'))) {
+		if (Paths.exists('substates/$substatePath.hx')) {
 			hscript = new HScript(Paths.getPath('substates/$substatePath.hx'));
 		} else {
 			SUtil.alert('Error on loading substate', "couldn't" + ' load substate $substatePath');
