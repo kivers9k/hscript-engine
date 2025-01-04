@@ -1,57 +1,47 @@
 {
-    "dependencies":[
- 		{
-            "name": "hxcpp",
-            "type": "git",
-            "dir": null,
-            "ref": "8dd30d69399f616f4e85295ce3f828219b78af17",
-            "url": "https://github.com/mcagabe19-stuff/hxcpp"
-        },
-        {
-        	"name": "lime",
-            "type": "git",
-            "dir": null,
-            "ref": "main",
-            "url": "https://github.com/mcagabe19-stuff/lime"
-        },
-        {
-            "name": "openfl",
-            "type": "haxelib",
-            "version": "9.1.0"
-        },
-        {
-            "name": "flixel",
-            "type": "haxelib",
-            "version": "4.11.0"
-        },
-        {
-            "name": "flixel-addons",
-            "type": "haxelib",
-            "version": "2.11.0"
-        },
-        {
-            "name": "flixel-tools",
-            "type": "haxelib",
-            "version": null
-        },
-        {
-            "name": "flixel-ui",
-            "type": "haxelib",
-            "version": null
-        },
-        {
-            "name": "hscript",
-            "type": "git",
-            "dir": null,
-            "ref": "master",
-            "url": "https://github.com/HaxeFoundation/hscript"
-        },
-        {
-            "name": "extension-androidtools",
-            "type": "git",
-            "dir": null,
-            "ref": "main",
-            "url": "https://github.com/MAJigsaw77/extension-androidtools"
-        }
-    ]
+    "dependencies": [{
+        "name": "hxcpp",
+        "type": "git",
+        "dir": null,
+        "ref": "8dd30d69399f616f4e85295ce3f828219b78af17",
+        "url": "https://github.com/mcagabe19-stuff/hxcpp"
+    }, {
+        "name": "lime",
+        "type": "git",
+        "dir": null,
+        "ref": "main",
+        "url": "https://github.com/mcagabe19-stuff/lime"
+    }, {
+        "name": "openfl",
+        "type": "haxelib",
+        "version": "9.1.0"
+    }, {
+        "name": "flixel",
+        "type": "haxelib",
+        "version": "4.11.0"
+    }, {
+        "name": "flixel-addons",
+        "type": "haxelib",
+        "version": "2.11.0"
+    }, {
+        "name": "flixel-tools",
+        "type": "haxelib",
+        "version": null
+    }, {
+        "name": "flixel-ui",
+        "type": "haxelib",
+        "version": null
+    }, {
+        "name": "hscript",
+        "type": "git",
+        "dir": null,
+        "ref": "master",
+        "url": "https://github.com/HaxeFoundation/hscript"
+    }, {
+        "name": "extension-androidtools",
+        "type": "git",
+        "dir": null,
+        "ref": "main",
+        "url": "https://github.com/MAJigsaw77/extension-androidtools"
+    }]
 }
