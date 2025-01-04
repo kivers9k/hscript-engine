@@ -4,7 +4,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
     public var dPad:FlxSpriteGroup;
     public var actions:FlxSpriteGroup;
 
-    public var fromStringMap:Map<String, FlxButton> = #if (haxe >= "4.0.0") new Map<String, FlxButton>() #else new Map() #end;
+    public var fromStringMap:Map<String, FlxButton> = new Map<String, FlxButton>();
 
     public var buttonUp:FlxButton;
     public var buttonDown:FlxButton;
@@ -84,7 +84,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
 
     public function createButton(x:Float, y:Float, w:Int = 132, h:Int = 135, frame:String):FlxButton {
         var button:FlxButton = new FlxButton(x, y);
-        button.frames = Paths.fromFrame('ui/virtual-input', frame, w, h);
+        button.frames = Paths.fromFrame('ui/virtual-input', frame, w, h, 'packer');
         button.resetSizeFromFrame();
         button.scrollFactor.set();
         button.alpha = 0.75;

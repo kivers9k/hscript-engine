@@ -10,34 +10,23 @@ import openfl.Lib;
 import openfl.display.StageScaleMode;
 
 class Main extends Sprite {
-	var game = {
-		width: 1280, // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
-		height: 720, // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
-		initialState: PlayState, // The FlxState the game starts with.
-		zoom: -1.0, // If -1, zoom is automatically calculated to fit the window dimensions.
-		framerate: 60, // How many frames per second the game should run at.
-		skipSplash: true, // Whether to skip the flixel splash screen that appears in release mode.
-		startFullscreen: true // Whether to start the game in fullscreen on desktop targets
-	}
-	
 	// You can pretty much ignore everything from here on - your code should go in your states.
 	public static function main():Void {
 		Lib.current.addChild(new Main());
 	}
 
-	public function new() { 
-		#if mobile
+	public function new() {
 		#if android
-		SUtil.permissionCheck(); 
-		#end
-		Sys.setCwd(SUtil.getPath());
+		SUtil.permissionCheck();
 		#end
 		
 		super();
 
 		#if android
+		SUtil.createDirs();
 		SUtil.gameCrashCheck();
 		#end
+
 		if (stage != null) {
 			init();
 		} else {
@@ -54,29 +43,7 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
-		var stageWidth:Int = Lib.current.stage.stageWidth;
-		var stageHeight:Int = Lib.current.stage.stageHeight;
-
-		if (game.zoom == -1) {
-			var ratioX:Float = stageWidth / game.width;
-			var ratioY:Float = stageHeight / game.height;
-			game.zoom = Math.min(ratioX, ratioY);
-			game.width = Math.ceil(stageWidth / game.zoom);
-			game.height = Math.ceil(stageHeight / game.zoom);
-		}
-
-		addChild(new FlxGame(
-			game.width,
-			game.height,
-			game.initialState,
-			game.zoom,
-			game.framerate,
-			game.framerate,
-			game.skipSplash,
-			game.startFullscreen
-		));
-
-		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
+		addChild(new FlxGame(1280, 720, state.InitialState, 1, 60, 60, true, false));
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];

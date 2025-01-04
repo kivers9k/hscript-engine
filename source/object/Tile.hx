@@ -1,6 +1,4 @@
-package objects;
-
-import haxe.Json;
+package object;
 
 typedef TileJson = {
     playerPosition:{x:Float, y:Float},
@@ -13,7 +11,7 @@ class Tile extends FlxSpriteGroup {
     public function new(x:Float, y:Float, tilePath:String) {
         super(x, y);
 
-        tileData = Json.parse(Paths.getTextFromFile('data/tiles/$tilePath.json'));
+        tileData = haxe.Json.parse(Paths.getContent('data/tiles/$tilePath.json'));
         for (tileArray in tileData.tiles) {
             var tileSpr:FlxSprite = new FlxSprite(tileArray.x, tileArray.y, Paths.image(tileArray.image));
             tileSpr.immovable = true;

@@ -41,7 +41,10 @@
     <assets path="assets/fonts" />
 	<assets path="assets/images" />
 	<assets path="assets/scripts" />
+	<assets path="assets/shaders" />
 	<assets path="assets/sounds" />
+	<assets path="assets/states" />
+	<assets path="assets/substates" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -50,9 +53,9 @@
 	<haxelib name="flixel-ui" />
 
 	<haxelib name="hscript" />
-	<define name="hscriptPos" /> 
-
-	<haxelib name="extension-androidtools" if="android"/>
+	<haxelib name="extension-androidtools" if="android" />
+    
+	<define name="hscriptPos" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
@@ -76,7 +79,7 @@
 	<!--<haxedef name="FLX_NO_GAMEPAD" />-->
 
 	<!--Disable the Flixel core sound tray-->
-	<!--<haxedef name="FLX_NO_SOUND_TRAY" />-->
+	<haxedef name="FLX_NO_SOUND_TRAY" />
 
 	<!--Disable the Flixel sound management code-->
 	<!--<haxedef name="FLX_NO_SOUND_SYSTEM" />-->
@@ -85,7 +88,7 @@
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
 
 	<!--Disable the Flixel core debugger. Automatically gets set whenever you compile in release mode!-->
-	<haxedef name="FLX_NO_DEBUG" unless="debug" />
+	<!--<haxedef name="FLX_NO_DEBUG" unless="debug" />-->
 
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
