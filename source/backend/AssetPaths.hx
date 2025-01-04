@@ -16,11 +16,9 @@ class AssetPaths {
 	}
 
 	inline static public function image(key:String):FlxGraphic {
-		var path:String = getPath('images/$key.png');
-		
-		if (exists('images/$key.png)) {
-			var bitmap:BitmapData = BitmapData.fromFile(path);
-			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, path);
+		if (exists('images/$key.png')) {
+			var bitmap:BitmapData = BitmapData.fromFile(getPath('images/$key.png'));
+			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, getPath('images/$key.png'));
 			
 			return graphic;
 		}
@@ -28,10 +26,8 @@ class AssetPaths {
 	}
 	
 	static public function sound(key:String):Sound {
-		var path:String = getPath('sounds/$key.ogg');
-
-		if (exists('sounds/key.ogg')) {
-			return Sound.fromFile(path);
+		if (exists('sounds/$key.ogg')) {
+			return Sound.fromFile(getPath('sounds/$key.ogg'));
 		}
 		return null;
 	}
@@ -83,7 +79,7 @@ class AssetPaths {
 	}
 
 	public static function fromFrame(key:String, frame:String, w:Int, h:Int, ?type = 'sparrow'):FlxTileFrames {
-        if (exists('images/key.png')) {
+        if (exists('images/$key.png')) {
             return FlxTileFrames.fromFrame(getFrame(key, type).getByName(frame), FlxPoint.get(w, h));
 		}
 		return null;
