@@ -48,7 +48,7 @@ class AssetPaths {
 
 	public static function json(key:String):Dynamic {
 		if (exists('$key.json')) {
-			return haxe.json.parse(getContent('$key.json'));
+			return haxe.Json.parse(getContent('$key.json'));
 		}
 		return null;
 	}
@@ -63,11 +63,11 @@ class AssetPaths {
 	public static function getFrame(key:String, ?type:String = 'sparrow'):FlxAtlasFrames {
 		var fileFormat:String = null;
 		switch (type) {
-            case 'sparrow': fileData = 'xml';
-			case 'packer': fileData = 'txt';
+            case 'sparrow': fileFormat = 'xml';
+			case 'packer': fileFormat = 'txt';
 		}
 
-		if (exists('images/$key.png') && exists('images/$key.fileFormat')) {
+		if (exists('images/$key.png') && exists('images/$key.$fileFormat')) {
             switch (type) {
 				case 'sparrow':
 				    return FlxAtlasFrames.fromSparrow(image(key), getContent('images/$key.xml'));
