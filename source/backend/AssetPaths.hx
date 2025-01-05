@@ -25,7 +25,7 @@ class AssetPaths {
 		return null;
 	}
 	
-	static public function sound(key:String):Sound {
+	public static function sound(key:String):Sound {
 		if (exists('sounds/$key.ogg')) {
 			return Sound.fromFile(getPath('sounds/$key.ogg'));
 		}
