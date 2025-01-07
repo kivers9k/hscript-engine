@@ -65,7 +65,8 @@ import flixel.addons.ui.FlxUITabMenu;
 import flixel.addons.ui.FlxUIText;
 import flixel.addons.ui.FlxUI;
 
-// shader testing (again)
+// random classes
 import flixel.addons.display.FlxRuntimeShader;
+import fluxel.addons.util.PNGEncoder;
 
 using StringTools;
