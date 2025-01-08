@@ -17,8 +17,8 @@ class AssetPaths {
 
 	inline public static function image(key:String):FlxGraphic {
 		if (exists('images/$key.png')) {
-			var bitmap:BitmapData = BitmapData.fromFile(getPath('images/$key.png'));
-			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, getPath('images/$key.png'));
+			var bitmap:BitmapData = BitmapData.fromFile(getPath('$key.png'));
+			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, getPath('$key.png'));
 			
 			return graphic;
 		}
