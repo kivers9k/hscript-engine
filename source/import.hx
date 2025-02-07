@@ -25,7 +25,6 @@ import state.FlxCustomState;
 import state.FlxCustomSubState;
 import state.GameState;
 import state.GameSubState;
-import ui.FlxJoystick;
 import ui.FlxVirtualPad;
 import ui.InputText;
 

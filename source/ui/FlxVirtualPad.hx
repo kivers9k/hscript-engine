@@ -4,24 +4,15 @@ class FlxVirtualPad extends FlxSpriteGroup {
     public var dPad:FlxSpriteGroup;
     public var actions:FlxSpriteGroup;
 
+    public var pressed = {};
+    public var justPressed = {};
+    public var justReleased = {};
+    
     public var fromStringMap:Map<String, FlxButton> = new Map<String, FlxButton>();
 
-    public var buttonUp:FlxButton;
-    public var buttonDown:FlxButton;
-    public var buttonLeft:FlxButton;
-    public var buttonRight:FlxButton;
-    public var buttonA:FlxButton;
-    public var buttonB:FlxButton;
-    public var buttonC:FlxButton;
-    public var buttonX:FlxButton;
-    public var buttonY:FlxButton;
-    
-    public function new(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
+    public function new(?DPad:FlxDPadMode = FULL, ?Action:FlxActionMode = A_B_C) {
         super(); 
         scrollFactor.set();
- 
-        if (DPad == null) DPad = FULL;
-        if (Action == null) Action = A_B_C;
 
         dPad = new FlxSpriteGroup();
         dPad.scrollFactor.set();
@@ -31,34 +22,34 @@ class FlxVirtualPad extends FlxSpriteGroup {
 
         switch (DPad) {
             case UP_DOWN:
-			    add(dPad.add(buttonUp = createButton(0, FlxG.height - 260, 132, 135, 'up')));
-			    add(dPad.add(buttonDown = createButton(0, FlxG.height - 135, 132, 135, 'down')));
+			    add(dPad.add(createButton(0, FlxG.height - 260, 132, 135, 'up')));
+			    add(dPad.add(createButton(0, FlxG.height - 135, 132, 135, 'down')));
             case LEFT_RIGHT:
-			    add(dPad.add(buttonLeft = createButton(0, FlxG.height - 135, 132, 135, 'left')));
-			    add(dPad.add(buttonRight = createButton(126, FlxG.height - 135, 132, 135, 'right')));
+			    add(dPad.add(createButton(0, FlxG.height - 135, 132, 135, 'left')));
+			    add(dPad.add(createButton(126, FlxG.height - 135, 132, 135, 'right')));
             case FULL:
-			    add(dPad.add(buttonUp = createButton(110, FlxG.height - 350, 132, 135, 'up')));
-			    add(dPad.add(buttonLeft = createButton(0, FlxG.height - 245, 132, 135, 'left')));
-			    add(dPad.add(buttonRight = createButton(220, FlxG.height - 245, 132, 135, 'right')));
-			    add(dPad.add(buttonDown = createButton(110, FlxG.height - 135, 132, 135, 'down')));
+			    add(dPad.add(createButton(110, FlxG.height - 350, 132, 135, 'up')));
+			    add(dPad.add(createButton(0, FlxG.height - 245, 132, 135, 'left')));
+			    add(dPad.add(createButton(220, FlxG.height - 245, 132, 135, 'right')));
+			    add(dPad.add(createButton(110, FlxG.height - 135, 132, 135, 'down')));
             case NONE:
         }
 
         switch (Action) {
             case A:
-			    add(actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
+			    add(actions.add(createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
             case A_B:
-			    add(actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
-			    add(actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b')));
+			    add(actions.add(createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
+			    add(actions.add(createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b')));
             case A_B_C:
-			    add(actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
-			    add(actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b')));
-			    add(actions.add(buttonC = createButton(FlxG.width - 384, FlxG.height - 135, 132, 135, 'c')));
+			    add(actions.add(createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
+			    add(actions.add(createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b')));
+			    add(actions.add(createButton(FlxG.width - 384, FlxG.height - 135, 132, 135, 'c')));
             case A_B_X_Y:
-			    add(actions.add(buttonX = createButton(FlxG.width - 132, FlxG.height - 260, 132, 135, 'x')));
-			    add(actions.add(buttonY = createButton(FlxG.width - 258, FlxG.height - 260, 132, 135, 'y')));
-			    add(actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
-			    add(actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b')));
+			    add(actions.add(createButton(FlxG.width - 132, FlxG.height - 260, 132, 135, 'x')));
+			    add(actions.add(createButton(FlxG.width - 258, FlxG.height - 260, 132, 135, 'y')));
+			    add(actions.add(createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a')));
+			    add(actions.add(createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b')));
             case NONE:
         }
     }
@@ -68,18 +59,6 @@ class FlxVirtualPad extends FlxSpriteGroup {
 
         dPad = FlxDestroyUtil.destroy(dPad);
         actions = FlxDestroyUtil.destroy(actions);
-
-        dPad = null;
-        actions = null;
-        buttonUp = null;
-        buttonDown = null;
-        buttonLeft = null;
-        buttonRight = null;
-        buttonA = null;
-        buttonB = null;
-        buttonC = null;
-        buttonX = null;
-        buttonY = null;
     }
 
     public function createButton(x:Float, y:Float, w:Int = 132, h:Int = 135, frame:String):FlxButton {
@@ -91,13 +70,13 @@ class FlxVirtualPad extends FlxSpriteGroup {
         
         if (!fromStringMap.exists(frame)) {
             fromStringMap.set(frame, button);
+
+            var buttonName:String = frame.toUpperCase();
+            Reflect.setField(pressed, buttonName, fromStringMap.get(frame).pressed);
+            Reflect.setField(justPressed, buttonName, fromStringMap.get(frame).justPressed);
+            Reflect.setField(justReleased, buttonName, fromStringMap.get(frame).justReleased);
         }
-
         return button;
-    }
-
-    public function fromString(name:String):FlxButton {
-        return fromStringMap.exists(name) ? fromStringMap.get(name) : null;
     }
 }
 
