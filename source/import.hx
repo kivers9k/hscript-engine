@@ -66,5 +66,6 @@ import flixel.addons.ui.FlxUI;
 
 // random classes
 import flixel.addons.display.FlxRuntimeShader;
+import fluxel.addons.util.PNGEncoder;
 
 using StringTools;
