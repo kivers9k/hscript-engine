@@ -26,7 +26,7 @@
     }, {
         "name": "flixel-tools",
         "type": "haxelib",
-        "version": null
+        "version": "2.6.3"
     }, {
         "name": "flixel-ui",
         "type": "haxelib",
