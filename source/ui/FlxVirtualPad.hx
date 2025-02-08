@@ -10,13 +10,8 @@ class FlxVirtualPad extends FlxSpriteGroup {
     
     public var fromStringMap:Map<String, FlxButton> = new Map<String, FlxButton>();
 
-    public function new(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
+    public function new(?DPad:FlxDPadMode = FULL, ?Action:FlxActionMode = A_B_C) {
         super();
-
-        if (DPad == null)
-            DPad = FULL;
-        if (Action == null)
-            Action = A_B_C;
  
         add(dPad = new FlxSpriteGroup());
         add(actions = new FlxSpriteGroup());
@@ -82,9 +77,9 @@ class FlxVirtualPad extends FlxSpriteGroup {
             fromStringMap.set(frame, button);
 
             var buttonName:String = frame.toUpperCase();
-            Reflect.setField(pressed, buttonName, fromStringMap.get(frame).pressed);
-            Reflect.setField(justPressed, buttonName, fromStringMap.get(frame).justPressed);
-            Reflect.setField(justReleased, buttonName, fromStringMap.get(frame).justReleased);
+            Reflect.setField(pressed, buttonName, button.pressed);
+            Reflect.setField(justPressed, buttonName, button.justPressed);
+            Reflect.setField(justReleased, buttonName, button.justReleased);
         }
         return button;
     }
