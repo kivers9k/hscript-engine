@@ -10,17 +10,16 @@ class FlxVirtualPad extends FlxSpriteGroup {
     
     public var fromStringMap:Map<String, FlxButton> = new Map<String, FlxButton>();
 
-    public function new(?DPad:FlxDPadMode = FULL, ?Action:FlxActionMode = A_B_C) {
+    public function new(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
         super();
 
-        dPad = new FlxSpriteGroup();
-        dPad.scrollFactor.set();
-        add(dPad);
-
-        actions = new FlxSpriteGroup();
-        actions.scrollFactor.set();
-        add(actions);
-
+        if (DPad == null)
+            DPad = FULL;
+        if (Action == null)
+            Action = A_B_C;
+ 
+        add(dPad = new FlxSpriteGroup());
+        add(actions = new FlxSpriteGroup());
         scrollFactor.set();
         
         switch (DPad) {
