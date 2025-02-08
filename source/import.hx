@@ -53,7 +53,8 @@ import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 import flixel.text.FlxText;
 
-// ui stuff
+// addons
+import flixel.addons.display.FlxRuntimeShader;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.ui.FlxInputText;
 import flixel.addons.ui.FlxUIGroup;
@@ -63,8 +64,5 @@ import flixel.addons.ui.FlxUINumericStepper;
 import flixel.addons.ui.FlxUITabMenu;
 import flixel.addons.ui.FlxUIText;
 import flixel.addons.ui.FlxUI;
-
-// random classes
-import flixel.addons.display.FlxRuntimeShader;
 
 using StringTools;

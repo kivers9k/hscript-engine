@@ -61,6 +61,14 @@ class FlxVirtualPad extends FlxSpriteGroup {
 
         dPad = FlxDestroyUtil.destroy(dPad);
         actions = FlxDestroyUtil.destroy(actions);
+        fromStringMap.clear();
+
+        dPad = null;
+        actions = null;
+        pressed = null;
+        justPressed = null;
+        justReleased = null;
+        fromStringMap = null;
     }
 
     public function createButton(x:Float, y:Float, w:Int = 132, h:Int = 135, frame:String):FlxButton {

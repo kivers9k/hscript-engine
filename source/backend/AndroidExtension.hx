@@ -38,7 +38,7 @@ class AndroidExtension {
 		}
 	}
 
-	public static function gameCrashCheck() {
+	public static function errorCheck() {
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 	}
 
@@ -48,7 +48,7 @@ class AndroidExtension {
 		dateNow = StringTools.replace(dateNow, " ", "_");
 		dateNow = StringTools.replace(dateNow, ":", "'");
 
-		var path:String = "crash/" + "crash_" + dateNow + ".txt";
+		var path:String = "error/" + "error_" + dateNow + ".txt";
 		var errMsg:String = "";
 
 		for (stackItem in callStack)
@@ -76,8 +76,7 @@ class AndroidExtension {
 			FileSystem.createDirectory(getPath());
 		}
 
-		var folders:Array<String> = ['assets', 'crash', 'logs', 'saves'];
-		for (folderName in folders) {
+		for (folderName in ['assets', 'error', 'saves']) {
             if (!FileSystem.exists(getPath(folderName)))
 			    FileSystem.createDirectory(getPath(folderName));
 		}

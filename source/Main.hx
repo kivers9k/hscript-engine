@@ -24,7 +24,7 @@ class Main extends Sprite {
 
 		#if android
 		SUtil.createDirs();
-		SUtil.gameCrashCheck();
+		SUtil.errorCheck();
 		#end
 
 		if (stage != null) {
