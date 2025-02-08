@@ -26,11 +26,11 @@
     }, {
         "name": "flixel-tools",
         "type": "haxelib",
-        "version": "2.6.3"
+        "version": null
     }, {
         "name": "flixel-ui",
         "type": "haxelib",
-        "version": null
+        "version": "2.6.3"
     }, {
         "name": "hscript",
         "type": "git",
