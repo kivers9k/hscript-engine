@@ -50,6 +50,17 @@ class FlxVirtualPad extends FlxSpriteGroup {
             case NONE:
         }
     }
+    
+    override function update(elapsed:Float) {
+        super.update(elapsed);
+
+        for (key => button in fromStringMap.keyValueIterator()) {
+            var buttonName:String = key.toUpperCase();
+            Reflect.setField(pressed, buttonName, button.pressed);
+            Reflect.setField(justPressed, buttonName, button.justPressed);
+            Reflect.setField(justReleased, buttonName, button.justReleased);
+        }
+    }
 
     override function destroy():Void {
         super.destroy();
@@ -75,11 +86,6 @@ class FlxVirtualPad extends FlxSpriteGroup {
         
         if (!fromStringMap.exists(frame)) {
             fromStringMap.set(frame, button);
-
-            var buttonName:String = frame.toUpperCase();
-            Reflect.setField(pressed, buttonName, button.pressed);
-            Reflect.setField(justPressed, buttonName, button.justPressed);
-            Reflect.setField(justReleased, buttonName, button.justReleased);
         }
         return button;
     }
