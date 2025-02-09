@@ -56,6 +56,7 @@ import flixel.text.FlxText;
 // addons
 import flixel.addons.display.FlxRuntimeShader;
 import flixel.addons.display.FlxGridOverlay;
+import flixel.addons.display.FlxPieDial;
 import flixel.addons.ui.FlxInputText;
 import flixel.addons.ui.FlxUIGroup;
 import flixel.addons.ui.FlxUICheckBox;
