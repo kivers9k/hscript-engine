@@ -44,6 +44,12 @@ class Main extends Sprite {
 
 	private function setupGame():Void {
 		addChild(new FlxGame(1280, 720, state.InitialState, 1, 60, 60, true, false));
+ 
+		var fps:FPS = new FPS();
+		addChild(fps);
+
+		FlxG.fixedTimestep = false; //prevent lag
+		FlxG.camera.antialiasing = true;
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
