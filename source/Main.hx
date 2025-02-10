@@ -23,7 +23,7 @@ class Main extends Sprite {
 		super();
 
 		#if android
-		SUtil.createDirs();
+		SUtil.createDirectory();
 		SUtil.errorCheck();
 		#end
 
@@ -48,7 +48,7 @@ class Main extends Sprite {
 		var fps:FPS = new FPS();
 		addChild(fps);
 
-		FlxG.fixedTimestep = false; //prevent lag
+		FlxG.fixedTimestep = false; //prevent from lag
 		FlxG.camera.antialiasing = true;
 
 		#if android
