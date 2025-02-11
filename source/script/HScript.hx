@@ -67,7 +67,7 @@ class HScript {
 		// state variable
 		var state = GameState.instance;
 		if (FlxG.state.subState == GameSubState.instance) {
-		    var state = GameSubState.instance;
+		    state = GameSubState.instance;
 		}
 
 		setVariable('game', state);
