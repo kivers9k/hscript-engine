@@ -63,6 +63,7 @@ class HScript {
 		setVariable('FlxCustomSubState', FlxCustomSubState);
 		setVariable('Paths', Paths);
 		setVariable('SUtil', SUtil);
+		setVariable('ColorUtil', ColorUtil);
 
 		// state variable
 		var state = GameState.instance;
