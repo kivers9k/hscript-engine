@@ -1,5 +1,11 @@
 package util;
 
-import flixel.util.FlxColor;
+class ColorUtil {
+    public static inline function getPixel32(sprite:FlxSprite, x:Int, y:Int):Int {
+        return sprite.pixels.getPixel32(x, y);
+    }
 
-class ColorUtil extends FlxColor {}
+    public function setAlphaFloat(sprite:FlxSprite, ?alpha:Float = 1.0):Void {
+        sprite.color.alphaFloat = alpha;
+    }
+}
