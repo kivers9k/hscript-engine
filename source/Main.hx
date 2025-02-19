@@ -9,13 +9,28 @@ import openfl.events.Event;
 import openfl.Lib;
 import openfl.display.StageScaleMode;
 
-class Main extends Sprite {
+class Main extends SpriteSprite { 
+	public static var instance:Main;
+	public var fps:FPS;
+
+	var game = {
+		gameWidth: 1280,
+		gameHeight: 720,
+		initialState: state.InitialState,
+        updateFramerate: 60,
+		drawFramerate: 60,
+		skipSplash: true,
+		startFullscreen: false
+	}
+
 	// You can pretty much ignore everything from here on - your code should go in your states.
 	public static function main():Void {
 		Lib.current.addChild(new Main());
 	}
 
 	public function new() {
+		instance = this;
+
 		#if android
 		SUtil.permissionCheck();
 		#end
@@ -43,7 +58,16 @@ class Main extends Sprite {
 	}
 
 	private function setupGame():Void {
-		addChild(new FlxGame(1280, 720, state.InitialState, 1, 60, 60, true, false));
+		addChild(new FlxGame(
+	        game.gameWidth,
+			game.gameHeight,
+			game.initialState,
+			#if (flixel > 4.11.0) 1, #end
+            game.updateFramerate,
+			game.drawFramerate,
+			game.skipSplash,
+			game.startFullscreen
+		));
  
 		var fps:FPS = new FPS();
 		addChild(fps);
