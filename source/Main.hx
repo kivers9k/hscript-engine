@@ -53,7 +53,7 @@ class Main extends Sprite {
 		if (hasEventListener(Event.ADDED_TO_STAGE)) {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 		} 
-		
+
 		setupGame();
 	}
 
@@ -62,14 +62,14 @@ class Main extends Sprite {
 	        game.gameWidth,
 			game.gameHeight,
 			game.initialState,
-			#if (flixel == "4.11.0") 1.0, #end
+		    1.0,
             game.updateFramerate,
 			game.drawFramerate,
 			game.skipSplash,
 			game.startFullscreen
 		));
         
-		fps:FPS = new FPS();
+		fps = new FPS();
 		addChild(fps);
 
 		FlxG.fixedTimestep = false; //prevent from lag
