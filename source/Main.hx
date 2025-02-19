@@ -9,10 +9,7 @@ import openfl.events.Event;
 import openfl.Lib;
 import openfl.display.StageScaleMode;
 
-class Main extends Sprite { 
-	public static var instance:Main;
-	public var fps:FPS;
-
+class Main extends Sprite {
 	var game = {
 		gameWidth: 1280,
 		gameHeight: 720,
@@ -29,8 +26,6 @@ class Main extends Sprite {
 	}
 
 	public function new() {
-		instance = this;
-
 		#if android
 		SUtil.permissionCheck();
 		#end
@@ -62,7 +57,7 @@ class Main extends Sprite {
 	        game.gameWidth,
 			game.gameHeight,
 			game.initialState,
-		    1.0,
+		    #if (flixel >= "4.11.0) 1.0, #end
             game.updateFramerate,
 			game.drawFramerate,
 			game.skipSplash,
