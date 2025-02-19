@@ -9,7 +9,7 @@ import openfl.events.Event;
 import openfl.Lib;
 import openfl.display.StageScaleMode;
 
-class Main extends SpriteSprite { 
+class Main extends Sprite { 
 	public static var instance:Main;
 	public var fps:FPS;
 
