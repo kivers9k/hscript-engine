@@ -52,8 +52,8 @@ class Main extends Sprite {
 	private function init(?E:Event):Void {
 		if (hasEventListener(Event.ADDED_TO_STAGE)) {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-		}
-
+		} 
+		
 		setupGame();
 	}
 
@@ -68,12 +68,11 @@ class Main extends Sprite {
 			game.skipSplash,
 			game.startFullscreen
 		));
- 
-		var fps:FPS = new FPS();
+        
+		fps:FPS = new FPS();
 		addChild(fps);
 
 		FlxG.fixedTimestep = false; //prevent from lag
-		FlxG.camera.antialiasing = true;
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
