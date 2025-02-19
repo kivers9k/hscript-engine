@@ -62,7 +62,7 @@ class Main extends Sprite {
 	        game.gameWidth,
 			game.gameHeight,
 			game.initialState,
-			#if (flixel > 4.11.0) 1, #end
+			#if (flixel > "4.11.0") 1, #end
             game.updateFramerate,
 			game.drawFramerate,
 			game.skipSplash,
