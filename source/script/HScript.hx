@@ -55,7 +55,6 @@ class HScript {
 		setVariable('FlxEase', FlxEase);
 		setVariable('FlxTimer', FlxTimer);
 		setVariable('FlxText', FlxText);
-		setVariable('FlxColor', flixel.util.FlxColor);
 
 		// source class
 		setVariable('GameState', GameState);
