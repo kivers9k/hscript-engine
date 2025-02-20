@@ -9,6 +9,8 @@ import openfl.events.Event;
 import openfl.Lib;
 import openfl.display.StageScaleMode;
 
+using StringTools;
+
 class Main extends Sprite {
 	var game = {
 		gameWidth: 1280,
