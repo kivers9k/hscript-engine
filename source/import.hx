@@ -27,7 +27,6 @@ import state.GameState;
 import state.GameSubState;
 import ui.FlxVirtualPad;
 import ui.InputText;
-import util.ColorUtil;
 
 #if sys
 import sys.*;
