@@ -3,8 +3,6 @@ package script;
 class HScript {
 	public static var parser:Parser = new Parser();
 	public var interp:Interp = new Interp();
-
-	private var importLine:Array<String> = [];
 	public var scriptName:String;
 
 	public function new(hxPath:String) {
@@ -12,6 +10,7 @@ class HScript {
 		scriptName = hxPath.split('/').pop().replace('.hx', '');
 
 		var contents:String = File.getContent(hxPath);
+		var importLine:Array<String> = [];
 		var lines:Array<String> = [];
 		
 		for (splitStr in contents.split('\n')) {
@@ -20,7 +19,7 @@ class HScript {
 			} else {
 				var space:Array<String> = splitStr.replace(';', '').split(' ');
 				var lib:String = space[1];
-				var libName:String = space[2] == 'as' ? space[3] : lib.split('.').pop();
+				var libName:String = (space[2] == 'as') ? space[3] : lib.split('.').pop();
 				
 				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
 					setVariable(libName, (Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib));
@@ -34,7 +33,7 @@ class HScript {
         parser.allowMetadata = true;
 		parser.allowTypes = true;
 		parser.allowJSON = true;
-		parser.line = importLine.length;
+		parser.line += importLine.length;
 		
 		execute(lines.join('\n'));
 	}
