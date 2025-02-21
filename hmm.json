@@ -3,7 +3,7 @@
         "name": "hxcpp",
         "type": "git",
         "dir": null,
-        "ref": "master",
+        "ref": "8dd30d69399f616f4e85295ce3f828219b78af17",
         "url": "https://github.com/mcagabe19-stuff/hxcpp"
     }, {
         "name": "lime",
@@ -13,10 +13,8 @@
         "url": "https://github.com/mcagabe19-stuff/lime"
     }, {
         "name": "openfl",
-        "type": "haxelib",
-        "dir": null,
-        "ref": "9.1.0",
-        "url": "https://guthub.com/mcagabe19-stuff/openfl"
+        "type": "git",
+        "version": "9.1.0"
     }, {
         "name": "flixel",
         "type": "haxelib",
