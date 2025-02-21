@@ -13,7 +13,7 @@
         "url": "https://github.com/mcagabe19-stuff/lime"
     }, {
         "name": "openfl",
-        "type": "git",
+        "type": "haxelib",
         "version": "9.1.0"
     }, {
         "name": "flixel",
