@@ -35,8 +35,8 @@ class Main extends Sprite {
 		super();
 
 		#if android
-		//SUtil.createDirectory();
-		//SUtil.errorCheck();
+	    SUtil.createDirectory();
+		SUtil.errorCheck();
 		#end
 
 		if (stage != null) {

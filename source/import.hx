@@ -1,23 +1,9 @@
-#if android
-/*
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.os.Environment;
-import android.os.BatteryManager;
-import android.widget.Toast;
-import android.Tools;
-import android.Permissions;
-import android.Settings;
-*/
-#end
-
 //hscript
 import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
 
-//import backend.AndroidExtension as SUtil;
+import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;
 import object.AnimateSprite;
 import object.SpriteGroup;

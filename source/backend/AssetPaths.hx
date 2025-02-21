@@ -8,7 +8,7 @@ import flash.media.Sound;
 
 class AssetPaths {
 	public static function getPath(key:String):String {
-		return '/storage/emulated/0/.${Application.current.meta.get('file')}/assets/$key';
+		return SUtil.getPath('assets/$key');
 	}
 
 	inline public static function exists(key:String):Bool {
