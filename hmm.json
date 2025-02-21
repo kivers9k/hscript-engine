@@ -10,7 +10,7 @@
         "type": "git",
         "dir": null,
         "ref": "main",
-        "url": "https://github.com/MobilePorting/lime.git"
+        "url": "https://github.com/mcagabe19-stuff/lime"
     }, {
         "name": "openfl",
         "type": "haxelib",
