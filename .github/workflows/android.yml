@@ -19,8 +19,11 @@ jobs:
           java-version: '17'
 
       - name: Setup Android NDK
-        uses: android-actions/setup-android@v2
-
+        id: setup-ndk
+        uses: nttld/setup-ndk@main
+        with:
+          ndk-version: r21e
+          
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
