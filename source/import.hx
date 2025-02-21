@@ -1,4 +1,5 @@
 #if android
+/*
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 import android.Tools;
 import android.Permissions;
 import android.Settings;
+*/
 #end
 
 //hscript

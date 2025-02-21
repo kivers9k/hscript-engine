@@ -1,22 +1,16 @@
 {
     "dependencies": [{
         "name": "hxcpp",
-        "type": "git",
-        "dir": null,
-        "ref": "master",
-        "url": "https://github.com/mcagabe19-stuff/hxcpp"
+        "type": "haxelib",
+        "version": "4.3.2"
     }, {
         "name": "lime",
-        "type": "git",
-        "dir": null,
-        "ref": "main",
-        "url": "https://github.com/mcagabe19-stuff/lime"
+        "type": "haxelib",
+        "version": "8.2.2"
     }, {
         "name": "openfl",
-        "type": "git",
-        "dir": null,
-        "ref": "develop",
-        "url": "https://github.com/mcagabe19-stuff/openfl"
+        "type": "haxelib",
+        "version": "9.1.0"
     }, {
         "name": "flixel",
         "type": "haxelib",
@@ -37,11 +31,5 @@
         "name": "hscript",
         "type": "haxelib",
         "version": null
-    }, {
-        "name": "extension-androidtools",
-        "type": "git",
-        "dir": null,
-        "ref": "main",
-        "url": "https://github.com/MAJigsaw77/extension-androidtools"
     }]
 }

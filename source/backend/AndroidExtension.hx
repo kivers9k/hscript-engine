@@ -1,5 +1,5 @@
 package backend;
-
+/*
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
 import openfl.utils.Assets as OpenFlAssets;
@@ -12,7 +12,7 @@ import flash.system.System;
 class AndroidExtension {
 	public static function getPath(?path:String = ''):String {
 		#if android
-			return '/storage/emulated/0/.' + Application.current.meta.get('file') + '/$path';
+			return '/storage/emulated/0/.${Application.current.meta.get('file')}/$path';
 		#else
 			return '';
 		#end
@@ -86,3 +86,4 @@ class AndroidExtension {
 		Lib.application.window.alert(msg, title);
 	}
 }
+*/

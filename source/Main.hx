@@ -29,14 +29,14 @@ class Main extends Sprite {
 
 	public function new() {
 		#if android
-		SUtil.permissionCheck();
+		//SUtil.permissionCheck();
 		#end
 		
 		super();
 
 		#if android
-		SUtil.createDirectory();
-		SUtil.errorCheck();
+		//SUtil.createDirectory();
+		//SUtil.errorCheck();
 		#end
 
 		if (stage != null) {
