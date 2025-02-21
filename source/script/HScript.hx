@@ -17,9 +17,13 @@ class HScript {
 			if (!splitStr.startsWith('import')) {
 				lines.push(splitStr);
 			} else {
+				/*
 				var space:Array<String> = splitStr.replace(';', '').split(' ');
 				var lib:String = space[1];
 				var libName:String = (space[2] == 'as') ? space[3] : lib.split('.').pop();
+				*/
+				var lib:String = splitStr.split(' ')[1].replace(';', '');
+				var libName:String = lib.split('.').pop();
 				
 				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
 					setVariable(libName, (Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib));
