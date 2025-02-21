@@ -1,12 +1,16 @@
 {
     "dependencies": [{
         "name": "hxcpp",
-        "type": "haxelib",
-        "version": "4.2.1"
+        "type": "git",
+        "dir": null,
+        "ref": "master",
+        "url": "https://github.com/mcagabe19-stuff/hxcpp"
     }, {
         "name": "lime",
-        "type": "haxelib",
-        "version": "7.9.0"
+        "type": "git",
+        "dir": null,
+        "ref": "main",
+        "url": "https://github.com/MobilePorting/lime"
     }, {
         "name": "openfl",
         "type": "haxelib",
@@ -31,5 +35,11 @@
         "name": "hscript",
         "type": "haxelib",
         "version": null
+    }, {
+        "name": "extension-androidtools",
+        "type": "git",
+        "dir": null,
+        "ref": "main",
+        "url": "https://github.com/MAJigsaw77/extension-androidtools"
     }]
 }
