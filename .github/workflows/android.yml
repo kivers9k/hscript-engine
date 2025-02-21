@@ -18,6 +18,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Setup Android NDK
+        uses: nttld/setup-ndk@main
+        with:
+          ndk-version: r28
+
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
