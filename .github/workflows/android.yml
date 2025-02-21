@@ -21,7 +21,7 @@ jobs:
       - name: Setup Android NDK
         uses: nttld/setup-ndk@main
         with:
-          ndk-version: 21e
+          ndk-version: r15c
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
