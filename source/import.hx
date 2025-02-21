@@ -1,4 +1,3 @@
-//hscript
 import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
