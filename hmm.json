@@ -13,8 +13,10 @@
         "url": "https://github.com/MobilePorting/lime"
     }, {
         "name": "openfl",
-        "type": "haxelib",
-        "version": "9.1.0"
+        "type": "git",
+        "dir": null,
+        "ref": "develop",
+        "url": "https://github.com/MobilePorting/openfl"
     }, {
         "name": "flixel",
         "type": "haxelib",
