@@ -1,7 +1,7 @@
 {
     "dependencies": [{
         "name": "hxcpp",
-        "type": "haxelin",
+        "type": "haxelib",
         "version":  "4.3.0"
     }, {
         "name": "lime",
