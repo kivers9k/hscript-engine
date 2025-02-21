@@ -10,13 +10,11 @@
         "type": "git",
         "dir": null,
         "ref": "main",
-        "url": "https://github.com/MobilePorting/lime"
+        "url": "https://github.com/mcagabe19-stuff/lime"
     }, {
         "name": "openfl",
         "type": "git",
-        "dir": null,
-        "ref": "develop",
-        "url": "https://github.com/MobilePorting/openfl"
+        "version": "9.3.4"
     }, {
         "name": "flixel",
         "type": "haxelib",
