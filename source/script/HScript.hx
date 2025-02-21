@@ -24,7 +24,7 @@ class HScript {
 				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
 					setVariable(libName, (Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib));
 				} else {
-					SUtil.alert(((Type.resolveEnum(lib) != null) ? 'Enum' : 'Class') + ' not Found', lib);
+					//SUtil.alert(((Type.resolveEnum(lib) != null) ? 'Enum' : 'Class') + ' not Found', lib);
 				}
 				importLine.push(splitStr);
 			}
@@ -62,7 +62,7 @@ class HScript {
 		setVariable('FlxCustomState', FlxCustomState);
 		setVariable('FlxCustomSubState', FlxCustomSubState);
 		setVariable('Paths', Paths);
-		setVariable('SUtil', SUtil);
+		//setVariable('SUtil', SUtil);
 
 		// state variable
 		var state = GameState.instance;
@@ -98,7 +98,7 @@ class HScript {
 		try {
 		    return interp.execute(parser.parseString(code));
 		} catch(e:Dynamic) {
-			SUtil.alert('Error on HScript', 'in $scriptName\n$e');
+			//SUtil.alert('Error on HScript', 'in $scriptName\n$e');
 		}
 		return null;
 	}
@@ -111,7 +111,7 @@ class HScript {
 				try {
 					returnFunc = Reflect.callMethod(this, func, args);
 				} catch(e:Dynamic) {
-					SUtil.alert('Error on $name', 'in $scriptName\n$e');
+					//SUtil.alert('Error on $name', 'in $scriptName\n$e');
 					trace(e);
 				}
 				return returnFunc;

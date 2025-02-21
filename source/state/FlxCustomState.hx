@@ -12,7 +12,7 @@ class FlxCustomState extends GameState {
 		if (Paths.exists('states/$statePath.hx')) {
 	        hscript = new HScript(Paths.getPath('states/$statePath.hx'));
 		} else {
-			SUtil.alert('Error on loading state', "couldn't" + ' load state $statePath');
+			//SUtil.alert('Error on loading state', "couldn't" + ' load state $statePath');
 		}
  
         super.create();
