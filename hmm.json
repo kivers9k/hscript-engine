@@ -2,7 +2,8 @@
     "dependencies": [{
         "name": "hxcpp",
         "type": "git",
-        "url": "https://github.com/HaxeFoundation/hxcpp"
+        "dir": null,
+        "url": "https://github.com/HaxeFoundation/hxcpp > /dev/null"
     }, {
         "name": "lime",
         "type": "haxelib",
@@ -34,6 +35,7 @@
     }, {
         "name": "extension-androidtools",
         "type": "git",
+        "dir": null,
         "ref": "main",
         "url": "https://github.com/MAJigsaw77/extension-androidtools"
     }]
