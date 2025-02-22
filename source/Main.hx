@@ -28,11 +28,9 @@ class Main extends Sprite {
 	}
 
 	public function new() {
-		/*
 		#if android
 	    SUtil.permissionCheck();
 		#end
-		*/
 		
 		super();
 

@@ -1,6 +1,5 @@
 package backend;
 
-/*
 #if android
 import android.content.Context;
 import android.os.Build.VERSION;
@@ -12,7 +11,6 @@ import android.Tools;
 import android.Permissions;
 import android.Settings;
 #end
-*/
 
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
@@ -31,7 +29,7 @@ class AndroidExtension {
 			return '';
 		#end
  	}
-    /*
+    
 	public static function permissionCheck():Void {
 		if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU) {
 		    Permissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO']);
@@ -51,9 +49,7 @@ class AndroidExtension {
 			alert('Permission check!', "Make sure you accepted the permission\n If denied you unable to play");
 		}
 	}
-	*/
     
-
 	public static function errorCheck() {
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 	}
