@@ -1,16 +1,12 @@
 {
     "dependencies": [{
         "name": "hxcpp",
-        "type": "git",
-        "dir": null,
-        "ref": null,
-        "url": "https://github.com/HaxeFoundation/hxcpp"
+        "type": "haxelib",
+        "version": "4.2.1"
     }, {
         "name": "lime",
-        "type": "git",
-        "dir": null,
-        "ref": null,
-        "url": "https://github.com/openfl/lime"
+        "type": "haxelib",
+        "version": "7.9.0"
     }, {
         "name": "openfl",
         "type": "haxelib",
