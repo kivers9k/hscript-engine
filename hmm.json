@@ -3,6 +3,7 @@
         "name": "hxcpp",
         "type": "git",
         "dir": null,
+        "ref": "master",
         "url": "https://github.com/HaxeFoundation/hxcpp > /dev/null"
     }, {
         "name": "lime",
