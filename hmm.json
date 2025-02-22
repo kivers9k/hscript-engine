@@ -1,10 +1,8 @@
 {
     "dependencies": [{
         "name": "hxcpp",
-        "type": "git",
-        "dir": null,
-        "ref": "master > /dev/null",
-        "url": "https://github.com/HaxeFoundation/hxcpp"
+        "type": "install",
+        "version": null
     }, {
         "name": "lime",
         "type": "haxelib",
