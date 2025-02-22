@@ -3,8 +3,8 @@
         "name": "hxcpp",
         "type": "git",
         "dir": null,
-        "ref": "master",
-        "url": "https://github.com/HaxeFoundation/hxcpp > /dev/null"
+        "ref": "master > /dev/null",
+        "url": "https://github.com/HaxeFoundation/hxcpp"
     }, {
         "name": "lime",
         "type": "haxelib",
