@@ -32,9 +32,11 @@ class AndroidExtension {
     
 	public static function permissionCheck():Void {
 		if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU) {
-		    Permissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO']);
+			for (perStr in ['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO'])
+		        Permissions.requestPermission(perStr);
 		} else {
-    	    Permissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
+		    for (perStr in ['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE'])
+    	        Permissions.requestPermission(perStr);
 		}
 		
 		if (!Environment.isExternalStorageManager()) {
