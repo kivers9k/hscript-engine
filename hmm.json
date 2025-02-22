@@ -7,8 +7,10 @@
         "url": "https://github.com/HaxeFoundation/hxcpp"
     }, {
         "name": "lime",
-        "type": "haxelib",
-        "version": null
+        "type": "git",
+        "dir": null,
+        "ref": "master",
+        "url": "https://github.com/openfl/lime"
     }, {
         "name": "openfl",
         "type": "haxelib",
