@@ -34,8 +34,8 @@ jobs:
           haxelib install hmm --quiet
           haxelib run hmm install --quiet
         
-      #- name: Create Version Tag
-      #  run: echo "${{github.run_id}}" > VERSION
+      - name: Create Version Tag
+        run: echo "${{github.run_id}}" > VERSION
 
       - name: Configure Android
         run: |
