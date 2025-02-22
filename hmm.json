@@ -1,8 +1,8 @@
 {
     "dependencies": [{
         "name": "hxcpp",
-        "type": "git",
-        "url": "https://github.com/HaxeFoundation/hxcpp"
+        "type": "haxelib",
+        "version": null
     }, {
         "name": "lime",
         "type": "haxelib",
