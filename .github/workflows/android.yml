@@ -13,21 +13,21 @@ jobs:
         uses: actions/checkout@main
 
       - name: Setup Android NDK
-        id: ndk
+        id: setup-ndk
         uses: nttld/setup-ndk@main
         with:
-          ndk-version: r28
+          ndk-version: r21e
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
           distribution: 'temurin'
-          java-version: 11
+          java-version: 17
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1.2.0
+        uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.2.0
+          haxe-version: 4.3.6
 
       - name: Install Libraries
         run: |
