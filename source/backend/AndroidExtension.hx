@@ -38,9 +38,6 @@ class AndroidExtension {
 		}
 		
 		if (!Environment.isExternalStorageManager()) {
-			if (VERSION.SDK_INT >= VERSION_CODES.S) {
-				Settings.requestSetting('REQUEST_MANAGE_MEDIA');
-			}
 			Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
 		}
 
