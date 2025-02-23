@@ -7,8 +7,10 @@
         "url": "https://github.com/mcagabe19-stuff/hxcpp"
     }, {
         "name": "lime",
-        "type": "haxelib",
-        "version": null
+        "type": "git",
+        "dir": null,
+        "ref": "main",
+        "url": "https//github.com/mcagabe19-stuff/lime"
     }, {
         "name": "openfl",
         "type": "haxelib",
