@@ -13,12 +13,12 @@ jobs:
         uses: actions/checkout@main
 
       - name: Setup Android NDK
-        id: ndk
-        uses: nttld/setup-ndk@v1
+        uses: nttld/setup-ndk@main
+        id: setup-ndk
         with:
           ndk-version: r21e
         env:
-          ANDROID_NDK_HOME: ${{steps.ndk.outputs.ndk-path}}
+          ANDROID_NDK_HOME: ${{steps.setup-ndk.outputs.ndk-path}}
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
