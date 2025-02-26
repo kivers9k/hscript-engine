@@ -35,8 +35,10 @@
         "version": "2.5.0"
     }, {
         "name": "hscript",
-        "type": "haxelib",
-        "version": null
+        "type":"git",
+        "dir": null,
+        "ref": "master",
+        "url":"https://github.com/kivers9k/hscript-fun"
     }, {
         "name": "extension-androidtools",
         "type": "git",
