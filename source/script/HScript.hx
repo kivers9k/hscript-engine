@@ -5,37 +5,15 @@ class HScript {
 	public var interp:Interp = new Interp();
 	public var scriptName:String;
 
-	public function new(hxPath:String) {
-		presetVars();
-		scriptName = hxPath.split('/').pop().replace('.hx', '');
-
-		var contents:String = File.getContent(hxPath);
-		var importLine:Array<String> = [];
-		var lines:Array<String> = [];
-		
-		for (splitStr in contents.split('\n')) {
-			if (!splitStr.startsWith('import')) {
-				lines.push(splitStr);
-			} else {
-				var space:Array<String> = splitStr.replace(';', '').split(' ');
-				var lib:String = space[1];
-				var libName:String = (space[2] == 'as') ? space[3] : lib.split('.').pop();
-				
-				if (Type.resolveEnum(lib) != null || Type.resolveClass(lib) != null) {
-					setVariable(libName, (Type.resolveEnum(lib) != null) ? Type.resolveEnum(lib) : Type.resolveClass(lib));
-				} else {
-					SUtil.alert(((Type.resolveEnum(lib) != null) ? 'Enum' : 'Class') + ' not Found', lib);
-				}
-				importLine.push(splitStr);
-			}
-		}
-
+	public function new(hxPath:String, ?name:String = 'hscript') {
+		scriptName = name != null ? name : hxPath.split('/').pop().replace('.hx', '');
+ 
         parser.allowMetadata = true;
 		parser.allowTypes = true;
-		parser.allowJSON = true;
-		parser.line += importLine.length;
-		
-		execute(lines.join('\n'));
+		parser.allowJSON = true; 
+
+		presetVars();
+		execute(File.getContent(hxPath));
 	}
 
 	public function presetVars() {
