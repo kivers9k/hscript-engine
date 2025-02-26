@@ -5,7 +5,7 @@ class HScript {
 	public var interp:Interp = new Interp();
 	public var scriptName:String;
 
-	public function new(hxPath:String, ?name:String = 'hscript') {
+	public function new(hxPath:String, name:String) {
 		scriptName = name != null ? name : hxPath.split('/').pop().replace('.hx', '');
  
         parser.allowMetadata = true;
