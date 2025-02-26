@@ -38,7 +38,7 @@
         "type":"git",
         "dir": null,
         "ref": "master",
-        "url":"https://github.com/kivers9k/hscript-fun"
+        "url":"https://github.com/kivers9k/hscript"
     }, {
         "name": "extension-androidtools",
         "type": "git",
