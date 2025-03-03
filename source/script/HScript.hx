@@ -5,14 +5,16 @@ class HScript {
 	public var interp:Interp = new Interp();
 	public var scriptName:String;
 
-	public function new(hxPath:String, ?name:String) {
+	public function new(hxPath:String, ?name:String, ?preset:Bool = false) {
 		scriptName = name != null ? name : hxPath.split('/').pop().replace('.hx', '');
  
         parser.allowMetadata = true;
 		parser.allowTypes = true;
 		parser.allowJSON = true; 
 
-		presetVars();
+		if (preset)
+		    presetVars();
+			
 		execute(File.getContent(hxPath));
 	}
 
