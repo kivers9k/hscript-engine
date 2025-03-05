@@ -1,6 +1,4 @@
-import hscript.Parser;
-import hscript.Interp;
-import hscript.Expr;
+import hscript.*;
 
 import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;
