@@ -44,7 +44,7 @@
         "type":"git",
         "dir": null,
         "ref": "master",
-        "url":"https://github.com/ianharrigan/hscript-ex"
+        "url":"https://github.com/kivers9k/hscript-ex"
     }, {
         "name": "extension-androidtools",
         "type": "git",
