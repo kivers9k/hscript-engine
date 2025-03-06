@@ -5,7 +5,7 @@ import hscript.Expr;
 // hscript-ex
 import hscript.InterpEx;
 import hscript.ParserEx;
-import hacript.ScriptClass;
+import hscript.ScriptClass;
 
 import backend.AndroidExtension as SUtil;
 import backend.AssetPaths as Paths;
