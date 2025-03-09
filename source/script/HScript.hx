@@ -12,14 +12,15 @@ class HScript {
 		parser.allowTypes = true;
 		parser.allowJSON = true; 
 
-        setPreprocesor();
+        setDefaultPreprocesor();
+		
 		if (preset)
 		    presetVars();
 			
 		execute(File.getContent(hxPath));
 	}
 
-    public function setPreprocesor() {
+    public function setDefaultPreprocesor() {
  	    #if android
 		parser.preprocesorValues.set('android', 1);
 		#elseif ios
