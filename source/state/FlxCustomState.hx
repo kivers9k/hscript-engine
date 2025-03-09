@@ -3,18 +3,20 @@ package state;
 class FlxCustomState extends GameState {
 	private var statePath:String;
 
-	public function new(stateName:String) {
+	public function new(stateName:String, ?args:Array<Dynamic> = []) {
 		super();
-		statePath = stateName;
-	}
 
-	override function create() {
+		statePath = stateName;
+
 		if (Paths.exists('states/$statePath.hx')) {
-	        hscript = new HScript(Paths.getPath('states/$statePath.hx'), null, true);
+		    hscript = new HScript(Paths.getPath('states/$statePath.hx'), null, true);
 		} else {
 			SUtil.alert('Error on loading state', "couldn't" + ' load state $statePath');
 		}
- 
+		hscript.call('new', args);
+	}
+
+	override function create() {
         super.create();
 
 		hscript.call('create', []);

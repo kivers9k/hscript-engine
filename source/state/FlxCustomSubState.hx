@@ -3,19 +3,21 @@ package state;
 class FlxCustomSubState extends GameSubState {
 	private var substatePath:String;
 	
-	public function new(subStateName:String) {
+	public function new(subStateName:String, ?args:Array<Dymamic> = []) {
 		super();
-		substatePath = subStateName;
-	}
 
-	override function create() {
+		substatePath = subStateName;
+
 		if (Paths.exists('substates/$substatePath.hx')) {
 			hscript = new HScript(Paths.getPath('substates/$substatePath.hx'), null, true);
 		} else {
 			SUtil.alert('Error on loading substate', "couldn't" + ' load substate $substatePath');
 			close();
 		}
+		hscript.call('new', args);
+	}
 
+	override function create() {
         super.create();
 
 		hscript.call('create', []);
