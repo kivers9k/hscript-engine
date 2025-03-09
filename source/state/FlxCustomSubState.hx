@@ -14,7 +14,7 @@ class FlxCustomSubState extends GameSubState {
 			SUtil.alert('Error on loading substate', "couldn't" + ' load substate $substatePath');
 			close();
 		}
-		hscript.call('new', args);
+		hscript.call('new', args == null ? [] : args);
 	}
 
 	override function create() {

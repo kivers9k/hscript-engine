@@ -13,7 +13,7 @@ class FlxCustomState extends GameState {
 		} else {
 			SUtil.alert('Error on loading state', "couldn't" + ' load state $statePath');
 		}
-		hscript.call('new', args);
+		hscript.call('new', args == null ? [] : args);
 	}
 
 	override function create() {
