@@ -1,7 +1,7 @@
 package script;
 
 class HScript {
-	public static var parser:Parser = new Parser();
+	public var parser:Parser = new Parser();
 	public var interp:Interp = new Interp();
 	public var scriptName:String;
 
@@ -12,10 +12,25 @@ class HScript {
 		parser.allowTypes = true;
 		parser.allowJSON = true; 
 
+        setPreprocesor();
 		if (preset)
 		    presetVars();
 			
 		execute(File.getContent(hxPath));
+	}
+
+    public function setPreprocesor() {
+ 	    #if android
+		parser.preprocesorValues.set('android', 1);
+		#elseif ios
+		parser.preprocesorValues.set('ios', 1);
+		#elseif mobile
+		parser.preprocesorValues.set('mobile', 1);
+		#elseif window
+		parser.preprocesorValues.set('window', 1);
+		#elseif desktop
+		parser.preprocesorValues.set('desktop', 1);
+		#end
 	}
 
 	public function presetVars() {
@@ -62,16 +77,6 @@ class HScript {
 		// shader
 		setVariable('FlxRuntimeShader', FlxRuntimeShader);
 		setVariable('ShaderFilter', openfl.filters.ShaderFilter);
-
-		// targeting device variable
-		setVariable('deviceTarget',
-			#if android 'android'
-			#elseif ios 'ios'
-			#elseif mobile 'mobile'
-			#elseif window 'window'
-			#elseif desktop 'desktop'
-			#end
-		);
 	}
 
 	public function execute(code:String):Dynamic {
