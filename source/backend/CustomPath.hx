@@ -13,7 +13,7 @@ class CustomPath {
 		paths = pathName;
 	}
 	
-	public function getPath(key:String):String {
+	public inline function getPath(key:String):String {
 		return SUtil.getPath('$paths/$key');
 	}
 
