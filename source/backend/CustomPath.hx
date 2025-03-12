@@ -7,7 +7,7 @@ import openfl.display.BitmapData;
 import flash.media.Sound;
 
 class CustomPath {
-	static var paths:String;
+	public static var paths:String;
 	
 	public function new(?pathName:String = 'assets') {
 		paths = pathName;

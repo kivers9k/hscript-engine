@@ -8,7 +8,7 @@ class AnimateSprite extends FlxSprite {
 	public function new(x:Float, y:Float, ?atlas:FlxAtlasFrames = null) {
 		super(x, y);
 		if (atlas != null) {
-			atlas = image;
+			frames = atlas;
 		}
 	}
 
