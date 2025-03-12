@@ -17,11 +17,11 @@ class CustomPath {
 		return SUtil.getPath('$paths/$key');
 	}
 
-	public inline static function exists(key:String):Bool {
+	public inline function exists(key:String):Bool {
 		return FileSystem.exists(getPath(key));
 	}
 
-	public inline static function image(key:String, ?imgFolder:String = 'images'):FlxGraphic {
+	public inline function image(key:String, ?imgFolder:String = 'images'):FlxGraphic {
 		if (exists('$imgFolder/$key.png')) {
 			var bitmap:BitmapData = BitmapData.fromFile(getPath('images/$key.png'));
 			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, getPath('images/$key.png'));
@@ -66,7 +66,7 @@ class CustomPath {
 		return null;
 	}
 
-	public inline function getFrame(key:String, ?path:String = 'images', ?type:String = 'sparrow'):FlxAtlasFrames {
+	public state function getFrame(key:String, ?path:String = 'images', ?type:String = 'sparrow'):FlxAtlasFrames {
 		var fileFormat:String = null;
 		switch (type) {
             case 'sparrow': fileFormat = 'xml';
@@ -84,7 +84,7 @@ class CustomPath {
 		return null;
 	}
 
-	public inline function fromFrame(key:String, ?path:String = 'images', frame:String, w:Int, h:Int, ?type = 'sparrow'):FlxTileFrames {
+	public state function fromFrame(key:String, ?path:String = 'images', frame:String, w:Int, h:Int, ?type = 'sparrow'):FlxTileFrames {
         if (exists('$path/$key.png')) {
             return FlxTileFrames.fromFrame(getFrame(key, path, type).getByName(frame), FlxPoint.get(w, h));
 		}
