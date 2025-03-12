@@ -13,6 +13,8 @@ using StringTools;
 
 class Main extends Sprite {
 	public static var instance:Main = this;
+	public var fps:FPS;
+
 	var game = {
 		gameWidth: 1280,
 		gameHeight: 720,
@@ -66,7 +68,7 @@ class Main extends Sprite {
 			game.startFullscreen
 		));
         
-		var fps:FPS = new FPS();
+		fps = new FPS();
 		addChild(fps);
 
 		FlxG.fixedTimestep = false; //prevent from lag
