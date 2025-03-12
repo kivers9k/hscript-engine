@@ -8,17 +8,12 @@ import flash.media.Sound;
 
 class CustomPath {
 	var _dir:String;
-	public function new(?pathName:String = 'assets') {
-		_dir = pathName;
-	}
-	
-	public static var dir(get, never):String;
-	private static function get_dir():String {
-		return _dir;
+	public function new(?dir:String = 'assets') {
+		_dir = dir;
 	}
 
 	public static function getPath(key:String):String {
-		return SUtil.getPath('$dir/$key');
+		return SUtil.getPath('${_dir}/$key');
 	}
 
 	public inline static function exists(key:String):Bool {
