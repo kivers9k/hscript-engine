@@ -13,7 +13,7 @@ class CustomPath {
 	}
 	
 	public static var dir(get, never):String;
-	private function get_dir():String {
+	private static function get_dir():String {
 		return _dir;
 	}
 
