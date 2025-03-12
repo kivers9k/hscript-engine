@@ -53,7 +53,7 @@ class AssetPaths {
 		return null;
 	}
 
-	public static function shader(key:String):String {
+	public static function shader(key:String):FlxRuntimeShader {
  		if (exists('shaders/$key') && (key.endsWith('.frag') || key.endsWith('.vert'))) {
 			return new FlxRuntimeShader(getContent('shaders/$key'));
 		}

@@ -13,8 +13,8 @@ class CustomPath {
 		paths = pathName;
 	}
 	
-	public static function getPath(key:String):String {
-		return SUtil.getPath('$paths/$key');
+	public static function getPath(key:String, ?path:String = paths):String {
+		return SUtil.getPath('$path/$key');
 	}
 
 	inline public static function exists(key:String):Bool {
@@ -59,7 +59,7 @@ class CustomPath {
 		return null;
 	}
 
-	public static function shader(key:String, ?shaderFolder:String = 'shaders'):String {
+	public static function shader(key:String, ?shaderFolder:String = 'shaders'):FlxRuntimeShader {
  		if (exists('$shaderFolder/$key') && (key.endsWith('.frag') || key.endsWith('.vert'))) {
 			return new FlxRuntimeShader(getContent('$shaderFolder/$key'));
 		}
