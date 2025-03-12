@@ -61,6 +61,16 @@ class HScript {
 		setVariable('Paths', Paths);
 		setVariable('CustomPath', CustomPath);
 		setVariable('SUtil', SUtil);
+        
+		// shader
+		setVariable('FlxRuntimeShader', FlxRuntimeShader);
+		setVariable('ShaderFilter', openfl.filters.ShaderFilter);
+
+		// method
+		setVariable('initPath', function(path:String) {
+            removeVariable('Paths');
+			setVariable('Paths', new CustomPath(path));
+		});
 
 		// state variable
 		var state = GameState.instance;
@@ -76,10 +86,6 @@ class HScript {
 
         // subState variables
 		setVariable('close', GameSubState.instance.close);
-
-		// shader
-		setVariable('FlxRuntimeShader', FlxRuntimeShader);
-		setVariable('ShaderFilter', openfl.filters.ShaderFilter);
 	}
 
 	public function execute(code:String):Dynamic {

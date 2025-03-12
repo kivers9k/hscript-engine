@@ -23,8 +23,8 @@ class CustomPath {
 
 	public inline static function image(key:String, ?imgFolder:String = 'images'):FlxGraphic {
 		if (exists('$imgFolder/$key.png')) {
-			var bitmap:BitmapData = BitmapData.fromFile(getPath('images/$key.png'));
-			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, getPath('images/$key.png'));
+			var bitmap:BitmapData = BitmapData.fromFile(getPath('$imgFolder/$key.png'));
+			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, getPath('$imgFolder/$key.png'));
 			
 			return graphic;
 		}
