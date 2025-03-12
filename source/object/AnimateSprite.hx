@@ -1,7 +1,7 @@
 package object;
 
 import flixel.animation.FlxAnimation;
-import flixel.frames.FlxAtlasFrames;
+import flixel.graphics.frames.FlxAtlasFrames;
 
 class AnimateSprite extends FlxSprite {
 	private var offsetMap:Map<String, FlxPoint> = new Map<String, FlxPoint>();
