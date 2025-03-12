@@ -12,7 +12,11 @@ class CustomPath {
 		_dir = pathName;
 	}
 	
-	public static var dir:String = _dir;
+	public static var dir(default, get):String;
+	private function get_dir():String {
+		return _dir;
+	}
+
 	public static function getPath(key:String):String {
 		return SUtil.getPath('$dir/$key');
 	}
