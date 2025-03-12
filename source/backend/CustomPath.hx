@@ -7,10 +7,10 @@ import openfl.display.BitmapData;
 import flash.media.Sound;
 
 class CustomPath {
-	private static var paths:String;
+	static var paths:String;
 	
 	public function new(pathName:String) {
-		paths = pathName;
+		this.paths = pathName;
 	}
 	
 	public static function getPath(key:String):String {
