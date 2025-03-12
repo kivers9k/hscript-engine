@@ -12,7 +12,7 @@ import openfl.display.StageScaleMode;
 using StringTools;
 
 class Main extends Sprite {
-	public static var instance:Main = this;
+	public static var instance:Main;
 	public var fps:FPS;
 
 	var game = {
@@ -31,6 +31,8 @@ class Main extends Sprite {
 	}
 
 	public function new() {
+		instance = this;
+		
 		#if android
 	    SUtil.permissionCheck();
 		#end
