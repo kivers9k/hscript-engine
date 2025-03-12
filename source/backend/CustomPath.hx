@@ -12,7 +12,7 @@ class CustomPath {
 		_dir = pathName;
 	}
 	
-	public static var dir(null, get):String;
+	public static var dir(get, never):String;
 	private function get_dir():String {
 		return _dir;
 	}
