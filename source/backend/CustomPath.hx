@@ -7,13 +7,13 @@ import openfl.display.BitmapData;
 import flash.media.Sound;
 
 class CustomPath {
-	private var paths:String;
+	private static var paths:String;
 	
 	public function new(pathName:String) {
 		paths = pathName;
 	}
 	
-	public inline function getPath(key:String):String {
+	public static function getPath(key:String):String {
 		return SUtil.getPath('$paths/$key');
 	}
 
@@ -31,42 +31,42 @@ class CustomPath {
 		return null;
 	}
 	
-	public inline function sound(key:String, ?sndFolder:String = 'sounds'):Sound {
+	public static function sound(key:String, ?sndFolder:String = 'sounds'):Sound {
 		if (exists('$sndFolder/$key.ogg')) {
 			return Sound.fromFile(getPath('$sndFolder/$key.ogg'));
 		}
 		return null;
 	}
     
-	public inline function font(key:String, ?fontFolder:String = 'fonts'):String {
+	public static function font(key:String, ?fontFolder:String = 'fonts'):String {
 		if (exists('$fontFolder/$key') && (key.endsWith('.ttf') || key.endsWith('.otf'))) {
 			return getPath('$fontFolder/$key');
 		}
         return null;
     }
     
-	public inline function getContent(key:String):String {
+	public static function getContent(key:String):String {
 		if (exists(key)) {
 			return File.getContent(getPath(key));
 		}
 		return null;
     }
 
-	public inline function json(key:String):Dynamic {
+	public static function json(key:String):Dynamic {
 		if (exists('$key.json')) {
 			return haxe.Json.parse(getContent('$key.json'));
 		}
 		return null;
 	}
 
-	public inline function shader(key:String, ?shaderFolder:String = 'shaders'):FlxRuntimeShader {
+	public static function shader(key:String, ?shaderFolder:String = 'shaders'):FlxRuntimeShader {
  		if (exists('$shaderFolder/$key') && (key.endsWith('.frag') || key.endsWith('.vert'))) {
 			return new FlxRuntimeShader(getContent('$shaderFolder/$key'));
 		}
 		return null;
 	}
 
-	public state function getFrame(key:String, ?path:String = 'images', ?type:String = 'sparrow'):FlxAtlasFrames {
+	public static function getFrame(key:String, ?path:String = 'images', ?type:String = 'sparrow'):FlxAtlasFrames {
 		var fileFormat:String = null;
 		switch (type) {
             case 'sparrow': fileFormat = 'xml';
@@ -84,7 +84,7 @@ class CustomPath {
 		return null;
 	}
 
-	public state function fromFrame(key:String, ?path:String = 'images', frame:String, w:Int, h:Int, ?type = 'sparrow'):FlxTileFrames {
+	public static function fromFrame(key:String, ?path:String = 'images', frame:String, w:Int, h:Int, ?type = 'sparrow'):FlxTileFrames {
         if (exists('$path/$key.png')) {
             return FlxTileFrames.fromFrame(getFrame(key, path, type).getByName(frame), FlxPoint.get(w, h));
 		}
