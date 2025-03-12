@@ -1,4 +1,4 @@
-packagepackagepackagepackage backend;
+package backend;
 
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxTileFrames;
