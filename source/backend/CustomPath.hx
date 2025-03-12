@@ -17,11 +17,11 @@ class CustomPath {
 		return SUtil.getPath('$paths/$key');
 	}
 
-	public inline function exists(key:String):Bool {
+	public inline static function exists(key:String):Bool {
 		return FileSystem.exists(getPath(key));
 	}
 
-	public inline function image(key:String, ?imgFolder:String = 'images'):FlxGraphic {
+	public inline static function image(key:String, ?imgFolder:String = 'images'):FlxGraphic {
 		if (exists('$imgFolder/$key.png')) {
 			var bitmap:BitmapData = BitmapData.fromFile(getPath('images/$key.png'));
 			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, getPath('images/$key.png'));
