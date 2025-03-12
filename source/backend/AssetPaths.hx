@@ -11,11 +11,11 @@ class AssetPaths {
 		return SUtil.getPath('assets/$key');
 	}
 
-	inline public static function exists(key:String):Bool {
+	public inline static function exists(key:String):Bool {
 		return FileSystem.exists(getPath(key));
 	}
 
-	inline public static function image(key:String):FlxGraphic {
+	public inline static function image(key:String):FlxGraphic {
 		if (exists('images/$key.png')) {
 			var bitmap:BitmapData = BitmapData.fromFile(getPath('images/$key.png'));
 			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, getPath('images/$key.png'));
