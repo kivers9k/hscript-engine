@@ -12,6 +12,7 @@ import openfl.display.StageScaleMode;
 using StringTools;
 
 class Main extends Sprite {
+	public static var instance:Main = this;
 	var game = {
 		gameWidth: 1280,
 		gameHeight: 720,

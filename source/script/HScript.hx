@@ -57,6 +57,7 @@ class HScript {
 		setVariable('GameSubState', GameSubState);
 		setVariable('FlxCustomState', FlxCustomState);
 		setVariable('FlxCustomSubState', FlxCustomSubState);
+		setVariable('Main', Main);
 		setVariable('Paths', Paths);
 		setVariable('SUtil', SUtil);
 
