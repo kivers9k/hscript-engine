@@ -1,4 +1,4 @@
-package backend;
+packagepackagepackagepackage backend;
 
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxTileFrames;
@@ -33,8 +33,8 @@ class AssetPaths {
 	}
     
 	public static function font(key:String):String {
-		if (exists(key) && (key.endsWith('.ttf') || key.endsWith('.otf'))) {
-			return getPath(key);
+		if (exists('fonts/$key') && (key.endsWith('.ttf') || key.endsWith('.otf'))) {
+			return getPath('fonts/$key');
 		}
         return null;
     }
