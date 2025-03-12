@@ -9,8 +9,8 @@ import flash.media.Sound;
 class CustomPath {
 	static var paths:String;
 	
-	public function new(pathName:String) {
-		this.paths = pathName;
+	public function new(?pathName:String = 'assets') {
+		paths = pathName;
 	}
 	
 	public static function getPath(key:String):String {
