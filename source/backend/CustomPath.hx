@@ -7,14 +7,14 @@ import openfl.display.BitmapData;
 import flash.media.Sound;
 
 class CustomPath {
-	public static var paths:String;
-	
+	var _dir:String;
 	public function new(?pathName:String = 'assets') {
-		paths = pathName;
+		_dir = pathName;
 	}
 	
+	public static var dir:String = _dir;
 	public static function getPath(key:String):String {
-		return SUtil.getPath('$paths/$key');
+		return SUtil.getPath('$dir/$key');
 	}
 
 	public inline static function exists(key:String):Bool {
