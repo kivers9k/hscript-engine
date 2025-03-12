@@ -13,8 +13,8 @@ class CustomPath {
 		paths = pathName;
 	}
 	
-	public static function getPath(key:String, ?path:String = paths):String {
-		return SUtil.getPath('$path/$key');
+	public function getPath(key:String):String {
+		return SUtil.getPath('$paths/$key');
 	}
 
 	inline public static function exists(key:String):Bool {
