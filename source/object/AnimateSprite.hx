@@ -5,10 +5,11 @@ import flixel.animation.FlxAnimation;
 class AnimateSprite extends FlxSprite {
 	private var offsetMap:Map<String, FlxPoint> = new Map<String, FlxPoint>();
 
-	public function new(x:Float, y:Float, ?image:String, ?type:String = 'sparrow') {
+	public function new(x:Float, y:Float, ?atlas:FlxAtlasFrames = null) {
 		super(x, y);
-		if (image != null)
-			frames = Paths.getFrame(image, type);
+		if (atlas != null) {
+			atlas = image;
+		}
 	}
 
 	public function setOffset(name:String, x:Int, y:Int) {
