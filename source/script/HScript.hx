@@ -7,13 +7,8 @@ class HScript {
 
 	public function new(hxPath:String, ?name:String, ?preset:Bool = false) {
 		scriptName = name != null ? name : hxPath.split('/').pop().replace('.hx', '');
- 
-        parser.allowMetadata = true;
-		parser.allowTypes = true;
-		parser.allowJSON = true; 
 
         setDefaultPreprocesor();
-		
 		if (preset)
 		    presetVars();
 			
@@ -67,9 +62,9 @@ class HScript {
 		setVariable('ShaderFilter', openfl.filters.ShaderFilter);
 
 		// method
-		setVariable('initPath', function(path:String) {
+		setVariable('initPath', function(dir:String) {
             removeVariable('Paths');
-			setVariable('Paths', new CustomPath(path));
+			setVariable('Paths', new CustomPath(dir));
 		});
 
 		// state variable

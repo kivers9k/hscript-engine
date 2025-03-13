@@ -8,7 +8,6 @@ import flash.media.Sound;
 
 class CustomPath {
 	static var direct:String = "";
-	
 	public function new(?dir:String = 'assets') {
 		direct = dir;
 	}
@@ -25,7 +24,6 @@ class CustomPath {
 		if (exists('$imgFolder/$key.png')) {
 			var bitmap:BitmapData = BitmapData.fromFile(getPath('$imgFolder/$key.png'));
 			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, getPath('$imgFolder/$key.png'));
-			
 			return graphic;
 		}
 		return null;
