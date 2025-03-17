@@ -54,6 +54,7 @@ class HScript {
 		setVariable('FlxCustomSubState', FlxCustomSubState);
 		setVariable('Main', Main);
 		setVariable('Paths', Paths);
+		setVariable('Files', Files);
 		setVariable('SUtil', SUtil);
         
 		// shader

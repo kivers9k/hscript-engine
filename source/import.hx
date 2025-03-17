@@ -7,8 +7,9 @@ import hscript.InterpEx;
 import hscript.ParserEx;
 import hscript.ScriptClass;
 
-import backend.AndroidExtension as SUtil;
-import backend.AssetPaths as Paths;
+import backend.SUtil;
+import backend.Paths;
+import backend.Paths.Files;
 import backend.CustomPath;
 import object.AnimateSprite;
 import object.SpriteGroup;

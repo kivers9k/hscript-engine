@@ -21,7 +21,7 @@ import haxe.CallStack;
 import haxe.io.Path;
 import flash.system.System;
 
-class AndroidExtension {
+class SUtil {
 	public static function getPath(?path:String = ''):String {
 		#if android
 			return '/storage/emulated/0/.${Application.current.meta.get('file')}/$path';

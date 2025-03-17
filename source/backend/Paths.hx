@@ -6,7 +6,7 @@ import flixel.graphics.FlxGraphic;
 import openfl.display.BitmapData;
 import flash.media.Sound;
 
-class AssetPaths {
+class Paths {
 	public static function getPath(key:String):String {
 		return SUtil.getPath('assets/$key');
 	}
@@ -87,7 +87,7 @@ class AssetPaths {
 
 // for outside assets folder
 class Files {
-	public static getPath(dir:String):String {
+	public static function getPath(dir:String):String {
 		return SUtil.getPath(dir);
 	}
 	
