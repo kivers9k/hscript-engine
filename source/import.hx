@@ -10,7 +10,6 @@ import hscript.ScriptClass;
 import backend.SUtil;
 import backend.Paths;
 import backend.Paths.Files;
-import backend.CustomPath;
 import object.AnimateSprite;
 import object.SpriteGroup;
 import object.Tile;
