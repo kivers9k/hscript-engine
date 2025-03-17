@@ -54,18 +54,11 @@ class HScript {
 		setVariable('FlxCustomSubState', FlxCustomSubState);
 		setVariable('Main', Main);
 		setVariable('Paths', Paths);
-		setVariable('CustomPath', CustomPath);
 		setVariable('SUtil', SUtil);
         
 		// shader
 		setVariable('FlxRuntimeShader', FlxRuntimeShader);
 		setVariable('ShaderFilter', openfl.filters.ShaderFilter);
-
-		// method
-		setVariable('initPath', function(dir:String) {
-            removeVariable('Paths');
-			setVariable('Paths', new CustomPath(dir));
-		});
 
 		// state variable
 		var state = GameState.instance;
