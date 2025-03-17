@@ -96,53 +96,64 @@ class Files {
 	}
 
 	public inline static function image(dir:String):FlxGraphic {
-		var file = getPath('$dir.png');
-		var bitmap:BitmapData = BitmapData.fromFile(file);
-		var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, file);
-		return graphic;
+		if (exists('$dir.png')) {
+			var file = getPath('$dir.png');
+		    var bitmap:BitmapData = BitmapData.fromFile(file);
+		    var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, file);
+		    return graphic;
+		}
+		return null;
 	}
 
 	public static function sound(dir:String):Sound {
-		var file = getPath('$dir.ogg');
-		return Sound.fromFile(file);
+		if (exists('$dir.ogg')) {
+		    return Sound.fromFile(getPath('$dir.ogg'));
+		}
+		return null;
 	}
 
 	public static function font(dir:String):String {
-		var file = getPath('$dir');
-		if (file.endsWith('.ttf') || file.endsWith('.oft')) {
-			return dir;
+		if (exists(dir) && (dir.endsWith('.ttf') || dir.endsWith('.oft'))) {
+			return getPath(dir);
 		}
 		return null;
 	}
 	
 	public function shader(dir:String):FlxRuntimeShader {
-		var file = getFile('$dir');
 		var frag = null;
 		var vert = null;
 		
-		if (dir.endsWith('.frag')) {
+		if (exists(dir) && dir.endsWith('.frag')) {
 			frag = getContent(dir);
-		} else if (file.endsWith('.vert')) {
+		} else if (exists(dir) && dir.endsWith('.vert')) {
 			vert = getContent(dir);
 		}
 		return new FlxRuntimeShader(frag, vert);
 	}
 	
 	public static function getContent(dir:String):String {
-		return File.getContent(getPath(dir));
+		if (exists(dir)) {
+		    return File.getContent(getPath(dir));
+		}
+		return null;
 	}
 	
 	public static function json(dir:String):Dynamic {
-		return haxe.Json.parse(getContent('$dir.json'));
+		if (exists('$dir.json')) {
+		    return haxe.Json.parse(getContent('$dir.json'));
+		}
+		return null;
 	}
 	
 	public static function getFrame(dir:String, ?type:String = 'sparrow'):FlxAtlasFrames {
 		var atlas = null;
 		switch(type) {
 			case 'sparrow':
-				atlas = FlxAtlasFrames.fromSparrow(image(dir), getContent('$dir.xml'));
+			    if (exists('$dir.png') && exists('$dir.xml'))
+				    atlas = FlxAtlasFrames.fromSparrow(image(dir), getContent('$dir.xml'));
 			case 'packer':
-				atlas = FlxAtlasFrames.fromSpriteSheetPacker(img(dir), getContent('$dir.txt'));
+			    if (exists('$dir.png') && exists('$dir.txt'))
+				    atlas = FlxAtlasFrames.fromSpriteSheetPacker(image(dir), getContent('$dir.txt'));
 		}
 		return atlas;
 	}
