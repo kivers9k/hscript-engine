@@ -40,12 +40,6 @@
         "ref": "master",
         "url":"https://github.com/kivers9k/hscript"
     }, {
-        "name": "hscript-ex",
-        "type":"git",
-        "dir": null,
-        "ref": "master",
-        "url":"https://github.com/kivers9k/hscript-ex"
-    }, {
         "name": "extension-androidtools",
         "type": "git",
         "dir": null,

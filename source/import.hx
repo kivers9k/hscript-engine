@@ -2,11 +2,6 @@ import hscript.Interp;
 import hscript.Parser;
 import hscript.Expr;
 
-// hscript-ex
-import hscript.InterpEx;
-import hscript.ParserEx;
-import hscript.ScriptClass;
-
 import backend.SUtil;
 import backend.Paths;
 import backend.Paths.Files;
@@ -14,6 +9,8 @@ import object.AnimateSprite;
 import object.SpriteGroup;
 import object.Tile;
 import script.HScript;
+import script.scripted.ScriptedSprite;
+import script.scripted.ScriptedSpriteGroup;
 import state.FlxCustomState;
 import state.FlxCustomSubState;
 import state.GameState;
