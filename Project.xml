@@ -60,6 +60,7 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<icon path="icons.png" />
+	<certificate path="key.keystore" alias="hscripter" password="hst" alias-password="hst"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
