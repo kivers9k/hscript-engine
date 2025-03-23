@@ -16,7 +16,7 @@ class Paths {
 	}
 
 	public inline static function image(key:String):FlxGraphic {
-		if (exists('images/$key.png') || exists('image/$key.jpg')) {
+		if (exists('images/$key') && (key.endsWith('.png') || key.endsWith('.jpg'))) {
 			var file = getPath('images/$key');
 			var bitmap:BitmapData = BitmapData.fromFile(file);
 			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, file);
@@ -97,7 +97,7 @@ class Files {
 	}
 
 	public inline static function image(dir:String):FlxGraphic {
-		if (exists('$dir.png') || exists('$dir.jpg')) {
+		if (exists('$dir') && (dir.endsWith('.png') || dir.endsWith('.jpg'))) {
 			var file = getPath('$dir');
 		    var bitmap:BitmapData = BitmapData.fromFile(file);
 		    var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, file);
