@@ -52,15 +52,15 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="hscript" />
-    
+    <haxelib name="hxCodec" if="desktop || mobile" />
+
 	<define name="hscriptPos" />
-
-	<!-- _________________________________ Custom _______________________________ -->
-
-	<icon path="icons.png" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
+    <!-- LibVLC Logging for hxCodec -->
+    <haxedef name="HXC_LIBVLC_LOGGING" if="debug" />
+    
 	<!--Enable the Flixel core recording system-->
 	<!--<haxedef name="FLX_RECORD" />-->
 
@@ -90,4 +90,10 @@
 
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+
+	<!-- _________________________________ Custom _______________________________ -->
+
+	<!--Icon-->
+	<icon path="icons.png" />
+
 </project>

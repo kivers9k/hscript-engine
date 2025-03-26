@@ -2,6 +2,10 @@ import hscript.Interp;
 import hscript.Parser;
 import hscript.Expr;
 
+import hxcodec.flixel.FlxVideo;
+import hxcodec.flixel.FlxVideoBackdrop;
+import hxcodec.flixel.FlxVideoSprite;
+
 import backend.SUtil;
 import backend.Paths;
 import backend.Paths.Files;

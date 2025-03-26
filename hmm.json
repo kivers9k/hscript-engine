@@ -40,6 +40,12 @@
         "ref": "master",
         "url":"https://github.com/kivers9k/hscript"
     }, {
+        "name": "hxCodec",
+        "type": "git",
+        "dir": null,
+        "ref": "main",
+        "url": "https://github.com/polybiusproxy/hxCodec"
+    }, {
         "name": "extension-androidtools",
         "type": "git",
         "dir": null,
