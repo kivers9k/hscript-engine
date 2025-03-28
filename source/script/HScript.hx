@@ -4,8 +4,8 @@ class HScript {
 	public var parser:Parser = new Parser();
 	public var interp:Interp = new Interp();
 
-	public var variables(get, null):Map<String, Dynamic>;
-	public var modules(get, null):Map<String, Dynamic>;
+	public var variables(get, never):Map<String, Dynamic>;
+	public var modules(get, never):Map<String, Dynamic>;
 
 	public var scriptName:String;
 
