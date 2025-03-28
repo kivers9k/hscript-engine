@@ -40,7 +40,6 @@ class HScript {
 		modules.set('Math', Math);
 		modules.set('Type', Type);
 		modules.set('Std', Std);
-		modules.set('this', this);
 
 		// flixel class
 		modules.set('FlxG', FlxG);
@@ -65,6 +64,8 @@ class HScript {
 		modules.set('FlxRuntimeShader', FlxRuntimeShader);
 		modules.set('ShaderFilter', openfl.filters.ShaderFilter);
 
+        variables.set('this', this);
+		
 		// state variable
 		var state = GameState.instance;
 		if (FlxG.state.subState == GameSubState.instance) {
