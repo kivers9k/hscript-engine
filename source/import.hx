@@ -6,9 +6,7 @@ import hxcodec.flixel.FlxVideo;
 import hxcodec.flixel.FlxVideoBackdrop;
 import hxcodec.flixel.FlxVideoSprite;
 
-import backend.SUtil;
-import backend.Paths;
-import backend.Paths.Files;
+import math.FlxPoint;
 import object.AnimateSprite;
 import object.SpriteGroup;
 import object.Tile;
@@ -21,6 +19,9 @@ import state.GameState;
 import state.GameSubState;
 import ui.FlxVirtualPad;
 import ui.InputText;
+import util.SUtil;
+import util.Paths;
+import util.Paths.Files;
 
 #if sys
 import sys.*;
