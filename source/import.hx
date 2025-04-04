@@ -39,8 +39,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.util.FlxDestroyUtil;
 import flixel.math.FlxMath;
-import flixel.math.FlxPoint;
-import flixel.math.FlxRect;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
