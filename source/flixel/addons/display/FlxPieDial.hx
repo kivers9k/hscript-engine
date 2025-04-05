@@ -165,10 +165,10 @@ class FlxPieDial extends FlxSprite
 		{
 			if (InnerRadius > 0)
 			{
-				var alpha = new BitmapData(fullFrame.pixels.width, fullFrame.pixels.height, false, FlxColor.BLACK);
-				fullFrame.pixels.fillRect(_flashRect, FlxColor.TRANSPARENT);
+				var alpha = new BitmapData(fullFrame.pixels.width, fullFrame.pixels.height, true, FlxColor.TRANSPARENT);
+				fullFrame.pixels.fillRect(_flashRect, FlxColor.BLACK);
 				fullFrame.drawCircle(-1, -1, Radius, FlxColor.WHITE, null, {smoothing: true});
-				fullFrame.drawCircle(-1, -1, InnerRadius, FlxColor.TRANSPARENT, null, {smoothing: true});
+				fullFrame.drawCircle(-1, -1, InnerRadius, FlxColor.BLACK, null, {smoothing: true});
 
 				alpha.copyPixels(fullFrame.pixels, fullFrame.pixels.rect, _flashPointZero, null, null, true);
 
