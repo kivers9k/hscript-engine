@@ -38,7 +38,7 @@ class FlxPieDial extends FlxSprite
 
 	override public function draw():Void
 	{
-		if (amount * animation.numFrames < 1)
+		if (amount * animation.frames < 1)
 			return;
 		
 		super.draw();
@@ -53,7 +53,7 @@ class FlxPieDial extends FlxSprite
 	function set_amount(f:Float):Float
 	{
 		amount = FlxMath.bound(f, 0.0, 1.0);
-		var frame:Int = Std.int(f * animation.numFrames);
+		var frame:Int = Std.int(f * animation.frames);
 		animation.frameIndex = frame;
 		if (amount == 1.0)
 		{
