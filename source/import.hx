@@ -6,7 +6,6 @@ import hxcodec.flixel.FlxVideo;
 import hxcodec.flixel.FlxVideoBackdrop;
 import hxcodec.flixel.FlxVideoSprite;
 
-import math.FlxPoint;
 import object.AnimateSprite;
 import object.SpriteGroup;
 import object.Tile;
@@ -39,6 +38,8 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.util.FlxDestroyUtil;
 import flixel.math.FlxMath;
+import flixel.math.FlxPoint;
+import flixel.math.FlxRect;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
