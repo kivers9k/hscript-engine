@@ -380,17 +380,17 @@ class FlxPieDialUtils
 }
 
 class PointUtil {
-	public inline function getLength(Point:FlxPoint):Float {
+	public static inline function getLength(Point:FlxPoint):Float {
 		return Math.sqrt(Point.x * Point.x + Point.y * Point.y);
 	}
 	
-	public function setPolarRadians(point:FlxPoint, length:Float, radians:Float):FlxPoint {
+	public static function setPolarRadians(point:FlxPoint, length:Float, radians:Float):FlxPoint {
 		point.x = length * Math.cos(radians);
 		point.y = length * Math.sin(radians);
 		return point;
 	}
 	
-	public inline function setPolarDegrees(point:FlxPoint, length:Float, degrees:Float):FlxPoint {
+	public static inline function setPolarDegrees(point:FlxPoint, length:Float, degrees:Float):FlxPoint {
 		return setPolarDegrees(point, length, degrees * FlxAngle.TO_RAD);
 	}
 }
