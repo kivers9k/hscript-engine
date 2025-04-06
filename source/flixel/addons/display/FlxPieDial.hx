@@ -5,6 +5,8 @@ import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxVector;
 import flixel.util.FlxColor;
+import flixel.util.FlxBitmapDataPool;
+
 import openfl.display.BitmapData;
 import openfl.display.BitmapDataChannel;
 import openfl.display.BlendMode;
@@ -145,26 +147,20 @@ class FlxPieDial extends FlxSprite
 		var H = Radius * 2;
 
 		var fullFrame = new FlxSprite().makeGraphic(W, H, FlxColor.TRANSPARENT, true);
-		if (InnerRadius > Radius)
-		{
+		if (InnerRadius > Radius) {
 			InnerRadius = 0;
 		}
 
 		var dR = Radius - InnerRadius;
 
-		if (Shape == SQUARE)
-		{
-			fullFrame.pixels.fillRect(fullFrame.pixels.rect, Color);
-			if (InnerRadius > 0)
-			{
-				_flashRect.setTo(dR, dR, InnerRadius * 2, InnerRadius * 2);
-				fullFrame.pixels.fillRect(_flashRect, FlxColor.TRANSPARENT);
-			}
-		}
-		else if (Shape == CIRCLE)
-		{
-			if (InnerRadius > 0)
-			{
+		switch(Shape) {
+			case SQUARE:
+			    fullFrame.pixels.fillRect(fullFrame.pixels.rect, Color);
+			    if (InnerRadius > 0) {
+				    _flashRect.setTo(dR, dR, InnerRadius * 2, InnerRadius * 2);
+				    fullFrame.pixels.fillRect(_flashRect, FlxColor.TRANSPARENT);
+			    }
+	    	case CIRCLE if (InnerRadius > 0 && InnerRadius < Radius):
 				var alpha = new BitmapData(fullFrame.pixels.width, fullFrame.pixels.height, false, FlxColor.BLACK);
 				fullFrame.pixels.fillRect(_flashRect, FlxColor.BLACK);
 				fullFrame.drawCircle(-1, -1, Radius, FlxColor.WHITE, null, {smoothing: true});
@@ -175,12 +171,9 @@ class FlxPieDial extends FlxSprite
 				fullFrame.pixels.fillRect(fullFrame.pixels.rect, Color);
 				fullFrame.pixels.copyChannel(alpha, alpha.rect, _flashPointZero, BitmapDataChannel.RED, BitmapDataChannel.ALPHA);
 
-				//alpha.dispose();
-			}
-			else
-			{
+				FlxBitmapDataPool.put(alpha);
+			case CIRCLE:
 				fullFrame.drawCircle(-1, -1, Radius, Color);
-			}
 		}
 		return fullFrame;
 	}
