@@ -5,7 +5,7 @@ import flixel.graphics.FlxGraphic;
 import flixel.graphics.tile.FlxGraphicsShader;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
-import flixel.Math.FlxAngle;
+import flixel.math.FlxAngle;
 import flixel.util.FlxBitmapDataPool;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
