@@ -5,6 +5,7 @@ import flixel.graphics.FlxGraphic;
 import flixel.graphics.tile.FlxGraphicsShader;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
+import flixel.Math.FlxAngle;
 import flixel.util.FlxBitmapDataPool;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
@@ -38,7 +39,7 @@ class FlxPieDial extends FlxSprite
 
 	override public function draw():Void
 	{
-		if (amount * animation.numFrames < 1)
+		if (amount * animation.frames < 1)
 			return;
 		
 		super.draw();
@@ -53,7 +54,7 @@ class FlxPieDial extends FlxSprite
 	function set_amount(f:Float):Float
 	{
 		amount = FlxMath.bound(f, 0.0, 1.0);
-		var frame:Int = Std.int(f * animation.numFrames);
+		var frame:Int = Std.int(f * animation.frames);
 		animation.frameIndex = frame;
 		if (amount == 1.0)
 		{
@@ -241,7 +242,7 @@ class FlxPieDialUtils
 		final p = sweepPoints;
 		final radius = dest.width >> 1;
 		final center = p[0].set(radius, radius);
-		final cornerLength = center.length;
+		final cornerLength = PointUtil.getLength(center);
 		
 		if (degrees >= 270)
 		{
@@ -289,19 +290,18 @@ class FlxPieDialUtils
 		// draw the interesting quadrant
 		if (Math.abs(degrees % 90) < 45)
 		{
-			p[1].setPolarDegrees(radius, -90 + Std.int(degrees / 90) * 90).addPoint(center);
-			p[2].setPolarDegrees(cornerLength, -90 + degrees).addPoint(center);
+			PointUtil.setPolarDegrees(p[1], radius, -90 + Std.int(degrees / 90) * 90).addPoint(center);
+			PointUtil.setPolarDegrees(p[2], cornerLength, -90 + degrees).addPoint(center);
 			p[3].copyFrom(center);
 		}
 		else
 		{
 			final quadDegreesStart = Std.int(degrees / 90) * 90;
 			final cornerDegrees = quadDegreesStart + (degrees < 0 ? -45 : 45);
-			p[1].setPolarDegrees(radius, -90 + quadDegreesStart).addPoint(center);
-			p[2].setPolarDegrees(cornerLength, -90 + cornerDegrees).addPoint(center);
-			p[3].setPolarDegrees(cornerLength, -90 + degrees).addPoint(center);
+			PointUtil.setPolarDegrees(p[1], radius, -90 + quadDegreesStart).addPoint(center);
+			PointUtil.setPolarDegrees(p[2], cornerLength, -90 + cornerDegrees).addPoint(center);
+			PointUtil.setPolarDegrees(p[3], cornerLength, -90 + degrees).addPoint(center);
 		}
-		
 		drawPolygon(dest, p, color);
 	}
 	
@@ -362,7 +362,7 @@ class FlxPieDialUtils
 		FlxSpriteUtil.setLineStyle(lineStyle);
 		
 		if (color != FlxColor.TRANSPARENT)
-			flashGfx.beginFill(color.rgb, color.alphaFloat);
+			flashGfx.beginFill(color, color.alphaFloat);
 	}
 	
 	static inline function endDraw(bitmap:BitmapData, ?style:DrawStyle):BitmapData
@@ -376,5 +376,21 @@ class FlxPieDialUtils
 		final sprite = FlxSpriteUtil.flashGfxSprite;
 		bitmap.draw(sprite, style.matrix, style.colorTransform, style.blendMode, style.clipRect, style.smoothing);
 		return bitmap;
+	}
+}
+
+class PointUtil {
+	public static function getLength(Point:FlxPoint):Float {
+		return Math.sqrt(Point.x * Point.x + Point.y * Point.y);
+	}
+	
+	public static function setPolarRadians(point:FlxPoint, length:Float, radians:Float):FlxPoint {
+		point.x = length * Math.cos(radians);
+		point.y = length * Math.sin(radians);
+		return point;
+	}
+	
+	public static function setPolarDegrees(point:FlxPoint, length:Float, degrees:Float):FlxPoint {
+		return setPolarDegrees(point, length, degrees * FlxAngle.TO_RAD);
 	}
 }
