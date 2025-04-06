@@ -384,13 +384,13 @@ class PointUtil {
 		return Math.sqrt(Point.x * Point.x + Point.y * Point.y);
 	}
 	
-	public static function setPolarRadians(point:FlxPoint, length:Float, radians:Float):FlxPoint {
+	public function setPolarRadians(point:FlxPoint, length:Float, radians:Float):FlxPoint {
 		point.x = length * Math.cos(radians);
 		point.y = length * Math.sin(radians);
 		return point;
 	}
 	
-	public static function setPolarDegrees(point:FlxPoint, length:Float, degrees:Float):FlxPoint {
+	public inline function setPolarDegrees(point:FlxPoint, length:Float, degrees:Float):FlxPoint {
 		return setPolarDegrees(point, length, degrees * FlxAngle.TO_RAD);
 	}
 }
