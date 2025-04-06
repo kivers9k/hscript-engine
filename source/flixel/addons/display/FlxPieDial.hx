@@ -380,7 +380,7 @@ class FlxPieDialUtils
 }
 
 class PointUtil {
-	public static function getLength(Point:FlxPoint):Float {
+	public inline function getLength(Point:FlxPoint):Float {
 		return Math.sqrt(Point.x * Point.x + Point.y * Point.y);
 	}
 	
