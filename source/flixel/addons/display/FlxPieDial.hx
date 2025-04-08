@@ -65,13 +65,10 @@ class FlxPieDial extends FlxSprite
 		var rows:Int = Math.ceil(Math.sqrt(Frames));
 		var cols:Int = Math.ceil((Frames) / rows);
 
-		var back = Clockwise ? FlxColor.BLACK : FlxColor.WHITE;
-		var fore = Clockwise ? FlxColor.WHITE : FlxColor.BLACK;
-
 		var fullFrame = makeFullFrame(Radius, Color, Frames, Shape, Clockwise, InnerRadius);
-		var nextFrame = new FlxSprite().makeGraphic(W, H, back, false);
+		var nextFrame = new FlxSprite().makeGraphic(W, H, FlxColor.TRANSPARENT);
 
-		var bmp:BitmapData = new BitmapData(W * cols, H * rows, false, back);
+		var bmp:BitmapData = new BitmapData(W * cols, H * rows, true, FlxColor.TRANSPARENT);
 		var i:Int = 0;
 		_flashPoint.setTo(0, 0);
 		var v:FlxVector = FlxVector.get(0, -1);
@@ -126,7 +123,7 @@ class FlxPieDial extends FlxSprite
 		fullFrame.destroy();
 		nextFrame.destroy();
 
-		var shapeChannel = new BitmapData(bmp.width, bmp.height, false);
+		var shapeChannel = new BitmapData(bmp.width, bmp.height, true);
 		shapeChannel.copyChannel(bmp2, bmp2.rect, _flashPointZero, BitmapDataChannel.ALPHA, BitmapDataChannel.RED);
 		shapeChannel.copyChannel(bmp2, bmp2.rect, _flashPointZero, BitmapDataChannel.ALPHA, BitmapDataChannel.GREEN);
 		shapeChannel.copyChannel(bmp2, bmp2.rect, _flashPointZero, BitmapDataChannel.ALPHA, BitmapDataChannel.BLUE);
@@ -145,7 +142,7 @@ class FlxPieDial extends FlxSprite
 		var bitmapData = new BitmapData(Radius, Radius, true, FlxColor.TRANSPARENT);
 		var fullFrame = new FlxSprite();
 		
-		if (InnerRadius >= Radius) {
+		if (InnerRadius > Radius) {
 			InnerRadius = 0;
 		}
 		
@@ -156,11 +153,11 @@ class FlxPieDial extends FlxSprite
 		switch(Shape) {
 			case SQUARE:
 				var dR = center - innerCenter;
-				shape.graphics.drawRect(0, 0, Radius, Radius);
-				shape.graphics.drawRect(dR, dR, InnerRadius, InnerRadius);
+				shape.graphics.drawRect(0, 0, Radius * 2, Radius * 2);
+				shape.graphics.drawRect(dR, dR, InnerRadius * 2, InnerRadius * 2);
 			case CIRCLE:
-				shape.graphics.drawCircle(center, center, center);
-				shape.graphics.drawCircle(center, center, innerCenter);
+				shape.graphics.drawCircle(center, center, center * 2);
+				shape.graphics.drawCircle(center, center, innerCenter * 2);
 		}
 		shape.graphics.endFill();
 		
