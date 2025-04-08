@@ -59,8 +59,8 @@ class FlxPieDial extends FlxSprite
 
 	function makePieDialGraphicSub(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):BitmapData
 	{
-		var W = Radius * 2;
-		var H = Radius * 2;
+		var W = Radius;
+		var H = Radius;
 
 		var rows:Int = Math.ceil(Math.sqrt(Frames));
 		var cols:Int = Math.ceil((Frames) / rows);
@@ -69,7 +69,7 @@ class FlxPieDial extends FlxSprite
 		var fore = Clockwise ? FlxColor.WHITE : FlxColor.BLACK;
 
 		var fullFrame = makeFullFrame(Radius, Color, Frames, Shape, Clockwise, InnerRadius);
-		var nextFrame = new FlxSprite().makeGraphic(W, H, back);
+		var nextFrame = new FlxSprite().makeGraphic(W, H, FlxColor.TRANSPARENT, false);
 
 		var bmp:BitmapData = new BitmapData(W * cols, H * rows, false, back);
 		var i:Int = 0;
@@ -105,7 +105,7 @@ class FlxPieDial extends FlxSprite
 				{
 					nextFrame.pixels.copyPixels(fullFrame.pixels, fullFrame.pixels.rect, _flashPointZero);
 					_flashPoint.setTo(c * W, r * H);
-					drawSweep(sweep, v, nextFrame, polygon, W, H, 0x00000000, 0x00000000);
+					drawSweep(sweep, v, nextFrame, polygon, W, H, back, fore);
 					bmp.copyPixels(nextFrame.pixels, nextFrame.pixels.rect, _flashPoint);
 				}
 
