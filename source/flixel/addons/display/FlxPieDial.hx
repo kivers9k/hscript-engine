@@ -140,10 +140,9 @@ class FlxPieDial extends FlxSprite
 		return bmp2;
 	}
 
-	function makeFullFrame(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):FlxSprite
-	{
+	function makeFullFrame(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):FlxSprite {
 		var shape = new Shape();
-		var bitmapData = new BitmapData(Radius, Radius, true, 0x0);
+		var bitmapData = new BitmapData(Radius, Radius, true, FlxColor.TRANSPARENT);
 		var fullFrame = new FlxSprite();
 		
 		if (InnerRadius > Radius) {
@@ -154,11 +153,11 @@ class FlxPieDial extends FlxSprite
 		var innerCenter = InnerRadius / 2;
 		
 		shape.graphics.beginFill(Color);
-		switch (Shape) {
+		switch(Shape) {
 			case SQUARE:
-				var ei = center - innerCenter;
+				var dR = center - innerCenter;
 				shape.graphics.drawRect(0, 0, Radius, Radius);
-				shape.graphics.drawRect(ei, ei InnerRadius, InnerRadius);
+				shape.graphics.drawRect(dR, dR, InnerRadius, InnerRadius);
 			case CIRCLE:
 				shape.graphics.drawCircle(center, center, center);
 				shape.graphics.drawCircle(center, center, innerCenter);
