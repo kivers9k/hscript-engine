@@ -105,7 +105,7 @@ class FlxPieDial extends FlxSprite
 				{
 					nextFrame.pixels.copyPixels(fullFrame.pixels, fullFrame.pixels.rect, _flashPointZero);
 					_flashPoint.setTo(c * W, r * H);
-					drawSweep(sweep, v, nextFrame, polygon, W, H, back, fore);
+					drawSweep(sweep, v, nextFrame, polygon, W, H, 0x00000000, 0x00000000);
 					bmp.copyPixels(nextFrame.pixels, nextFrame.pixels.rect, _flashPoint);
 				}
 
@@ -155,11 +155,11 @@ class FlxPieDial extends FlxSprite
 		switch(Shape) {
 			case SQUARE:
 				var dR = center - innerCenter;
-				shape.graphics.drawRect(0, 0, Radius * 2, Radius * 2);
-				shape.graphics.drawRect(dR, dR, InnerRadius * 2, InnerRadius * 2);
+				shape.graphics.drawRect(0, 0, Radius, Radius);
+				shape.graphics.drawRect(dR, dR, InnerRadius, InnerRadius);
 			case CIRCLE:
-				shape.graphics.drawCircle(center, center, center * 2);
-				shape.graphics.drawCircle(center, center, innerCenter * 2);
+				shape.graphics.drawCircle(center, center, center);
+				shape.graphics.drawCircle(center, center, innerCenter);
 		}
 		shape.graphics.endFill();
 		
