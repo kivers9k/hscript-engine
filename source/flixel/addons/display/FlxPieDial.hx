@@ -145,7 +145,7 @@ class FlxPieDial extends FlxSprite
 		var bitmapData = new BitmapData(Radius, Radius, true, FlxColor.TRANSPARENT);
 		var fullFrame = new FlxSprite();
 		
-		if (InnerRadius > Radius) {
+		if (InnerRadius >= Radius) {
 			InnerRadius = 0;
 		}
 		
