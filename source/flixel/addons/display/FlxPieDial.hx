@@ -143,7 +143,7 @@ class FlxPieDial extends FlxSprite
 	function makeFullFrame(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):FlxSprite
 	{
 		var shape = new Shape();
-		var bitmapData = new FlxBitmapData(Radius, Radius, true, 0x0);
+		var bitmapData = new BitmapData(Radius, Radius, true, 0x0);
 		var fullFrame = new FlxSprite();
 		
 		if (InnerRadius > Radius) {
@@ -158,7 +158,7 @@ class FlxPieDial extends FlxSprite
 			case SQUARE:
 				var ei = center - innerCenter;
 				shape.graphics.drawRect(0, 0, Radius, Radius);
-				shape.graphics.drawRect(ei, ei, center, InnerRadius, InnerRadius);
+				shape.graphics.drawRect(ei, ei InnerRadius, InnerRadius);
 			case CIRCLE:
 				shape.graphics.drawCircle(center, center, center);
 				shape.graphics.drawCircle(center, center, innerCenter);
