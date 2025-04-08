@@ -59,8 +59,8 @@ class FlxPieDial extends FlxSprite
 
 	function makePieDialGraphicSub(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):BitmapData
 	{
-		var W = Radius * 1;
-		var H = Radius * 1;
+		var W = Radius * 2;
+		var H = Radius * 2;
 
 		var rows:Int = Math.ceil(Math.sqrt(Frames));
 		var cols:Int = Math.ceil((Frames) / rows);
@@ -69,9 +69,9 @@ class FlxPieDial extends FlxSprite
 		var fore = Clockwise ? FlxColor.WHITE : FlxColor.BLACK;
 
 		var fullFrame = makeFullFrame(Radius, Color, Frames, Shape, Clockwise, InnerRadius);
-		var nextFrame = new FlxSprite().makeGraphic(W, H, FlxColor.TRANSPARENT);
+		var nextFrame = new FlxSprite().makeGraphic(W, H, back);
 
-		var bmp:BitmapData = new BitmapData(W * cols, H * rows, true, FlxColor.TRANSPARENT);
+		var bmp:BitmapData = new BitmapData(W * cols, H * rows, false, back);
 		var i:Int = 0;
 		_flashPoint.setTo(0, 0);
 		var v:FlxVector = FlxVector.get(0, -1);
@@ -125,7 +125,7 @@ class FlxPieDial extends FlxSprite
 		fullFrame.destroy();
 		nextFrame.destroy();
 
-		var shapeChannel = new BitmapData(bmp.width, bmp.height, true);
+		var shapeChannel = new BitmapData(bmp.width, bmp.height, false);
 		shapeChannel.copyChannel(bmp2, bmp2.rect, _flashPointZero, BitmapDataChannel.ALPHA, BitmapDataChannel.RED);
 		shapeChannel.copyChannel(bmp2, bmp2.rect, _flashPointZero, BitmapDataChannel.ALPHA, BitmapDataChannel.GREEN);
 		shapeChannel.copyChannel(bmp2, bmp2.rect, _flashPointZero, BitmapDataChannel.ALPHA, BitmapDataChannel.BLUE);
