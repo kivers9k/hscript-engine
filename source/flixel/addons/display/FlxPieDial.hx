@@ -103,7 +103,7 @@ class FlxPieDial extends FlxSprite
 				{
 					nextFrame.pixels.copyPixels(fullFrame.pixels, fullFrame.pixels.rect, _flashPointZero);
 					_flashPoint.setTo(c * W, r * H);
-					drawSweep(sweep, v, nextFrame, polygon, W, H, back, fore);
+					drawSweep(sweep, v, nextFrame, polygon, W, H, FlxColor.TRANSPARENT, FlxColor.TRANSPARENT);
 					bmp.copyPixels(nextFrame.pixels, nextFrame.pixels.rect, _flashPoint);
 				}
 
