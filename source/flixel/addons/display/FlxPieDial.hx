@@ -45,23 +45,15 @@ class FlxPieDial extends FlxSprite
 	function makePieDialGraphic(Radius:Int, Color:FlxColor, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius:Int)
 	{
 		pieFrames = Frames;
-		var key:String = "pie_dial_" + Color.toHexString() + "_" + Radius + "_" + Frames + "_" + Shape + "_" + Clockwise + "_" + InnerRadius;
-		var W = Radius * 2;
-		var H = Radius * 2;
-		if (!FlxG.bitmap.checkCache(key))
-		{
+		var key:String = 'pie_dial_${Color.toHexString()}_$Radius_$Frames_$Shape_$Clockwise_$InnerRadius';
+		if (!FlxG.bitmap.checkCache(key)){
 			var bmp = makePieDialGraphicSub(Radius, Color, Frames, Shape, Clockwise, InnerRadius);
 			FlxG.bitmap.add(bmp, true, key);
 		}
-
-		loadGraphic(key, true, W, H);
+		loadGraphic(key, true, Radius, Radius);
 	}
 
-	function makePieDialGraphicSub(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):BitmapData
-	{
-		var W = Radius;
-		var H = Radius;
-
+	function makePieDialGraphicSub(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):BitmapData {
 		var rows:Int = Math.ceil(Math.sqrt(Frames));
 		var cols:Int = Math.ceil((Frames) / rows);
 
@@ -69,9 +61,9 @@ class FlxPieDial extends FlxSprite
 		var fore = Clockwise ? FlxColor.WHITE : FlxColor.BLACK;
 
 		var fullFrame = makeFullFrame(Radius, Color, Frames, Shape, Clockwise, InnerRadius);
-		var nextFrame = new FlxSprite().makeGraphic(W, H, FlxColor.TRANSPARENT, false);
+		var nextFrame = new FlxSprite().makeGraphic(Radius, Radius, FlxColor.TRANSPARENT, false);
 
-		var bmp:BitmapData = new BitmapData(W * cols, H * rows, false, back);
+		var bmp:BitmapData = new BitmapData(Radius * cols, Radius * rows, false, back);
 		var i:Int = 0;
 		_flashPoint.setTo(0, 0);
 		var v:FlxVector = FlxVector.get(0, -1);
@@ -94,7 +86,7 @@ class FlxPieDial extends FlxSprite
 					break;
 				}
 
-				_flashPoint.setTo(c * W, r * H);
+				_flashPoint.setTo(c * Radius, r * Radius);
 				bmp2.copyPixels(fullBmp, fullBmp.rect, _flashPoint);
 
 				if (i <= 0)
@@ -104,8 +96,8 @@ class FlxPieDial extends FlxSprite
 				else
 				{
 					nextFrame.pixels.copyPixels(fullFrame.pixels, fullFrame.pixels.rect, _flashPointZero);
-					_flashPoint.setTo(c * W, r * H);
-					drawSweep(sweep, v, nextFrame, polygon, W, H, back, fore);
+					_flashPoint.setTo(c * Radius, r * Radius);
+					drawSweep(sweep, v, nextFrame, polygon, Radius, Radius, back, fore);
 					bmp.copyPixels(nextFrame.pixels, nextFrame.pixels.rect, _flashPoint);
 				}
 
