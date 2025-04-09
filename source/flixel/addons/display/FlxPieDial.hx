@@ -45,7 +45,7 @@ class FlxPieDial extends FlxSprite
 	function makePieDialGraphic(Radius:Int, Color:FlxColor, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius:Int)
 	{
 		pieFrames = Frames;
-		var key:String = 'pie_dial_${Color.toHexString()}_$Radius_$Frames_$Shape_$Clockwise_$InnerRadius';
+		var key:String = 'pie_dial_${Color.toHexString()}_${Radius}_$Frames_${Shape}_${Clockwise}_${InnerRadius}';
 		if (!FlxG.bitmap.checkCache(key)){
 			var bmp = makePieDialGraphicSub(Radius, Color, Frames, Shape, Clockwise, InnerRadius);
 			FlxG.bitmap.add(bmp, true, key);
