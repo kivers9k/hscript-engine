@@ -116,7 +116,7 @@ class FlxPieDial extends FlxSprite
 		fullFrame.destroy();
 		nextFrame.destroy();
 
-		var shapeChannel = new BitmapData(bmp.width, bmp.height, false);
+		var shapeChannel = new BitmapData(bmp.width, bmp.height, true, FlxColor.TRANSPARENT);
 		shapeChannel.copyChannel(bmp2, bmp2.rect, _flashPointZero, BitmapDataChannel.ALPHA, BitmapDataChannel.RED);
 		shapeChannel.copyChannel(bmp2, bmp2.rect, _flashPointZero, BitmapDataChannel.ALPHA, BitmapDataChannel.GREEN);
 		shapeChannel.copyChannel(bmp2, bmp2.rect, _flashPointZero, BitmapDataChannel.ALPHA, BitmapDataChannel.BLUE);
