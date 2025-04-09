@@ -25,8 +25,7 @@ class FlxPieDial extends FlxSprite
 
 	var pieFrames:Int = 0;
 
-	public function new(X:Float, Y:Float, Radius:Int, Color:FlxColor = FlxColor.WHITE, Frames:Int = 36, ?Shape:FlxPieDialShape, Clockwise:Bool = true,
-			InnerRadius:Int = 0)
+	public function new(X:Float, Y:Float, Radius:Int, Color:FlxColor = FlxColor.WHITE, Frames:Int = 36, ?Shape:FlxPieDialShape, Clockwise:Bool = true, InnerRadius:Int = 0)
 	{
 		if (Shape == null)
 			Shape = CIRCLE;
@@ -97,7 +96,7 @@ class FlxPieDial extends FlxSprite
 				{
 					nextFrame.pixels.copyPixels(fullFrame.pixels, fullFrame.pixels.rect, _flashPointZero);
 					_flashPoint.setTo(c * Radius, r * Radius);
-					drawSweep(sweep, v, nextFrame, polygon, Radius, Radius, back, fore);
+					drawSweep(sweep, v, nextFrame, polygon, Radius, Radius, FlxColor.TRANSPARENT, fore);
 					bmp.copyPixels(nextFrame.pixels, nextFrame.pixels.rect, _flashPoint);
 				}
 
