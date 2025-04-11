@@ -45,9 +45,9 @@ class FlxPieDial extends FlxSprite
 	{
 		pieFrames = Frames;
 		var key:String = 'pie_dial_${Color.toHexString()}_${Radius}_${Frames}_${Shape}_${Clockwise}_${InnerRadius}';
-		if (!FlxG.bitmap.checkCache(key)){
-			var bmp = makePieDialGraphicSub(Radius, Color, Frames, Shape, Clockwise, InnerRadius);
-			FlxG.bitmap.add(bmp, true, key);
+		var graphic = makePieDialGraphicSub(Radius, Color, Frames, Shape, Clockwise, InnerRadius);
+		if (!FlxG.bitmap.checkCache(key)) {
+            FlxG.bitmap.add(graphic, true, key);
 		}
 		loadGraphic(key, true, Radius, Radius);
 	}
@@ -56,8 +56,8 @@ class FlxPieDial extends FlxSprite
 		var rows:Int = Math.ceil(Math.sqrt(Frames));
 		var cols:Int = Math.ceil((Frames) / rows);
 
-        var back = Clockwise ? FlxColor.BLACK : FlxColor.WHITE;
-		var fore = Clockwise ? FlxColor.WHITE : FlxColor.BLACK;
+        var back = Clockwise ? FlxColor.TRANSPARENT : FlxColor.WHITE;
+		var fore = Clockwise ? FlxColor.WHITE : FlxColor.TRANSPARENT;
 
 		var fullFrame = makeFullFrame(Radius, Color, Frames, Shape, Clockwise, InnerRadius);
 		var nextFrame = new FlxSprite().makeGraphic(Radius, Radius, FlxColor.TRANSPARENT, false);
