@@ -64,14 +64,8 @@ class HScript {
 
 		// variable
         variables.set('this', this);
-
-		variables.set('game', GameState.instance);
-		variables.set('add', FlxG.state.add);
-		variables.set('remove', FlxG.state.remove);
-		variables.set('insert', FlxG.state.insert);
-		variables.set('members', FlxG.state.members);
-        
-		variables.set('close', GameSubState.instance.close);
+		variables.set('state', GameState.instance);
+		variables.set('substate', GameSubState.instance);
 	}
 
 	public function execute(code:String):Dynamic {
