@@ -34,14 +34,13 @@ class HScript {
 	}
 
 	public function presetVars() {
-		// default set
+		// module
 		modules.set('StringTools', StringTools);
 		modules.set('Reflect', Reflect);
 		modules.set('Math', Math);
 		modules.set('Type', Type);
 		modules.set('Std', Std);
-
-		// flixel class
+        
 		modules.set('FlxG', FlxG);
 		modules.set('FlxSprite', FlxSprite);
 		modules.set('FlxCamera', FlxCamera);
@@ -49,8 +48,7 @@ class HScript {
 		modules.set('FlxEase', FlxEase);
 		modules.set('FlxTimer', FlxTimer);
 		modules.set('FlxText', FlxText);
-
-		// source class
+        
 		modules.set('GameState', GameState);
 		modules.set('GameSubState', GameSubState);
 		modules.set('FlxCustomState', FlxCustomState);
@@ -59,26 +57,20 @@ class HScript {
 		modules.set('Paths', Paths);
 		modules.set('Files', Files);
 		modules.set('SUtil', SUtil);
+		modules.set('ColorUtil', ColorUtil);
         
-		// shader
 		modules.set('FlxRuntimeShader', FlxRuntimeShader);
 		modules.set('ShaderFilter', openfl.filters.ShaderFilter);
 
+		// variable
         variables.set('this', this);
-		
-		// state variable
-		var state = GameState.instance;
-		if (FlxG.state.subState == GameSubState.instance) {
-		    var state = GameSubState.instance;
-		}
 
-		variables.set('game', state);
-		variables.set('add', state.add);
-		variables.set('remove', state.remove);
-		variables.set('insert', state.insert);
-		variables.set('members', state.members);
-
-        // subState variables
+		variables.set('game', GameState.instance);
+		variables.set('add', FlxG.state.add);
+		variables.set('remove', FlxG.state.remove);
+		variables.set('insert', FlxG.state.insert);
+		variables.set('members', FlxG.state.members);
+        
 		variables.set('close', GameSubState.instance.close);
 	}
 

@@ -53,7 +53,7 @@ class FlxPieDial extends FlxSprite
 		loadGraphic(key, true, Radius, Radius);
 	}
 
-	public static function makePieDialGraphicSub(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):BitmapData {
+	public function makePieDialGraphicSub(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):BitmapData {
 		var rows:Int = Math.ceil(Math.sqrt(Frames));
 		var cols:Int = Math.ceil((Frames) / rows);
 
@@ -131,7 +131,7 @@ class FlxPieDial extends FlxSprite
 		return bmp2;
 	}
 
-	public static inline function makeShape(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):FlxSprite {
+	public inline function makeShape(Radius:Int, Color:Int, Frames:Int, Shape:FlxPieDialShape, Clockwise:Bool, InnerRadius):FlxSprite {
 		var shape = new Shape();
 		var bitmapData = new BitmapData(Radius, Radius, true, FlxColor.TRANSPARENT);
 		var fullFrame = new FlxSprite();
@@ -161,7 +161,7 @@ class FlxPieDial extends FlxSprite
 		return fullFrame;
 	}
 
-	public static function drawSweep(sweep:Float, v:FlxVector, nextFrame:FlxSprite, polygon:Array<FlxPoint>, W:Int, H:Int, back:FlxColor, fore:FlxColor)
+	public function drawSweep(sweep:Float, v:FlxVector, nextFrame:FlxSprite, polygon:Array<FlxPoint>, W:Int, H:Int, back:FlxColor, fore:FlxColor)
 	{
 		var halfW = W / 2;
 		var halfH = H / 2;

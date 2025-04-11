@@ -38,3 +38,13 @@ class FlxCustomSubState extends GameSubState {
 		super.destroy();
 	}
 }
+
+class GameSubState extends FlxSubState {
+	public static var instance:GameSubState;
+	public var hscript:HScript;
+
+	public function new() {
+		instance = this;
+		super();
+	}
+}

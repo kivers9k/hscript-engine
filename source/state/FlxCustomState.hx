@@ -41,3 +41,13 @@ class FlxCustomState extends GameState {
 		FlxG.switchState(new FlxCustomState(statePath));
 	}
 }
+
+class GameState extends FlxState { 
+	public static var instance:GameState;
+	public var hscript:HScript;
+
+	public function new() {
+		instance = this;
+		super();
+	}
+}
