@@ -102,6 +102,21 @@ class HScript {
 		}
 	}
 
+	public function getScriptField():Dynamic {
+		var fields = {};
+
+		for (key => value in interp.variables.keyValueIterator()) {
+			if (Reflect.isFunction(value)) {
+			    Reflect.setField(fields, key, value);
+			}
+		}
+        for (key => value in interp.locals.keyValueIterator()) {
+            Reflect.setField(fields, key, value);
+		}
+
+		return fields;
+	}
+
 	private function get_variables() {
 		return interp.variables;
 	}
