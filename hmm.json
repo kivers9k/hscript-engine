@@ -2,15 +2,15 @@
     "dependencies": [{
         "name": "hxcpp",
         "type": "haxelib",
-        "version": "4.3.2"
+        "version": null
     }, {
         "name": "lime",
         "type": "haxelib",
-        "version": null
+        "version": "6.3.0"
     }, {
         "name": "openfl",
         "type": "haxelib",
-        "version": "9.3.4"
+        "version": "9.3.2"
     }, {
         "name": "flixel",
         "type": "haxelib",
