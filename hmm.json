@@ -26,6 +26,10 @@
     }, {
         "name": "flixel-ui",
         "type": "haxelib",
+        "version": "2.6.1"
+    }, {
+        "name": "extension-androidtools",
+        "type": "haxelib",
         "version": null
     }, {
         "name": "hscript",
@@ -38,10 +42,6 @@
         "type": "git",
         "dir": null,
         "ref": "main",
-        "url": "https://github.com/kivers9k/hxCodec"
-    }, {
-        "name": "extension-androidtools",
-        "type": "haxelib",
-        "version": null
+        "url": "https://github.com/polybiusproxy/hxCodec"
     }]
 }
