@@ -39,7 +39,7 @@ import flixel.util.FlxTimer;
 import flixel.util.FlxDestroyUtil;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
-import flixel.math.FlxBasePoint;
+import flixel.math.FlxPoint.FlxBasePoint;
 import flixel.math.FlxRect;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
