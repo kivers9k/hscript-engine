@@ -5,7 +5,7 @@
         "version": null
     }, {
         "name": "lime",
-        "type": "git",
+        "type": "haxelib",
         "version": null
     }, {
         "name": "openfl",
