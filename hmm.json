@@ -1,36 +1,32 @@
 {
     "dependencies": [{
         "name": "hxcpp",
-        "type": "git",
-        "dir": null,
-        "ref": "main",
-        "url": "https://github.com/MobilePorting/hxcpp"
+        "type": "haxelib",
+        "version": null
     }, {
         "name": "lime",
         "type": "git",
-        "dir": null,
-        "ref": "main",
-        "url": "https://github.com/MobilePorting/lime"
+        "dir": null
     }, {
         "name": "openfl",
         "type": "haxelib",
-        "version": "9.3.2"
+        "version": null
     }, {
         "name": "flixel",
         "type": "haxelib",
-        "version": "4.11.0"
+        "version": null
     }, {
         "name": "flixel-addons",
         "type": "haxelib",
-        "version": "2.11.0"
+        "version": null
     }, {
         "name": "flixel-tools",
         "type": "haxelib",
-        "version": "1.5.1"
+        "version": null
     }, {
         "name": "flixel-ui",
         "type": "haxelib",
-        "version": "2.5.0"
+        "version": null
     }, {
         "name": "hscript",
         "type":"git",
