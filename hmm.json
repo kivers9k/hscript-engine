@@ -41,9 +41,7 @@
         "url": "https://github.com/kivers9k/hxCodec"
     }, {
         "name": "extension-androidtools",
-        "type": "git",
-        "dir": null,
-        "ref": "main",
-        "url": "https://github.com/MAJigsaw77/extension-androidtools"
+        "type": "haxelib",
+        "version": null
     }]
 }

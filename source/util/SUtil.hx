@@ -1,15 +1,14 @@
 package util;
 
 #if android
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.os.Environment;
-import android.os.BatteryManager;
-import android.widget.Toast;
-import android.Tools;
-import android.Permissions;
-import android.Settings;
+import extension.androidtools.content.Context;
+import extension.androidtools.os.Build.VERSION;
+import extension.androidtools.os.Build.VERSION_CODES;
+import extension.androidtools.os.Environment;
+import extension.androidtools.widget.Toast;
+import extension.androidtools.Tools;
+import extension.androidtools.Permissions;
+import extension.androidtools.Settings;
 #end
 
 import lime.app.Application;
