@@ -27,9 +27,9 @@ jobs:
           java-version: 17
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1.2.0
+        uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.2.0
+          haxe-version: 4.2.5
 
       - name: Install Libraries
         run: |
