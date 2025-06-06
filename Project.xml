@@ -53,7 +53,8 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="hscript" />
     <haxelib name="hxCodec" if="desktop || mobile" />
-
+    <haxelib name="extension-androidtools" if="android" />
+	
 	<define name="hscriptPos" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
