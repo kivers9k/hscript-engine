@@ -44,9 +44,7 @@ jobs:
           haxelib run lime config ANDROID_SETUP true
      
       - name: Compile
-        run: |
-          lime setup android
-          haxelib run lime build android
+        run: haxelib run lime build android
  
       - name: Upload Artifact
         uses: actions/upload-artifact@main
