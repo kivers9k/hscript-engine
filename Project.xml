@@ -51,6 +51,7 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
+	
 	<haxelib name="hscript" />
     <haxelib name="hxCodec" if="desktop || mobile" />
     <haxelib name="extension-androidtools" if="android" />
