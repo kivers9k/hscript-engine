@@ -6,7 +6,7 @@
     }, {
         "name": "lime",
         "type": "haxelib",
-        "version": "8.0.1"
+        "version": "8.0.2"
     }, {
         "name": "openfl",
         "type": "haxelib",
