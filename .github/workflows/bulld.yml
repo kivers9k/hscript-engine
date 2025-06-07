@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-java@main
         with:
           distribution: 'temurin'
-          java-version: 11
+          java-version: '17'
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -33,8 +33,16 @@ jobs:
 
       - name: Install Libraries
         run: |
-          haxelib install hmm --quiet
-          haxelib run hmm install --quiet
+          haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp.git master --quiet
+          haxelib install lime 8.1.2 --quiet
+          haxelib install openfl 9.3.3 --quiet
+          haxelib install flixel 5.8.0 --quiet
+          haxelib install flixel-addons 3.3.2 --quiet
+          haxelib install flixel-tools 1.5.1 --quiet
+          haxelib install flixel-ui 2.6.3 --quiet
+          haxelib install extension-androidtools 2.1.1 --quiet
+          haxelib git hscript https://github.com/kivers9k/hscript.git master --quiet
+          haxelib git hxcodec https://github.com/polybiusproxy/hxCodec.git main --quiet
       
       - name: Configure Android
         run: |
