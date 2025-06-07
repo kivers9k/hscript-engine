@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-java@main
         with:
           distribution: 'temurin'
-          java-version: 17
+          java-version: 11
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
