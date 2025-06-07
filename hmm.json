@@ -8,7 +8,7 @@
     }, {
         "name": "lime",
         "type": "haxelib",
-        "version": "8.1.2"
+        "version": "8.0.2"
     }, {
         "name": "openfl",
         "type": "haxelib",
@@ -31,10 +31,8 @@
         "version": "2.6.2"
     }, {
         "name": "extension-androidtools",
-        "type": "git",
-        "dir": null,
-        "ref": "main",
-        "url": "https://github.com/MAJigsaw77/extension-androidtools"
+        "type": "haxelib",
+        "version": "2.1.1"
     }, {
         "name": "hscript",
         "type":"git",
