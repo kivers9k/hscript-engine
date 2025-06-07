@@ -31,9 +31,12 @@ class SUtil {
     
 	public static function permissionCheck():Void {
 		if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU) {
-		    Permissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO']);
+		    Permissions.requestPermission('READ_MEDIA_IMAGES');
+            Permissions.requestPermission('READ_MEDIA_VIDEO');
+            Permissions.requestPermission('READ_MEDIA_AUDIO');
 		} else {
-		    Permissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
+		    Permissions.requestPermission('READ_EXTERNAL_STORAGE');
+	        Permissions.requestPermission('WRITE_EXTERNAL_STORAGE');
 		}
 		
 		if (!Environment.isExternalStorageManager()) {
