@@ -42,7 +42,7 @@ jobs:
           haxelib install flixel-ui 2.6.3 --quiet
           haxelib install extension-androidtools 2.1.1 --quiet
           haxelib git hscript https://github.com/kivers9k/hscript.git master --quiet
-          haxelib git hxcodec https://github.com/polybiusproxy/hxCodec.git main --quiet
+          haxelib git hxCodec https://github.com/polybiusproxy/hxCodec.git main --quiet
       
       - name: Configure Android
         run: |
