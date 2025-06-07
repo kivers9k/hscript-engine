@@ -12,11 +12,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Setup Android NDK
+      - name: Setup NDK
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
-          ndk-version: r21e
+          ndk-version: 21e
         env:
           ANDROID_NDK_HOME: ${{steps.setup-ndk.outputs.ndk-path}}
 

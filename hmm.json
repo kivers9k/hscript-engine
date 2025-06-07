@@ -6,11 +6,11 @@
     }, {
         "name": "lime",
         "type": "haxelib",
-        "version": "8.0.2"
+        "version": "8.1.2"
     }, {
         "name": "openfl",
         "type": "haxelib",
-        "version": "9.3.2"
+        "version": "9.3.3"
     }, {
         "name": "flixel",
         "type": "haxelib",
