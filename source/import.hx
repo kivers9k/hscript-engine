@@ -18,6 +18,7 @@ import state.FlxCustomSubState;
 import state.FlxCustomSubState.GameSubState;
 import ui.FlxVirtualPad;
 import ui.InputText;
+import ui.PieDial;
 import util.ColorUtil;
 import util.SUtil;
 import util.Paths;
