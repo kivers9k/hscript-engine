@@ -11,13 +11,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
-      
-      - name: Setup NDK
-        uses: nttld/setup-ndk@main
-        id: setup-ndk
-        with:
-          ndk-version: r15c
-
+ 
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
@@ -25,15 +19,15 @@ jobs:
           java-version: '17'
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1.2.0
+        uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.3.4
 
       - name: Install Libraries
         run: |
           haxelib setup ~/haxelib
-          haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp.git
-          haxelib install lime
+          haxelib install hxcpp
+          haxelib install lime 8.1.2
           haxelib install openfl 9.3.3
           haxelib install flixel 5.8.0
           haxelib install flixel-addons 3.3.2
@@ -47,11 +41,9 @@ jobs:
       - name: Configure Android
         run: |
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
-          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
+          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_LATEST_HOME
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
-        env:
-          ANDROID_NDK_HOME: ${{steps.setup-ndk.outputs.ndk-path}}
 
       - name: Compile
         run: |
