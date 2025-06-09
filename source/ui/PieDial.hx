@@ -16,14 +16,15 @@ class PieDial extends FlxPieDial {
         this.max = max;
 
         if (!Math.isNaN(value)) {
-            value = FlxMath.bound(value, min, max);
+            value = Math.max(min, Math.min(value, max));
         } else {
             value = min;
         }
     }
 
     private function set_value(newValue:Float):Float {
-        this.amount = FlxMath.bound(newValue, min, max) / max;
+        value = Math.max(min, Math.min(newValue, max));
+        this.amount = value / max;
         return newValue;
     }
 
