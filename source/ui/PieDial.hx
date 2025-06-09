@@ -1,8 +1,8 @@
 package ui;
 
 class PieDial extends FlxPieDial {
+    @:isVar
     public var value(get, set):Float;
-
     public var min(default, null):Int;
     public var max(default, null):Int;
 
