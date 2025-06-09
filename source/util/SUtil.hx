@@ -1,14 +1,14 @@
 package util;
 
 #if android
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.os.Environment;
-import android.widget.Toast;
-import android.Tools;
-import android.Permissions;
-import android.Settings;
+import extension.androidtools.content.Context;
+import extension.androidtools.os.Build.VERSION;
+import extension.androidtools.os.Build.VERSION_CODES;
+import extension.androidtools.os.Environment;
+import extension.androidtools.widget.Toast;
+import extension.androidtools.Tools;
+import extension.androidtools.Permissions;
+import extension.androidtools.Settings;
 #end
 
 import lime.app.Application;
@@ -31,12 +31,9 @@ class SUtil {
     
 	public static function permissionCheck():Void {
 		if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU) {
-		    Permissions.requestPermission('READ_MEDIA_IMAGES');
-            Permissions.requestPermission('READ_MEDIA_VIDEO');
-            Permissions.requestPermission('READ_MEDIA_AUDIO');
+		    Permissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO']);
 		} else {
-		    Permissions.requestPermission('READ_EXTERNAL_STORAGE');
-	        Permissions.requestPermission('WRITE_EXTERNAL_STORAGE');
+		    Permissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
 		}
 		
 		if (!Environment.isExternalStorageManager()) {
