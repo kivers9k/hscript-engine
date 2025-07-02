@@ -25,17 +25,8 @@ jobs:
 
       - name: Install Libraries
         run: |
-          haxelib setup ~/haxelib
-          haxelib git hxcpp https://github.com/kittycathy233/hxcpp.git main
-          haxelib git lime https://github.com/kittycathy233/lime.git main
-          haxelib install openfl 9.3.3
-          haxelib install flixel 5.5.0
-          haxelib install flixel-addons 3.3.0
-          haxelib install flixel-tools 1.5.1
-          haxelib install flixel-ui 2.5.0
-          haxelib git hscript https://github.com/kivers9k/hscript.git master
-          haxelib git hxCodec https://github.com/polybiusproxy/hxCodec.git main
-          haxelib list
+          haxelib install hmm --queit
+          haxelib run hmm
       
       - name: Configure Android
         run: |
