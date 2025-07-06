@@ -16,8 +16,8 @@ class FlxVirtualStick extends FlxSpriteGroup {
 	public var stickX(get, default):Int = 0;
 	public var stickY(get, default):Int = 0;
 	
-	public var base:FlxSprite;
-	public var thumb:FlxSprite;
+	var base:FlxSprite;
+	var thumb:FlxSprite;
 	
 	public function new(X:Float = 0, Y:Float = 0, ?Radius:Float = 90, ?baseGraphic:Null<FlxGraphicAsset>, ?thumbGraphic:Null<FlxGraphicAsset>) {
 		super(x, y);
