@@ -45,10 +45,10 @@ class FlxVirtualStick extends FlxSpriteGroup {
 	}
 	
 	var _touched:Bool = false;
-	public override function update(elapsed:Float) {
+	override function update(elapsed:Float):Void {
 		super.update(elapsed);
 		
-		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(base, cameras[0])) {
+		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(base, cameras[0]) && visible) {
 			_touched = true;
 		} else if (FlxG.mouse.justReleased) {
 			_touched = false;
@@ -74,7 +74,7 @@ class FlxVirtualStick extends FlxSpriteGroup {
 		}
 	}
 
-	public override function destroy() {
+	override function destroy():Void {
 		super.destroy();
 
 		base = null;
