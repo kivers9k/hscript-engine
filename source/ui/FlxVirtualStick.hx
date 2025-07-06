@@ -5,6 +5,9 @@ import flixel.input.touch.FlxTouch;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 
 class FlxVirtualStick extends FlxSpriteGroup {
+	var base:FlxSprite;
+	var thumb:FlxSprite;
+	
 	var touch:FlxTouch;
 	
 	var direction:Float = 0;
@@ -15,10 +18,7 @@ class FlxVirtualStick extends FlxSpriteGroup {
 	// 1 go right or down
 	public var stickX(get, default):Int = 0;
 	public var stickY(get, default):Int = 0;
-	
-	var base:FlxSprite;
-	var thumb:FlxSprite;
-	
+
 	public function new(X:Float = 0, Y:Float = 0, ?Radius:Float = 90, ?baseGraphic:Null<FlxGraphicAsset>, ?thumbGraphic:Null<FlxGraphicAsset>) {
 		super(x, y);
 		
@@ -65,7 +65,7 @@ class FlxVirtualStick extends FlxSpriteGroup {
 			amount = Math.min(radius, dist) / radius;
 			
 			thumb.x = x + (base.width / 2) + Math.cos(direction) * amount * radius - (thumb.width / 2);
-			thumb.x = y + (base.height / 2) + Math.sin(direction) * amount * radius - (thumb.height / 2);
+			thumb.y = y + (base.height / 2) + Math.sin(direction) * amount * radius - (thumb.height / 2);
 		} else {
 			thumb.x = base.x + (base.width - thumb.width) / 2;
 			thumb.y = base.y + (base.height - thumb.height) / 2;

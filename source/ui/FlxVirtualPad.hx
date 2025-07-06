@@ -27,38 +27,38 @@ class FlxVirtualPad extends FlxSpriteGroup {
 
         switch (DPad) {
             case UP_DOWN:
-			    dPad.add(buttonUp = createButton(0, FlxG.height - 260, 'up'));
-			    dPad.add(buttonDown = createButton(0, FlxG.height - 135, 'down'));
+			    dPad.add(buttonUp = createButton(0, FlxG.height - 260, 132, 135, 'up'));
+			    dPad.add(buttonDown = createButton(0, FlxG.height - 135, 132, 135, 'down'));
             case LEFT_RIGHT:
-			    dPad.add(buttonLeft = createButton(0, FlxG.height - 135, 'left'));
-			    dPad.add(buttonRight = createButton(126, FlxG.height - 135, 'right'));
+			    dPad.add(buttonLeft = createButton(0, FlxG.height - 135, 132, 135, 'left'));
+			    dPad.add(buttonRight = createButton(126, FlxG.height - 135, 132, 135, 'right'));
             case FULL:
-			    dPad.add(buttonUp = createButton(110, FlxG.height - 350, 'up'));
-			    dPad.add(buttonLeft = createButton(0, FlxG.height - 245, 'left'));
-			    dPad.add(buttonRight = createButton(220, FlxG.height - 245, 'right'));
-			    dPad.add(buttonDown = createButton(110, FlxG.height - 135, 'down'));
+			    dPad.add(buttonUp = createButton(110, FlxG.height - 350, 132, 135, 'up'));
+			    dPad.add(buttonLeft = createButton(0, FlxG.height - 245, 132, 135, 'left'));
+			    dPad.add(buttonRight = createButton(220, FlxG.height - 245, 132, 135, 'right'));
+			    dPad.add(buttonDown = createButton(110, FlxG.height - 135, 132, 135, 'down'));
             case STICK:
                 stick = new FlxVirtualStick();
                 stick.setPosition(40, FlxG.height - stick.height - 40);
-                add(stick);
+                dPad.add(stick);
             case NONE:
         }
 
         switch (Action) {
             case A:
-			    actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 'a'));
+			    actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a'));
             case A_B:
-			    actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 'a'));
-			    actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 'b'));
+			    actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a'));
+			    actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b'));
             case A_B_C:
-			    actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 'a'));
-			    actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 'b'));
-			    actions.add(buttonC = createButton(FlxG.width - 384, FlxG.height - 135, 'c'));
+			    actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a'));
+			    actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b'));
+			    actions.add(buttonC = createButton(FlxG.width - 384, FlxG.height - 135, 132, 135, 'c'));
             case A_B_X_Y:
-			    actions.add(buttonX = createButton(FlxG.width - 132, FlxG.height - 260, 'x'));
-			    actions.add(buttonY = createButton(FlxG.width - 258, FlxG.height - 260, 'y'));
-			    actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 'a'));
-			    actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 'b'));
+			    actions.add(buttonX = createButton(FlxG.width - 132, FlxG.height - 260, 132, 135, 'x'));
+			    actions.add(buttonY = createButton(FlxG.width - 258, FlxG.height - 260, 132, 135, 'y'));
+			    actions.add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 132, 135, 'a'));
+			    actions.add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 132, 135, 'b'));
             case NONE:
         }
 
@@ -89,10 +89,9 @@ class FlxVirtualPad extends FlxSpriteGroup {
         buttonY = null;
     }
 
-    public function createButton(x:Float, y:Float, frame:String):FlxButton {
+    public function createButton(x:Float, y:Float, w:Int, h:Int, frame:String):FlxButton {
         var button:FlxButton = new FlxButton(x, y);
-        button.frames = Paths.getFrame('ui/virtual-input', 'packer');
-        button.animation.frameName = frame;
+        button.frames = Paths.fromFrame('ui/virtual-input', frame, w, h, 'packer');
         button.resetSizeFromFrame();
         return button;
     }
