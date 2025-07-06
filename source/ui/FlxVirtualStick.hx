@@ -72,6 +72,13 @@ class FlxVirtualStick extends FlxSpriteGroup {
 			amount = 0;
 		}
 	}
+
+	public override function destroy() {
+		super.destroy();
+
+		base = null;
+		thumb = null;
+	}
 	
 	private function get_stickX(v:Int):Int {
 		return Math.round(Math.cos(direction) * amount);
