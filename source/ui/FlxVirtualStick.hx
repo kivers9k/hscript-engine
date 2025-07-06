@@ -55,7 +55,7 @@ class FlxVirtualStick extends FlxSpriteGroup {
 		}
 		
 		if (_touched) {
-			var touchPoint:FlxPoint = FlxG.mouse.getScreenPosition(base, cameras[0]);
+			var _touchPoint:FlxPoint = FlxG.mouse.getScreenPosition(cameras[0]);
 			var dx:Float = _touchPoint.x - base.x - (base.width / 2);
 			var dy:Float = _touchPoint.y - base.y - (base.height / 2);
 			var dist:Float = Math.sqrt(dx * dx + dy * dy);
