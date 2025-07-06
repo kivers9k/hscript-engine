@@ -62,7 +62,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
             case NONE:
         }
 
-        this.setScrollFactor.set();
+        this.scrollFactor.set();
         this.alpha = 0.75;
     }
 

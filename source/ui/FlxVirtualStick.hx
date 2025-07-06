@@ -1,6 +1,6 @@
 package ui;
 
-import flixel.util.FlxPoint;
+import flixel.math.FlxPoint;
 import flixel.input.touch.FlxTouch;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 
@@ -41,6 +41,7 @@ class FlxVirtualStick extends FlxSpriteGroup {
 		add(thumb);
 		
 		this.radius = Radius;
+		this.scrollFactor.set();
 	}
 	
 	var _touched:Bool = false;
@@ -80,11 +81,11 @@ class FlxVirtualStick extends FlxSpriteGroup {
 		thumb = null;
 	}
 	
-	private function get_stickX(v:Int):Int {
+	private function get_stickX():Int {
 		return Math.round(Math.cos(direction) * amount);
 	}
 
-	private function get_stickY(v:Int):Int {
+	private function get_stickY():Int {
 		return Math.round(Math.sin(direction) * amount);
 	}
 }
