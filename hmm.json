@@ -32,6 +32,14 @@
         "type": "haxelib",
         "version": "2.5.0"
     }, {
+        "name": "echo",
+        "type": "haxelib",
+        "version": null
+    }, {
+        "name": "echo-flixel",
+        "type": "haxelib",
+        "version": null
+    }, {
         "name": "hscript",
         "type":"git",
         "dir": null,
