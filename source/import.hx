@@ -67,4 +67,4 @@ import flixel.addons.ui.FlxUIText;
 import flixel.addons.ui.FlxUI;
 
 using StringTools;
-using FlxEcho;
+using echo.FlxEcho;
