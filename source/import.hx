@@ -6,8 +6,6 @@ import hxcodec.flixel.FlxVideo;
 import hxcodec.flixel.FlxVideoBackdrop;
 import hxcodec.flixel.FlxVideoSprite;
 
-import echo.FlxEcho;
-
 import object.AnimateSprite;
 import object.SpriteGroup;
 import object.Tile;
@@ -67,4 +65,3 @@ import flixel.addons.ui.FlxUIText;
 import flixel.addons.ui.FlxUI;
 
 using StringTools;
-using echo.FlxEcho;

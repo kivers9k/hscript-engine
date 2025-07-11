@@ -54,7 +54,6 @@
 	
 	<haxelib name="hscript" />
     <haxelib name="hxCodec" if="desktop || mobile" />
-	<haxelib name="echo-flixel" />
 	
 	<define name="hscriptPos" />
 
