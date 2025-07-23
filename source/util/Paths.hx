@@ -20,6 +20,7 @@ class Paths {
 			var file = getPath('images/$key.$type');
 			var bitmap:BitmapData = BitmapData.fromFile(file);
 			var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, file);
+			graphic.persist = true;
 			return graphic;
 		}
 		return null;
@@ -101,6 +102,7 @@ class Files {
 			var file = getPath('$dir.$type');
 		    var bitmap:BitmapData = BitmapData.fromFile(file);
 		    var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, file);
+			graphic.persist = true;
 		    return graphic;
 		}
 		return null;
