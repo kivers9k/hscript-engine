@@ -12,7 +12,10 @@ import hxcodec.flixel.FlxVideoBackdrop;
 import hxcodec.flixel.FlxVideoSprite;
 
 import script.HScript;
-import script.scriptedClass.*;
+import script.scriptedClass.ScriptedSprite;
+import script.scriptedClass.ScriptedSpriteGroup;
+import script.scriptedClass.ScriptedState;
+import script.scriptedClass.ScriptedSubState;
 
 import object.AnimateSprite;
 import object.SpriteGroup;
