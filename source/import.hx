@@ -2,16 +2,21 @@ import hscript.Interp;
 import hscript.Parser;
 import hscript.Expr;
 
+import rulescript.RuleScript;
+import rulescript.parsers.HxParser;
+import rulescript.scriptedClass.RuleScriptedClass;
+import rulescript.scriptedClass.RuleScriptedClassUtil;
+
 import hxcodec.flixel.FlxVideo;
 import hxcodec.flixel.FlxVideoBackdrop;
 import hxcodec.flixel.FlxVideoSprite;
 
+import script.HScript;
+import script.scriptedClass.*;
+
 import object.AnimateSprite;
 import object.SpriteGroup;
 import object.Tile;
-import script.HScript;
-import script.scripted.ScriptedSprite;
-import script.scripted.ScriptedSpriteGroup;
 import state.FlxCustomState;
 import state.FlxCustomState.GameState;
 import state.FlxCustomSubState;

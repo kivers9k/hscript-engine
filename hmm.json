@@ -32,6 +32,10 @@
         "type": "haxelib",
         "version": "2.5.0"
     }, {
+        "name": "rulescript",
+        "type": "haxelib",
+        "version": null
+    }, {
         "name": "hscript",
         "type":"git",
         "dir": null,

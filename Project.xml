@@ -53,6 +53,7 @@
 	<haxelib name="flixel-ui" />
 	
 	<haxelib name="hscript" />
+	<haxelib name="rulescript" />
     <haxelib name="hxCodec" if="desktop || mobile" />
 	
 	<define name="hscriptPos" />
