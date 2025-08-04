@@ -6,7 +6,7 @@ typedef TileJson = {
     tiles:Array<{x:Float, y:Float, image:String}>
 }
 
-class Tile extends FlxSpriteGroup {
+class Tile extends FlxSpriteContainer {
     public var tileData:TileJson;
     public function new(x:Float, y:Float, tilePath:String) {
         super(x, y);
