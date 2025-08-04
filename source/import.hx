@@ -18,6 +18,7 @@ import script.scriptedClass.ScriptedState;
 import script.scriptedClass.ScriptedSubState;
 
 import object.AnimateSprite;
+import object.SpriteContainer;
 import object.SpriteGroup;
 import object.Tile;
 import state.FlxCustomState;
@@ -28,10 +29,10 @@ import ui.FlxVirtualPad;
 import ui.FlxVirtualStick;
 import ui.InputText;
 import ui.PieDial;
-import util.ColorUtil;
-import util.SUtil;
-import util.Paths;
-import util.Paths.Files;
+import backend.ColorUtil;
+import backend.SUtil;
+import backend.Paths;
+import backend.Paths.Files;
 
 #if sys
 import sys.*;
@@ -54,7 +55,9 @@ import flixel.math.FlxRect;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
+import flixel.group.FlxSpriteContainer;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.group.FlxContainer.FlxTypedContainer;
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 import flixel.text.FlxText;
