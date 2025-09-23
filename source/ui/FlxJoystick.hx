@@ -52,7 +52,7 @@ class FlxJoystick extends FlxSpriteGroup {
 		}
 	}
 
-	public funtion joystickScale(?x:Float = 1, ?y:Float = 1) {
+	public function joystickScale(?x:Float = 1, ?y:Float = 1) {
 		for (spr in members) {
 		    spr.scale.set(x, y);
 		    spr.updateHitbox();
