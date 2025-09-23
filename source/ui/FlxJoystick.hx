@@ -4,7 +4,7 @@ import flixel.math.FlxPoint;
 import flixel.input.touch.FlxTouch;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 
-class FlxVirtualStick extends FlxSpriteGroup {
+class FlxJoystick extends FlxSpriteGroup {
 	var base:FlxSprite;
 	var thumb:FlxSprite;
 	
