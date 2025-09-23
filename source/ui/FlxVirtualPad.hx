@@ -38,9 +38,9 @@ class FlxVirtualPad extends FlxSpriteGroup {
 			    dPad.add(buttonRight = createButton(220, FlxG.height - 245, 132, 135, 'right'));
 			    dPad.add(buttonDown = createButton(110, FlxG.height - 135, 132, 135, 'down'));
             case STICK:
-                stick = new FlxJoystick();
-                stick.setPosition(40, FlxG.height - stick.height - 40);
-                dPad.add(stick);
+                joystick = new FlxJoystick();
+                joystick.setPosition(40, FlxG.height - stick.height - 40);
+                dPad.add(joystick);
             case NONE:
         }
 
