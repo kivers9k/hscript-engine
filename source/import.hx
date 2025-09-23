@@ -75,5 +75,6 @@ import flixel.addons.ui.FlxUINumericStepper;
 import flixel.addons.ui.FlxUITabMenu;
 import flixel.addons.ui.FlxUIText;
 import flixel.addons.ui.FlxUI;
+import flixel.addons.util.PNGEncoder;
 
 using StringTools;
