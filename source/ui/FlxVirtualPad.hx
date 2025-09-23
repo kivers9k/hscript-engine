@@ -69,11 +69,11 @@ class FlxVirtualPad extends FlxSpriteGroup {
     override function destroy():Void {
         super.destroy();
 
-        stick = FlxDestroyUtil.destroy(stick);
+        joystick = FlxDestroyUtil.destroy(stick);
         dPad = FlxDestroyUtil.destroy(dPad);
         actions = FlxDestroyUtil.destroy(actions);
 
-        stick = null;
+        joystick = null;
         dPad = null;
         actions = null;
 
