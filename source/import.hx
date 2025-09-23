@@ -18,7 +18,6 @@ import script.scriptedClass.ScriptedState;
 import script.scriptedClass.ScriptedSubState;
 
 import object.AnimateSprite;
-import object.SpriteContainer;
 import object.SpriteGroup;
 import object.Tile;
 import state.FlxCustomState;
@@ -55,9 +54,7 @@ import flixel.math.FlxRect;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
-import flixel.group.FlxSpriteContainer;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.group.FlxContainer.FlxTypedContainer;
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 import flixel.text.FlxText;
