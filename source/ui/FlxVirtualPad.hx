@@ -39,7 +39,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
 			    dPad.add(buttonDown = createButton(110, FlxG.height - 135, 132, 135, 'down'));
             case STICK:
                 joystick = new FlxJoystick();
-                joystick.setPosition(40, FlxG.height - stick.height - 40);
+                joystick.setPosition(40, FlxG.height - joystick.height - 40);
                 dPad.add(joystick);
             case NONE:
         }
@@ -69,7 +69,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
     override function destroy():Void {
         super.destroy();
 
-        joystick = FlxDestroyUtil.destroy(stick);
+        joystick = FlxDestroyUtil.destroy(joystick);
         dPad = FlxDestroyUtil.destroy(dPad);
         actions = FlxDestroyUtil.destroy(actions);
 
