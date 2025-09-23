@@ -12,8 +12,8 @@ class FlxJoystick extends FlxSpriteGroup {
 	
 	// -1 go left or up
 	// 1 go right or down
-	public var stickX(get, never):Int = 0;
-	public var stickY(get, never):Int = 0;
+	public var stickX(get, default):Int = 0;
+	public var stickY(get, default):Int = 0;
 
 	public function new(?X:Float = 0, ?Y:Float = 0, ?Radius:Float = 90, ?baseSprite:FlxSprite, ?thumbSprite:FlxSprite) {
 		super(X, Y);
