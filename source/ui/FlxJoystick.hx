@@ -14,16 +14,18 @@ class FlxJoystick extends FlxSpriteGroup {
 	// 1 go right or down
 	public var stickX(get, default):Int = 0;
 	public var stickY(get, default):Int = 0;
-
+    
 	public function new(?X:Float = 0, ?Y:Float = 0, ?Radius:Float = 90, ?baseSprite:FlxSprite, ?thumbSprite:FlxSprite) {
-		super(X, Y);
+		super(X, Y)
+
+		this.radius = Radius;
 		
 		if (baseSprite == null) {
 			base = new FlxSprite();
 			base.frames = Paths.getFrame('ui/virtual-input', 'packer');
 			base.animation.frameName = 'base';
 		} else {
-			base = baseSprite;
+			base = baseSprite.clone();
 		}
 		base.resetSizeFromFrame();
 		base.moves = false;
@@ -34,14 +36,13 @@ class FlxJoystick extends FlxSpriteGroup {
 			thumb.frames = Paths.getFrame('ui/virtual-input', 'packer');
 			thumb.animation.frameName = 'thumb';
 		} else {
-			thumb = thumbSprite;
+			thumb = thumbSprite.clone();
 		}
 		thumb.resetSizeFromFrame();
 		thumb.moves = false;
 		add(thumb);
-		
-		this.radius = Radius;
-		this.scrollFactor.set();
+        
+		scrollFactor.set();
 	}
 
 	override function update(elapsed:Float):Void {
@@ -52,41 +53,44 @@ class FlxJoystick extends FlxSpriteGroup {
 		}
 	}
 
-	public function joystickScale(?x:Float = 1, ?y:Float = 1) {
+	public function scale(?value:Float = 1) {
 		for (spr in members) {
-		    spr.scale.set(x, y);
+		    spr.scale.set(value, value);
 		    spr.updateHitbox();
 		}
+	}
+
+	public function centerThumb() {
+		thumb.x = base.x + (base.width - thumb.width) / 2;
+		thumb.y = base.y + (base.height - thumb.height) / 2;
 	}
 	
 	var _touched:Bool = false;
 	function updateJoystick():Void {
-		for (touch in FlxG.touches.list) {
-		    if (touch.overlaps(base, camera) && touch.pressed) {
-		    	_touched = true;
-	    	} else if (touch.justReleased) {
-	    		_touched = false;
-	    	}
-    		
-	    	if (_touched) {
-        		var _touchPoint:FlxPoint = touch.getScreenPosition(camera);
-		    	var dx:Float = _touchPoint.x - base.x - (base.width / 2);
-	    		var dy:Float = _touchPoint.y - base.y - (base.height / 2);
-	    		var dist:Float = Math.sqrt(dx * dx + dy * dy);
-		    	if (dist < 1) dist = 0;
-			
-	    		direction = Math.atan2(dy, dx);
-	    		amount = Math.min(radius, dist) / radius;
-			
-	    		thumb.x = x + (base.width / 2) + Math.cos(direction) * amount * radius - (thumb.width / 2);
-	    		thumb.y = y + (base.height / 2) + Math.sin(direction) * amount * radius - (thumb.height / 2);
-	    	} else {
-	    		thumb.x = base.x + (base.width - thumb.width) / 2;
-	    		thumb.y = base.y + (base.height - thumb.height) / 2;
-	    		direction = 0;
-	    		amount = 0;
-	    	}
+	    if (FlxG.mouse.overlaps(base, getCameras()[0]) && FlxG.mouse.justPressed) {
+	    	_touched = true;
+	    } else if (FlxG.mouse.justReleased) {
+			_touched = false;
 		}
+    		
+		if (_touched) {
+    		var touchPoint:FlxPoint = FlxG.mouse.getScreenPosition(camera);
+	    	var dx:Float = touchPoint.x - base.x - (base.width / 2);
+			var dy:Float = touchPoint.y - base.y - (base.height / 2);
+
+			var dist:Float = Math.sqrt(dx * dx + dy * dy);
+		   	if (dist < 1) dist = 0;
+			
+			direction = Math.atan2(dy, dx);
+			amount = Math.min(radius, dist) / radius;
+			
+    		thumb.x = x + (base.width / 2) + Math.cos(direction) * amount * radius - (thumb.width / 2);
+	   		thumb.y = y + (base.height / 2) + Math.sin(direction) * amount * radius - (thumb.height / 2);
+	   	} else {
+			centerThumb();
+	   		direction = 0;
+	   		amount = 0;
+	  	}
 	}
 
 	override function destroy():Void {
