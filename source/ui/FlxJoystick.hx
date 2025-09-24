@@ -93,7 +93,7 @@ class FlxJoystick extends FlxSpriteGroup {
 				thumb.x = x + (base.width / 2) + Math.cos(direction) * amount * radius - (thumb.width / 2);
 				thumb.y = y + (base.height / 2) + Math.sin(direction) * amount * radius - (thumb.height / 2);
 			} else {
-				centerThumb();
+				thumbCenter();
 				direction = 0;
 				amount = 0;
 			}
