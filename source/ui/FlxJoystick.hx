@@ -1,10 +1,11 @@
 package ui;
 
 import flixel.math.FlxPoint;
+import flixel.input.touch.FlxTouch;
 
 class FlxJoystick extends FlxSpriteGroup {
-	var base:FlxSprite;
-	var thumb:FlxSprite;
+	public var base:FlxSprite;
+	public var thumb:FlxSprite;
 	
 	var direction:Float = 0;
 	var amount:Float = 0;
@@ -14,7 +15,7 @@ class FlxJoystick extends FlxSpriteGroup {
 	// 1 go right or down
 	public var stickX(get, default):Int = 0;
 	public var stickY(get, default):Int = 0;
-    
+	
 	public function new(?X:Float = 0, ?Y:Float = 0, ?Radius:Float = 90, ?baseSprite:FlxSprite, ?thumbSprite:FlxSprite) {
 		super(X, Y);
 
@@ -41,22 +42,22 @@ class FlxJoystick extends FlxSpriteGroup {
 		thumb.resetSizeFromFrame();
 		thumb.moves = false;
 		add(thumb);
-        
+		
 		scrollFactor.set();
 	}
 
 	override function update(elapsed:Float):Void {
 		super.update(elapsed);
 
-        if (visible) {
-		    updateJoystick();
+		if (visible) {
+			updateJoystick();
 		}
 	}
 
 	public function scale(?value:Float = 1) {
 		for (spr in members) {
-		    spr.scale.set(value, value);
-		    spr.updateHitbox();
+			spr.scale.set(value, value);
+			spr.updateHitbox();
 		}
 	}
 
@@ -66,31 +67,36 @@ class FlxJoystick extends FlxSpriteGroup {
 	}
 	
 	var _touched:Bool = false;
+	var _getTouchInput:FlxTouch;
 	function updateJoystick():Void {
-	    if (FlxG.mouse.overlaps(base, getCameras()[0]) && FlxG.mouse.justPressed) {
-	    	_touched = true;
-	    } else if (FlxG.mouse.justReleased) {
-			_touched = false;
+		for (touch in FlxG.touches.list) {
+			if (touch.overlaps(base, getCameras()[0]) && touch.justPressed) {
+				_touched = true;
+				_getTouchInput = touch;
+			} else if (touch.justReleased) {
+				_touched = false;
+				_getTouchInput = null;
+			}
+			
+			if (_touched) {
+				var touchPoint:FlxPoint = _getTouchInput.getScreenPosition(getCameras()[0]);
+				var dx:Float = touchPoint.x - base.x - (base.width / 2);
+				var dy:Float = touchPoint.y - base.y - (base.height / 2);
+				
+				var dist:Float = Math.sqrt(dx * dx + dy * dy);
+				if (dist < 1) dist = 0;
+				
+				direction = Math.atan2(dy, dx);
+				amount = Math.min(radius, dist) / radius;
+				
+				thumb.x = x + (base.width / 2) + Math.cos(direction) * amount * radius - (thumb.width / 2);
+				thumb.y = y + (base.height / 2) + Math.sin(direction) * amount * radius - (thumb.height / 2);
+			} else {
+				centerThumb();
+				direction = 0;
+				amount = 0;
+			}
 		}
-    		
-		if (_touched) {
-    		var touchPoint:FlxPoint = FlxG.mouse.getScreenPosition(camera);
-	    	var dx:Float = touchPoint.x - base.x - (base.width / 2);
-			var dy:Float = touchPoint.y - base.y - (base.height / 2);
-
-			var dist:Float = Math.sqrt(dx * dx + dy * dy);
-		   	if (dist < 1) dist = 0;
-			
-			direction = Math.atan2(dy, dx);
-			amount = Math.min(radius, dist) / radius;
-			
-    		thumb.x = x + (base.width / 2) + Math.cos(direction) * amount * radius - (thumb.width / 2);
-	   		thumb.y = y + (base.height / 2) + Math.sin(direction) * amount * radius - (thumb.height / 2);
-	   	} else {
-			centerThumb();
-	   		direction = 0;
-	   		amount = 0;
-	  	}
 	}
 
 	override function destroy():Void {
