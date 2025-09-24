@@ -44,6 +44,7 @@ class FlxJoystick extends FlxSpriteGroup {
 		add(thumb);
 		
 		scrollFactor.set();
+		centerThumb();
 	}
 
 	override function update(elapsed:Float):Void {
