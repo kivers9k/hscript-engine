@@ -75,7 +75,7 @@ class FlxJoystick extends FlxSpriteGroup {
 			if (touch.overlaps(base, camera) && touch.justPressed) {
 				_touched = true;
 				_getTouchInput = touch;
-			} else if (_getTouchInput.justReleased) {
+			} else if (_getTouchInput.justReleased && _getTouchInput != null && _touched) {
 				_touched = false;
 			}
 			
