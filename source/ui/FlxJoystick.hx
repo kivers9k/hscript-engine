@@ -60,6 +60,7 @@ class FlxJoystick extends FlxSpriteGroup {
 			spr.scale.set(value, value);
 			spr.updateHitbox();
 		}
+		centerThumb();
 	}
 
 	public function centerThumb() {
@@ -76,7 +77,6 @@ class FlxJoystick extends FlxSpriteGroup {
 				_getTouchInput = touch;
 			} else if (_getTouchInput.justReleased) {
 				_touched = false;
-				_getTouchInput = null;
 			}
 			
 			if (_touched) {
