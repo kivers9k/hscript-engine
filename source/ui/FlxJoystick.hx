@@ -54,7 +54,7 @@ class FlxJoystick extends FlxSpriteGroup {
 		}
 	}
 
-	public function scale(?value:Float = 1) {
+	public function scaleStick(?value:Float = 1) {
 		for (spr in members) {
 			spr.scale.set(value, value);
 			spr.updateHitbox();
@@ -70,7 +70,7 @@ class FlxJoystick extends FlxSpriteGroup {
 	var _getTouchInput:FlxTouch;
 	function updateJoystick():Void {
 		for (touch in FlxG.touches.list) {
-			if (touch.overlaps(base, getCameras()[0]) && touch.justPressed) {
+			if (touch.overlaps(base, camera) && touch.justPressed) {
 				_touched = true;
 				_getTouchInput = touch;
 			} else if (touch.justReleased) {
@@ -79,7 +79,7 @@ class FlxJoystick extends FlxSpriteGroup {
 			}
 			
 			if (_touched) {
-				var touchPoint:FlxPoint = _getTouchInput.getScreenPosition(getCameras()[0]);
+				var touchPoint:FlxPoint = _getTouchInput.getScreenPosition(camera);
 				var dx:Float = touchPoint.x - base.x - (base.width / 2);
 				var dy:Float = touchPoint.y - base.y - (base.height / 2);
 				
