@@ -44,7 +44,7 @@ class FlxJoystick extends FlxSpriteGroup {
 		add(thumb);
 		
 		scrollFactor.set();
-		centerThumb();
+		thumbCenter();
 	}
 
 	override function update(elapsed:Float):Void {
@@ -60,10 +60,10 @@ class FlxJoystick extends FlxSpriteGroup {
 			spr.scale.set(value, value);
 			spr.updateHitbox();
 		}
-		centerThumb();
+		thumbCenter();
 	}
 
-	public function centerThumb() {
+	public function thumbCenter() {
 		thumb.x = base.x + (base.width - thumb.width) / 2;
 		thumb.y = base.y + (base.height - thumb.height) / 2;
 	}
