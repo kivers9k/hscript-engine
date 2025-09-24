@@ -16,7 +16,7 @@ class FlxJoystick extends FlxSpriteGroup {
 	public var stickY(get, default):Int = 0;
     
 	public function new(?X:Float = 0, ?Y:Float = 0, ?Radius:Float = 90, ?baseSprite:FlxSprite, ?thumbSprite:FlxSprite) {
-		super(X, Y)
+		super(X, Y);
 
 		this.radius = Radius;
 		
