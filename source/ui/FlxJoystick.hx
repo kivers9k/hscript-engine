@@ -69,7 +69,7 @@ class FlxJoystick extends FlxSpriteGroup {
 	}
 	
 	var _touched:Bool = false;
-	var _getTouchID:FlxTouch;
+	var _getTouchInput:FlxTouch;
 	function updateJoystick():Void {
 		for (touch in FlxG.touches.list) {
 			if (touch.overlaps(base, camera) && touch.justPressed) {
