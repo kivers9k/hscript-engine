@@ -78,30 +78,28 @@ class FlxJoystick extends FlxSpriteGroup {
 			}
 		}
 
-        if (_getTouchInput != null) {
-	    	if (_touched) {
-		    	var touchPoint:FlxPoint = _getTouchInput.getScreenPosition(camera);
-			    var dx:Float = touchPoint.x - base.x - (base.width / 2);
-		    	var dy:Float = touchPoint.y - base.y - (base.height / 2);
+	    if (_touched) {
+		    var touchPoint:FlxPoint = _getTouchInput.getScreenPosition(camera);
+			var dx:Float = touchPoint.x - base.x - (base.width / 2);
+		    var dy:Float = touchPoint.y - base.y - (base.height / 2);
 			
-		    	var dist:Float = Math.sqrt(dx * dx + dy * dy);
-		    	if (dist < 1) dist = 0;
+		    var dist:Float = Math.sqrt(dx * dx + dy * dy);
+		    if (dist < 1) dist = 0;
 			
-		    	direction = Math.atan2(dy, dx);
-		    	amount = Math.min(radius, dist) / radius;
+			direction = Math.atan2(dy, dx);
+		   	amount = Math.min(radius, dist) / radius;
+	
+			thumb.x = x + (base.width / 2) + Math.cos(direction) * amount * radius - (thumb.width / 2);
+	    	thumb.y = y + (base.height / 2) + Math.sin(direction) * amount * radius - (thumb.height / 2);
+	    } else {
+	    	thumbCenter();
+			direction = 0;
+			amount = 0;
+	    }
 			
-		    	thumb.x = x + (base.width / 2) + Math.cos(direction) * amount * radius - (thumb.width / 2);
-		    	thumb.y = y + (base.height / 2) + Math.sin(direction) * amount * radius - (thumb.height / 2);
-		    } else {
-		    	thumbCenter();
-		    	direction = 0;
-		    	amount = 0;
-	    	}
-			
-	    	if (_getTouchInput.justReleased && _touched) {
-			    _touched = false;
-			    _getTouchInput = null;
-	    	}
+		if (_getTouchInput.justReleased && _touched && _getTouchInput != null) {
+		    _touched = false;
+		    _getTouchInput = null;
 		}
 	}
 
