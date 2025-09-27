@@ -40,10 +40,6 @@ import sys.io.*;
 import js.html.*;
 #end
 
-import flash.geom.Rectangle;
-import flash.geom.Matrix;
-import flash.geom.Point;
-
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
