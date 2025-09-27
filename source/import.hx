@@ -41,6 +41,7 @@ import js.html.*;
 #end
 
 import flash.geom.Rectangle;
+import flash.geom.Matrix;
 import flash.geom.Point;
 
 import flixel.FlxG;
