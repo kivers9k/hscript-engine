@@ -93,4 +93,12 @@ class SUtil {
 	public static function alert(title:String, msg:String) {
 		Lib.application.window.alert(msg, title);
 	}
+
+	public static function saveContent(path:String, content:String) {
+        File.saveContent(getPath('saves/$path'), content);
+	}
+
+	public static function saveBytes(path:String, bytes:Bytes) {
+		File.saveBytes(getPath('saves/$path'), bytes);
+	}
 }
