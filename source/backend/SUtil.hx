@@ -18,6 +18,7 @@ import openfl.Lib;
 import haxe.CallStack.StackItem;
 import haxe.CallStack;
 import haxe.io.Path;
+import haxe.io.Bytes;
 import flash.system.System;
 
 class SUtil {
